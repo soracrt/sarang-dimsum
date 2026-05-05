@@ -37,6 +37,88 @@ const values = [
     </h1>
   </section>
 
+  {/* FOUNDER INTRO CARD — editorial portrait + dossier */}
+  <section class="mx-auto max-w-5xl px-5 md:px-8 mt-16 md:mt-20">
+    <div class="grid md:grid-cols-[auto_1fr] gap-8 md:gap-12 items-stretch">
+      {/* portrait medallion */}
+      <div class="relative w-full max-w-xs md:w-72 mx-auto md:mx-0">
+        <div class="aspect-[4/5] rounded-3xl border border-charcoal/12 bg-gradient-to-b from-cream-soft to-cream-deep overflow-hidden relative">
+          {/* decorative corner stamps */}
+          <span class="absolute top-4 left-4 text-[0.6875rem] tracking-[0.28em] uppercase text-charcoal-mute">Pendiri</span>
+          <span class="absolute top-4 right-4 font-display italic text-charcoal-mute text-base">N° 01</span>
+          <span class="absolute bottom-4 left-4 text-[0.6875rem] tracking-[0.28em] uppercase text-charcoal-mute tabular">MMXXIV</span>
+          <span class="absolute bottom-4 right-4 text-[0.6875rem] tracking-[0.28em] uppercase text-charcoal-mute">Tiban · BTM</span>
+
+          {/* portrait illustration — simplified founder line-portrait */}
+          <div class="absolute inset-0 grid place-items-center">
+            <svg viewBox="0 0 200 240" class="w-full h-full p-10 text-charcoal" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustrasi potret Arfan Putra">
+              {/* warm halo */}
+              <circle cx="100" cy="100" r="62" fill="rgba(240, 180, 41, 0.18)"/>
+              {/* shoulders / shirt */}
+              <path d="M28 230 C 36 184, 70 168, 100 168 C 130 168, 164 184, 172 230 Z" fill="#F1E9D5" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+              {/* collar */}
+              <path d="M82 172 L 100 196 L 118 172" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              {/* neck */}
+              <path d="M88 168 V 156 M 112 168 V 156" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              {/* head */}
+              <ellipse cx="100" cy="118" rx="42" ry="48" fill="#FAF6EE" stroke="currentColor" stroke-width="2.5"/>
+              {/* hair */}
+              <path d="M62 110 C 60 78, 82 60, 100 60 C 122 60, 144 78, 138 112 C 132 96, 118 88, 100 88 C 82 88, 70 96, 62 110 Z" fill="currentColor"/>
+              {/* sideburns */}
+              <path d="M62 112 C 62 124, 64 132, 68 138" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+              <path d="M138 112 C 138 124, 136 132, 132 138" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+              {/* brows */}
+              <path d="M78 110 C 84 106, 92 106, 96 110" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+              <path d="M104 110 C 108 106, 116 106, 122 110" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+              {/* eyes */}
+              <circle cx="86" cy="120" r="2.2" fill="currentColor"/>
+              <circle cx="114" cy="120" r="2.2" fill="currentColor"/>
+              {/* nose */}
+              <path d="M100 122 C 98 132, 96 138, 100 142 C 102 144, 104 144, 106 142" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+              {/* mouth — calm half-smile */}
+              <path d="M88 152 C 94 156, 106 156, 112 152" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+              {/* chin shadow hairline */}
+              <path d="M76 144 C 84 156, 116 156, 124 144" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.35"/>
+            </svg>
+          </div>
+        </div>
+
+        {/* yellow seal under medallion */}
+        <div class="absolute -bottom-3 right-6 w-14 h-14 rounded-full bg-sarang border border-charcoal/20 grid place-items-center text-charcoal shadow-[0_8px_18px_-8px_rgba(20,17,13,0.35)]">
+          <Icon name="shield-check" size={20}/>
+        </div>
+      </div>
+
+      {/* dossier */}
+      <div class="flex flex-col justify-between">
+        <div>
+          <p class="eyebrow">Profil singkat</p>
+          <p class="font-display text-4xl md:text-5xl mt-3 leading-tight">Arfan Putra</p>
+          <p class="mt-2 text-charcoal-mute">Pendiri · Sarang Dimsum</p>
+
+          <p class="mt-7 text-lg text-charcoal-soft leading-[1.7] max-w-lg">
+            Lahir dan besar di Batam. Mulai Sarang Dimsum dari dapur rumah pada 2024, dengan satu keyakinan sederhana: dimsum halal yang enak nggak harus mahal — dan nggak harus jauh.
+          </p>
+        </div>
+
+        <dl class="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-y-6 gap-x-6 border-t border-charcoal/10 pt-8">
+          <div>
+            <dt class="eyebrow">Mulai</dt>
+            <dd class="font-display text-2xl mt-1.5 tabular">2024</dd>
+          </div>
+          <div>
+            <dt class="eyebrow">Asal</dt>
+            <dd class="font-display text-2xl mt-1.5">Tiban, Batam</dd>
+          </div>
+          <div>
+            <dt class="eyebrow">Filosofi</dt>
+            <dd class="font-display italic text-xl mt-1.5 leading-snug">"Mampir, yuk."</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
   {/* FOUNDER LETTER — editorial two-column */}
   <section class="mx-auto max-w-5xl px-5 md:px-8 mt-16 md:mt-20 pb-24">
     <div class="grid md:grid-cols-[1fr_2fr] gap-10 md:gap-16">

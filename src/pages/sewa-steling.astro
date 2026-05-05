@@ -1,13 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
-import Arfan from '../components/Arfan.astro';
+import TopNav from '../components/TopNav.astro';
 import Icon from '../components/Icon.astro';
 import { links } from '../lib/links';
 
 const benefits = [
-  { icon: 'store'           as const, t: 'Steling siap pakai', d: 'Steling bambu kami antar dan rakit di lokasi. Bersih, aman, terstandar.' },
-  { icon: 'soup'            as const, t: 'Supply rutin',       d: 'Dimsum diantar segar setiap hari atau minggu. Harga mitra, terkurva sama volume.' },
-  { icon: 'heart-handshake' as const, t: 'Pelatihan singkat',  d: 'Tim kamu dilatih cara penyajian, kebersihan, dan layanan dasar. Cukup satu sesi.' },
+  { n: '01', t: 'Steling Siap Pakai',  d: 'Steling bambu kami antar dan rakit di lokasi. Bersih, aman, terstandar.' },
+  { n: '02', t: 'Supply Rutin',        d: 'Dimsum diantar segar setiap hari atau minggu. Harga mitra, terkurva sama volume.' },
+  { n: '03', t: 'Pelatihan Singkat',   d: 'Tim kamu dilatih cara penyajian, kebersihan, dan layanan dasar. Cukup satu sesi.' },
 ];
 
 const steps = [
@@ -18,110 +18,149 @@ const steps = [
 ];
 ---
 
-<Base title="Sewa Steling — Sarang Dimsum" description="Skema sewa steling dimsum Sarang. Cocok buat warung kopi, ruko, atau pemilik usaha yang mau nambah lini halal cepat saji.">
-  <section class="relative bg-charcoal text-cream overflow-hidden">
-    <div class="absolute inset-0 opacity-[0.07] pointer-events-none">
-      <div class="absolute -top-32 -left-32 w-[40rem] h-[40rem] rounded-full bg-sarang blur-3xl"></div>
+<Base hideHeader title="Sewa Steling — Sarang Dimsum" description="Skema sewa steling dimsum Sarang. Cocok buat warung kopi, ruko, atau pemilik usaha yang mau nambah lini halal cepat saji.">
+  <div aria-hidden="true" class="tarp-thin h-3"></div>
+
+  {/* RED HERO */}
+  <section class="relative bg-red text-cream overflow-hidden">
+    <TopNav variant="red"/>
+
+    <div class="absolute top-32 right-6 md:right-12 z-10 pointer-events-none">
+      <div class="stamp stamp-tilt-l text-sarang text-base md:text-xl">B2B · Mitra Sarang</div>
     </div>
-    <div class="relative mx-auto max-w-6xl px-5 md:px-8 py-20 md:py-28 grid md:grid-cols-[1.4fr_auto] gap-12 items-center">
-      <div>
-        <p class="eyebrow text-sarang">Untuk pemilik usaha</p>
-        <h1 class="font-display-x text-6xl md:text-8xl text-cream leading-[0.9] mt-4">
-          Sewa stelingnya,<br/>
-          <span class="text-sarang">jualan dimsumnya.</span>
-        </h1>
-        <p class="mt-7 text-lg text-cream/75 max-w-2xl leading-relaxed">
-          Skema mitra Sarang: kamu sediakan tempat — warung, ruko, food court, kios — kami sediakan steling, supply dimsum, dan pelatihan.
-          Cocok buat usaha yang ingin nambah lini halal cepat saji tanpa pusing soal resep dan supplier.
-        </p>
-        <div class="mt-9 flex flex-wrap gap-3">
-          <a href={links.waReseller} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-sarang text-charcoal px-7 py-3.5 font-medium hover:bg-sarang-deep transition-colors">
-            <Icon name="message-circle" size={16}/>
-            Tanya skema via WhatsApp
-          </a>
-          <a href="#form" class="inline-flex items-center gap-2 rounded-full border border-cream/25 px-7 py-3.5 font-medium hover:bg-cream/5 transition-colors">
-            Isi form dulu
-            <Icon name="arrow-right" size={14}/>
-          </a>
-        </div>
+
+    <div class="px-5 md:px-10 pt-12 md:pt-20 pb-16 md:pb-20">
+      <div class="flex items-center gap-3 mb-6">
+        <span aria-hidden="true" class="block w-12 h-px bg-cream/60"></span>
+        <span class="text-[0.6875rem] uppercase tracking-[0.32em] text-cream/85 font-semibold">Untuk Pemilik Usaha</span>
       </div>
-      <Arfan pose="steamer" class="hidden md:block w-72 h-auto" />
+
+      <h1 class="font-display-x uppercase text-cream leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(4rem, 13vw, 13rem);">
+        Sewa Stelingnya,<br/>
+        <span class="text-sarang">Jualan Dimsumnya.</span>
+      </h1>
+
+      <p class="mt-8 max-w-2xl text-lg text-cream/85 leading-[1.7]">
+        Skema mitra Sarang: kamu sediakan tempat — warung, ruko, food court, kios — kami sediakan steling, supply dimsum, dan pelatihan.
+        Cocok buat usaha yang mau nambah lini halal cepat saji tanpa pusing soal resep dan supplier.
+      </p>
+
+      <div class="mt-9 flex items-center gap-5 flex-wrap">
+        <a href={links.waReseller} target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-sarang text-red-deep px-6 py-3 text-sm uppercase tracking-[0.2em] font-bold hover:bg-cream transition-colors">
+          <Icon name="message-circle" size={14}/>
+          Tanya Skema via WA
+        </a>
+        <a href="#form" class="hand text-sarang text-2xl md:text-3xl hover:text-cream transition-colors inline-flex items-center gap-2">
+          atau isi form di bawah
+          <svg width="42" height="22" viewBox="0 0 60 30" fill="none" class="-mb-1">
+            <path d="M3 18 C 14 6, 30 4, 48 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <path d="M40 8 L 48 14 L 42 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </section>
 
-  {/* benefits */}
-  <section class="mx-auto max-w-6xl px-5 md:px-8 py-24">
-    <p class="eyebrow">Apa yang kamu dapat</p>
-    <h2 class="font-display text-3xl md:text-4xl mt-3 max-w-2xl">Tiga hal yang Sarang siapkan, biar kamu fokus jualan.</h2>
-    <div class="mt-12 grid gap-6 md:grid-cols-3">
-      {benefits.map((b) => (
-        <div class="rounded-3xl border border-charcoal/10 bg-cream-soft p-7">
-          <div class="w-11 h-11 rounded-full bg-cream border border-charcoal/15 grid place-items-center text-charcoal">
-            <Icon name={b.icon} size={20}/>
+  <div aria-hidden="true" class="tarp-thin h-3"></div>
+
+  {/* WHAT YOU GET — asymmetric numbered */}
+  <section class="bg-cream">
+    <div class="px-5 md:px-10 py-20 md:py-24">
+      <div class="flex items-center gap-3 mb-8">
+        <span aria-hidden="true" class="block w-12 h-px bg-charcoal"></span>
+        <span class="text-[0.6875rem] uppercase tracking-[0.32em] text-charcoal-mute font-semibold">Yang Kamu Dapat</span>
+      </div>
+      <h2 class="font-display-x uppercase leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(3rem, 9vw, 8rem);">
+        Tiga Hal,<br/>
+        <span class="text-red">Biar Kamu Fokus Jualan.</span>
+      </h2>
+
+      <div class="mt-14 grid gap-10 md:grid-cols-3">
+        {benefits.map((b) => (
+          <div class="border-t-2 border-charcoal pt-6">
+            <span class="font-display-x text-red text-2xl tabular leading-none">{b.n}</span>
+            <h3 class="font-display-x uppercase text-3xl mt-4 leading-tight">{b.t}</h3>
+            <p class="mt-3 text-charcoal-soft leading-relaxed">{b.d}</p>
           </div>
-          <h3 class="font-display text-xl mt-5">{b.t}</h3>
-          <p class="mt-2 text-charcoal-mute leading-relaxed">{b.d}</p>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   </section>
 
-  {/* how it works */}
-  <section class="bg-cream-soft border-y border-charcoal/8">
-    <div class="mx-auto max-w-6xl px-5 md:px-8 py-24">
-      <div class="flex items-end justify-between gap-6 mb-12 flex-wrap">
-        <div>
-          <p class="eyebrow">Caranya</p>
-          <h2 class="font-display text-4xl md:text-5xl mt-3 leading-tight">Empat langkah, <em>selesai.</em></h2>
-        </div>
+  <div aria-hidden="true" class="tarp-thin h-3"></div>
+
+  {/* HOW IT WORKS — 4 steps on red */}
+  <section class="bg-red text-cream">
+    <div class="px-5 md:px-10 py-20 md:py-24">
+      <div class="flex items-center gap-3 mb-8">
+        <span aria-hidden="true" class="block w-12 h-px bg-cream/60"></span>
+        <span class="text-[0.6875rem] uppercase tracking-[0.32em] text-cream/85 font-semibold">Caranya</span>
       </div>
-      <ol class="grid gap-5 md:grid-cols-4">
+      <h2 class="font-display-x uppercase leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(3rem, 9vw, 8rem);">
+        Empat Langkah,<br/>
+        <span class="text-sarang">Selesai.</span>
+      </h2>
+
+      <ol class="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {steps.map((s) => (
-          <li class="rounded-3xl bg-cream border border-charcoal/10 p-6">
-            <span class="font-display text-3xl tabular text-charcoal-mute">{s.n}</span>
-            <h3 class="font-display text-xl mt-5">{s.t}</h3>
-            <p class="mt-2 text-charcoal-mute leading-relaxed">{s.d}</p>
+          <li class="border-t-2 border-cream/30 pt-6">
+            <span class="font-display-x text-sarang text-3xl tabular leading-none">{s.n}</span>
+            <h3 class="font-display-x uppercase text-2xl mt-4 leading-tight text-cream">{s.t}</h3>
+            <p class="mt-2 text-cream/80 text-sm leading-relaxed">{s.d}</p>
           </li>
         ))}
       </ol>
-      <p class="mt-8 text-sm text-charcoal-mute max-w-2xl">
-        {/* TODO(owner): confirm exact rental terms, deposit, supply pricing tiers */}
-        *Skema biaya & deposit menyesuaikan ukuran tempat dan target volume. Detail lengkap dibahas saat survei.
-      </p>
+
+      <p class="hand text-sarang text-2xl md:text-3xl mt-10 max-w-2xl">— skema biaya & deposit menyesuaikan ukuran tempat dan target volume. detail dibahas saat survei.</p>
+      {/* TODO(owner): confirm exact rental terms, deposit, supply pricing tiers */}
     </div>
   </section>
 
-  {/* form */}
-  <section id="form" class="mx-auto max-w-3xl px-5 md:px-8 py-24">
-    <p class="eyebrow">Mulai obrolan</p>
-    <h2 class="font-display text-4xl md:text-5xl mt-3 leading-[1.02]">Tertarik? <em>Isi data dulu.</em></h2>
-    <p class="mt-4 text-charcoal-soft text-lg">Kami balas dalam 1×24 jam, biasanya lebih cepat lewat WhatsApp.</p>
+  <div aria-hidden="true" class="tarp-thin h-3"></div>
 
-    <form
-      class="mt-10 grid gap-4 rounded-3xl border border-charcoal/10 bg-cream p-7 md:p-9"
-      onsubmit="event.preventDefault(); const f=event.target; const msg=`Halo Sarang, saya tertarik Sewa Steling.%0A%0ANama: ${f.nama.value}%0ALokasi tempat: ${f.lokasi.value}%0AJenis usaha: ${f.usaha.value}%0ACatatan: ${f.catatan.value}`; window.open('https://wa.me/6281234567890?text=' + msg, '_blank');"
-    >
-      <label class="grid gap-1.5">
-        <span class="eyebrow">Nama</span>
-        <input name="nama" required class="rounded-xl border border-charcoal/20 bg-cream-soft px-4 py-3.5 focus:border-charcoal focus:bg-cream focus:outline-none transition-colors" placeholder="Nama kamu" />
-      </label>
-      <label class="grid gap-1.5">
-        <span class="eyebrow">Lokasi tempat usaha</span>
-        <input name="lokasi" required class="rounded-xl border border-charcoal/20 bg-cream-soft px-4 py-3.5 focus:border-charcoal focus:bg-cream focus:outline-none transition-colors" placeholder="Misal: Batam Center, Nagoya, Tiban" />
-      </label>
-      <label class="grid gap-1.5">
-        <span class="eyebrow">Jenis usaha</span>
-        <input name="usaha" class="rounded-xl border border-charcoal/20 bg-cream-soft px-4 py-3.5 focus:border-charcoal focus:bg-cream focus:outline-none transition-colors" placeholder="Warung kopi, ruko, food court, dll." />
-      </label>
-      <label class="grid gap-1.5">
-        <span class="eyebrow">Catatan (opsional)</span>
-        <textarea name="catatan" rows="3" class="rounded-xl border border-charcoal/20 bg-cream-soft px-4 py-3.5 focus:border-charcoal focus:bg-cream focus:outline-none transition-colors resize-none" placeholder="Apa pun yang ingin kamu sampaikan dulu."></textarea>
-      </label>
-      <button type="submit" class="mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-charcoal text-cream px-6 py-3.5 font-medium hover:bg-charcoal-soft transition-colors">
-        <Icon name="message-circle" size={16}/>
-        Kirim via WhatsApp
-      </button>
-      <p class="text-xs text-charcoal-mute text-center">Form ini akan membuka WhatsApp dengan pesan terisi otomatis.</p>
-    </form>
+  {/* FORM */}
+  <section id="form" class="bg-cream">
+    <div class="px-5 md:px-10 py-20 md:py-24 grid md:grid-cols-12 gap-12 items-start">
+
+      <div class="md:col-span-5">
+        <div class="flex items-center gap-3 mb-6">
+          <span aria-hidden="true" class="block w-12 h-px bg-charcoal"></span>
+          <span class="text-[0.6875rem] uppercase tracking-[0.32em] text-charcoal-mute font-semibold">Mulai Obrolan</span>
+        </div>
+        <h2 class="font-display-x uppercase leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(3rem, 8vw, 7rem);">
+          Tertarik?<br/>
+          <span class="text-red">Isi Data Dulu.</span>
+        </h2>
+        <p class="mt-6 text-charcoal-soft text-lg leading-[1.7] max-w-md">Kami balas dalam 1×24 jam, biasanya lebih cepat lewat WhatsApp.</p>
+        <p class="hand text-red text-2xl md:text-3xl mt-6">— form ini langsung buka WA kamu ✻</p>
+      </div>
+
+      <form
+        class="md:col-span-7 grid gap-5 bg-cream-soft border-2 border-charcoal p-6 md:p-8"
+        onsubmit="event.preventDefault(); const f=event.target; const msg=`Halo Sarang, saya tertarik Sewa Steling.%0A%0ANama: ${f.nama.value}%0ALokasi tempat: ${f.lokasi.value}%0AJenis usaha: ${f.usaha.value}%0ACatatan: ${f.catatan.value}`; window.open('https://wa.me/6281234567890?text=' + msg, '_blank');"
+      >
+        <label class="grid gap-1.5">
+          <span class="text-[0.6875rem] uppercase tracking-[0.22em] text-charcoal-mute font-semibold">Nama</span>
+          <input name="nama" required class="border-2 border-charcoal/20 bg-cream px-4 py-3.5 focus:border-charcoal focus:outline-none transition-colors text-charcoal" placeholder="Nama kamu" />
+        </label>
+        <label class="grid gap-1.5">
+          <span class="text-[0.6875rem] uppercase tracking-[0.22em] text-charcoal-mute font-semibold">Lokasi tempat usaha</span>
+          <input name="lokasi" required class="border-2 border-charcoal/20 bg-cream px-4 py-3.5 focus:border-charcoal focus:outline-none transition-colors text-charcoal" placeholder="Misal: Batam Center, Nagoya, Tiban" />
+        </label>
+        <label class="grid gap-1.5">
+          <span class="text-[0.6875rem] uppercase tracking-[0.22em] text-charcoal-mute font-semibold">Jenis usaha</span>
+          <input name="usaha" class="border-2 border-charcoal/20 bg-cream px-4 py-3.5 focus:border-charcoal focus:outline-none transition-colors text-charcoal" placeholder="Warung kopi, ruko, food court, dll." />
+        </label>
+        <label class="grid gap-1.5">
+          <span class="text-[0.6875rem] uppercase tracking-[0.22em] text-charcoal-mute font-semibold">Catatan (opsional)</span>
+          <textarea name="catatan" rows="3" class="border-2 border-charcoal/20 bg-cream px-4 py-3.5 focus:border-charcoal focus:outline-none transition-colors resize-none text-charcoal" placeholder="Apa pun yang ingin kamu sampaikan dulu."></textarea>
+        </label>
+        <button type="submit" class="mt-2 inline-flex items-center justify-center gap-2 bg-red text-cream px-6 py-4 text-sm uppercase tracking-[0.2em] font-bold hover:bg-red-deep transition-colors">
+          <Icon name="message-circle" size={14}/>
+          Kirim via WhatsApp
+        </button>
+        <p class="text-xs text-charcoal-mute text-center">Form ini akan membuka WhatsApp dengan pesan terisi otomatis.</p>
+      </form>
+    </div>
   </section>
 </Base>

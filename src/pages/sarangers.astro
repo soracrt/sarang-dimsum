@@ -1,54 +1,121 @@
 ---
 import Base from '../layouts/Base.astro';
+import TopNav from '../components/TopNav.astro';
 import Icon from '../components/Icon.astro';
 import { links } from '../lib/links';
 
-const tones = [
-  'from-cream-deep to-cream-soft',
-  'from-sarang/30 to-cream-deep',
-  'from-charcoal/85 to-charcoal',
-  'from-cream-soft to-cream-deep',
-  'from-sarang/20 to-cream-soft',
-  'from-cream-deep to-sarang/25',
-  'from-cream-soft to-cream',
-  'from-sarang/15 to-cream-deep',
-  'from-charcoal/85 to-charcoal',
-  'from-cream-deep to-cream-soft',
-  'from-sarang/25 to-cream-soft',
-  'from-cream to-cream-deep',
+const tilts = ['rotate-[-2deg]','rotate-[1.5deg]','rotate-[-1deg]','rotate-[2deg]','rotate-[-1.5deg]','rotate-[1deg]','rotate-[-0.5deg]','rotate-[2.5deg]','rotate-[-2deg]','rotate-[1deg]','rotate-[-1.5deg]','rotate-[2deg]'];
+
+const captions = [
+  '@arini · "kumpul keluarga di Sarang"',
+  '@dewi.batam · "lumpia favoritku"',
+  '@rio.tiban · "sabtu sore di Sarang"',
+  '@nat · "porsi paket buat berdua"',
+  '@kafa · "buka puasa pertama"',
+  '@yana · "selalu ada hakau"',
+  '@adit · "after work treat"',
+  '@nina · "movie night + dimsum"',
+  '@ridho · "anak suka siomay"',
+  '@putri · "weekend mood"',
+  '@hadi · "lewat GoFood semalam"',
+  '@vivi · "mampir sebelum kerja"',
 ];
 ---
 
-<Base title="Sarangers — Komunitas Sarang Dimsum" description="Galeri foto pelanggan Sarang Dimsum di IG. Tag @dimsum_sarang biar masuk dinding ini.">
-  <section class="mx-auto max-w-4xl px-5 md:px-8 py-16 md:py-24 text-center">
-    <p class="eyebrow">Komunitas</p>
-    <h1 class="font-display-x text-6xl md:text-8xl mt-4 leading-[0.9]">Halo,<br/><span class="text-sarang-deep">Sarangers.</span></h1>
-    <p class="mt-6 text-lg text-charcoal-soft max-w-2xl mx-auto leading-relaxed">
-      Foto-foto kamu makan dimsum sama keluarga, sama temen, atau sendirian sambil nonton drakor — semua masuk sini.
-      Tag <a href={links.ig} target="_blank" rel="noopener" class="text-charcoal underline underline-offset-4 decoration-sarang decoration-2">@dimsum_sarang</a> di IG, biar kami repost.
-    </p>
-    <a href={links.ig} target="_blank" rel="noopener" class="mt-8 inline-flex items-center gap-2 rounded-full bg-charcoal text-cream px-6 py-3 font-medium hover:bg-charcoal-soft transition-colors">
-      <Icon name="instagram" size={16}/>
-      Ikuti di Instagram
-    </a>
+<Base hideHeader title="Sarangers — Komunitas Sarang Dimsum" description="Galeri foto pelanggan Sarang Dimsum di IG. Tag @dimsum_sarang biar masuk dinding ini.">
+  <div aria-hidden="true" class="tarp-thin h-3"></div>
+
+  {/* RED HERO */}
+  <section class="relative bg-red text-cream overflow-hidden">
+    <TopNav variant="red"/>
+
+    <div class="absolute top-32 right-6 md:right-12 z-10 pointer-events-none">
+      <div class="stamp stamp-tilt-l text-sarang text-base md:text-xl">Tag @dimsum_sarang</div>
+    </div>
+
+    <div class="px-5 md:px-10 pt-12 md:pt-20 pb-14 md:pb-16">
+      <div class="flex items-center gap-3 mb-6">
+        <span aria-hidden="true" class="block w-12 h-px bg-cream/60"></span>
+        <span class="text-[0.6875rem] uppercase tracking-[0.32em] text-cream/85 font-semibold">Komunitas Pelanggan</span>
+      </div>
+
+      <h1 class="font-display-x uppercase text-cream leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(4.5rem, 14vw, 14rem);">
+        Halo,<br/>
+        #<span class="text-sarang">Sarangers.</span>
+      </h1>
+
+      <p class="mt-8 max-w-2xl text-lg text-cream/85 leading-[1.7]">
+        Foto-foto kamu makan dimsum sama keluarga, sama temen, atau sendirian sambil nonton drakor — semua masuk sini.
+        Tag <a href={links.ig} target="_blank" rel="noopener" class="underline underline-offset-4 decoration-sarang decoration-2 text-cream font-medium">@dimsum_sarang</a> di IG.
+      </p>
+
+      <div class="mt-9 flex items-center gap-5 flex-wrap">
+        <a href={links.ig} target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-sarang text-red-deep px-6 py-3 text-sm uppercase tracking-[0.2em] font-bold hover:bg-cream transition-colors">
+          <Icon name="instagram" size={14}/>
+          Follow di IG
+        </a>
+        <span class="hand text-sarang text-2xl md:text-3xl">— kami repost setiap minggu ✻</span>
+      </div>
+    </div>
   </section>
 
-  <section class="mx-auto max-w-6xl px-5 md:px-8 pb-28">
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-      {tones.map((t, i) => {
-        const dark = t.includes('charcoal');
-        return (
-          <a href={links.ig} target="_blank" rel="noopener" class={`group relative aspect-square rounded-2xl bg-gradient-to-br ${t} overflow-hidden border border-charcoal/8 hover:border-charcoal/25 transition-colors`} aria-label={`Foto Sarangers #${i + 1}`}>
-            <div class={`absolute inset-0 grid place-items-center font-display text-6xl ${dark ? 'text-cream/30' : 'text-charcoal/15'}`}>S</div>
-            <div class={`absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs ${dark ? 'text-cream/85' : 'text-charcoal/70'}`}>
-              <span>@sarangers</span>
-              <Icon name="arrow-up-right" size={14}/>
-            </div>
-          </a>
-        );
-      })}
+  <div aria-hidden="true" class="tarp-thin h-3"></div>
+
+  {/* GALLERY — polaroid-tilt grid */}
+  <section class="bg-cream">
+    <div class="px-5 md:px-10 py-16 md:py-20">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+        {tilts.map((tilt, i) => {
+          const dark = i % 4 === 2;
+          return (
+            <a href={links.ig} target="_blank" rel="noopener" class={`group block ${tilt} hover:rotate-0 transition-transform duration-300`} aria-label={`Foto Sarangers #${i + 1}`}>
+              <div class={`relative aspect-square ${dark ? 'bg-charcoal' : 'bg-cream-soft'} border-2 border-charcoal overflow-hidden`}>
+                <div class={`absolute inset-0 grid place-items-center font-display-x text-7xl uppercase ${dark ? 'text-cream/15' : 'text-charcoal/12'}`}>S</div>
+                <div class={`absolute top-2 left-2 right-2 flex items-center justify-between text-[0.625rem] uppercase tracking-[0.22em] font-semibold ${dark ? 'text-cream/70' : 'text-charcoal-mute'}`}>
+                  <span class="tabular">N°{String(i+1).padStart(2,'0')}</span>
+                  <Icon name="instagram" size={12}/>
+                </div>
+              </div>
+              <p class={`mt-2 text-sm hand ${dark ? 'text-red' : 'text-charcoal'} truncate px-1`}>{captions[i]}</p>
+            </a>
+          );
+        })}
+      </div>
+      {/* TODO(owner): replace tile grid with real IG feed (Behold/EmbedSocial/Instafeed) */}
+
+      <p class="mt-12 text-center text-charcoal-mute text-sm uppercase tracking-[0.22em] font-semibold">Tiap minggu, foto favorit kami pajang di sini</p>
     </div>
-    {/* TODO(owner): replace tile grid with real IG feed (instafeed/embedSocial/Behold) */}
-    <p class="mt-10 text-center text-sm text-charcoal-mute">Setiap minggu, kami pilih foto favorit untuk dipajang di sini.</p>
+  </section>
+
+  <div aria-hidden="true" class="tarp-thin h-3"></div>
+
+  {/* CTA — quick "how to be featured" */}
+  <section class="bg-charcoal text-cream">
+    <div class="px-5 md:px-10 py-20 md:py-24 grid md:grid-cols-12 gap-10 items-end">
+      <div class="md:col-span-7">
+        <div class="flex items-center gap-3 mb-6">
+          <span aria-hidden="true" class="block w-12 h-px bg-cream/60"></span>
+          <span class="text-[0.6875rem] uppercase tracking-[0.32em] text-cream/85 font-semibold">Mau Dipajang?</span>
+        </div>
+        <h2 class="font-display-x uppercase leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(3rem, 8vw, 6.5rem);">
+          Tiga Langkah,<br/>
+          <span class="text-sarang">Beres.</span>
+        </h2>
+      </div>
+      <ol class="md:col-span-5 space-y-4 text-cream">
+        <li class="flex gap-4 items-start border-t border-cream/20 pt-4">
+          <span class="font-display-x text-sarang text-xl tabular leading-none">01</span>
+          <p class="text-base"><span class="font-semibold">Foto dimsum kamu.</span> Bebas — di meja, di mulut, di GoFood box.</p>
+        </li>
+        <li class="flex gap-4 items-start border-t border-cream/20 pt-4">
+          <span class="font-display-x text-sarang text-xl tabular leading-none">02</span>
+          <p class="text-base"><span class="font-semibold">Tag <span class="text-sarang">@dimsum_sarang</span></span> di IG (post atau story).</p>
+        </li>
+        <li class="flex gap-4 items-start border-t border-cream/20 pt-4">
+          <span class="font-display-x text-sarang text-xl tabular leading-none">03</span>
+          <p class="text-base"><span class="font-semibold">Tunggu repost.</span> Kalau masuk feed, kami DM kamu.</p>
+        </li>
+      </ol>
+    </div>
   </section>
 </Base>

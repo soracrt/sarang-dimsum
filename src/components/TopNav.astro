@@ -1,0 +1,57 @@
+---
+import { links } from '../lib/links';
+
+interface Props {
+  variant?: 'red' | 'cream' | 'charcoal';
+}
+const { variant = 'red' } = Astro.props;
+
+const palette = {
+  red:      { bg: 'bg-red',      text: 'text-cream',    accent: 'text-sarang', pillBorder: 'border-sarang text-sarang', pillHover: 'hover:bg-sarang hover:text-red-deep' },
+  cream:    { bg: 'bg-cream',    text: 'text-charcoal', accent: 'text-red',    pillBorder: 'border-red text-red',         pillHover: 'hover:bg-red hover:text-cream' },
+  charcoal: { bg: 'bg-charcoal', text: 'text-cream',    accent: 'text-sarang', pillBorder: 'border-sarang text-sarang', pillHover: 'hover:bg-sarang hover:text-charcoal' },
+}[variant];
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const nav = [
+  { href: '/menu',         label: 'Menu' },
+  { href: '/lokasi',       label: 'Lokasi' },
+  { href: '/sewa-steling', label: 'Sewa Steling' },
+  { href: '/tentang',      label: 'Tentang' },
+];
+---
+
+<div class={`relative z-20 px-5 md:px-10 py-5 flex items-center justify-between ${palette.bg} ${palette.text}`}>
+  <a href="/" class="font-display-x text-2xl md:text-3xl uppercase tracking-tight leading-none flex items-baseline gap-1">
+    Sarang<span class={`${palette.accent} text-3xl md:text-4xl leading-none translate-y-1`}>*</span>
+  </a>
+
+  <nav class={`hidden md:flex gap-9 text-sm uppercase tracking-[0.2em] font-semibold`}>
+    {nav.map((n) => (
+      <a
+        href={n.href}
+        class={`transition-colors ${path === n.href ? palette.accent : `hover:${palette.accent.replace('text-','text-')}`}`}
+        style={path === n.href ? '' : ''}
+      >
+        {n.label}
+      </a>
+    ))}
+  </nav>
+
+  <a href={links.waOrder} target="_blank" rel="noopener" class={`hidden md:inline-flex items-center border-2 ${palette.pillBorder} px-5 py-2.5 text-sm uppercase tracking-[0.18em] font-bold ${palette.pillHover} transition-colors`}>
+    Pesan WA
+  </a>
+
+  {/* mobile menu */}
+  <details class="md:hidden relative">
+    <summary class={`list-none cursor-pointer p-2 -mr-2 select-none ${palette.text}`} aria-label="Buka menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </summary>
+    <div class={`absolute right-0 top-12 w-64 ${variant === 'red' ? 'bg-red-deep' : variant === 'charcoal' ? 'bg-charcoal' : 'bg-cream'} border border-cream/20 p-2 z-50`}>
+      {nav.map((n) => (
+        <a href={n.href} class={`block px-4 py-3 ${palette.text} hover:${palette.accent} text-sm uppercase tracking-[0.18em] font-semibold`}>{n.label}</a>
+      ))}
+      <a href={links.waOrder} target="_blank" rel="noopener" class={`mt-1 block px-4 py-3 ${variant === 'cream' ? 'bg-red text-cream' : 'bg-sarang text-red-deep'} text-center text-sm uppercase tracking-[0.18em] font-bold`}>Pesan via WA</a>
+    </div>
+  </details>
+</div>

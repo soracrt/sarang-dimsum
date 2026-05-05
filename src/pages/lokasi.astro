@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import TopNav from '../components/TopNav.astro';
 import Icon from '../components/Icon.astro';
 import { links } from '../lib/links';
 
@@ -18,69 +19,130 @@ const orderOpts = [
 ];
 ---
 
-<Base title="Lokasi & Jam — Sarang Dimsum" description="Alamat, jam buka, dan cara ke Sarang Dimsum di Jalan Ciptaland, Tiban, Batam.">
-  <section class="mx-auto max-w-6xl px-5 md:px-8 py-16 md:py-24">
-    <p class="eyebrow">Lokasi & Jam</p>
-    <h1 class="font-display-x text-6xl md:text-8xl mt-4 leading-[0.9]">Mampir ke<br/><span class="text-sarang-deep">Tiban.</span></h1>
-    <p class="mt-6 text-lg text-charcoal-soft max-w-2xl leading-relaxed">
-      Buka tiap hari, jam 10 pagi sampai tengah malam. Ada tempat duduk buat makan langsung, atau tinggal ambil bawa pulang.
-    </p>
-  </section>
+<Base hideHeader title="Lokasi & Jam — Sarang Dimsum" description="Alamat, jam buka, dan cara ke Sarang Dimsum di Jalan Ciptaland, Tiban, Batam.">
+  <div aria-hidden="true" class="tarp-thin h-3"></div>
 
-  <section class="mx-auto max-w-6xl px-5 md:px-8 pb-20 md:pb-24 grid md:grid-cols-2 gap-8">
-    <div class="rounded-3xl border border-charcoal/10 bg-cream-soft p-7 md:p-9">
-      <p class="eyebrow">Alamat</p>
-      <h2 class="font-display text-2xl md:text-3xl mt-3 leading-tight">
-        Jalan Ciptaland, Tiban<br/>
-        <span class="text-charcoal-soft">Batam, Kepulauan Riau</span>
-      </h2>
-      <a href={links.maps} target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 rounded-full bg-charcoal text-cream px-6 py-3 font-medium hover:bg-charcoal-soft transition-colors">
-        <Icon name="map-pin" size={16}/>
-        Buka di Google Maps
-      </a>
+  {/* RED HERO */}
+  <section class="relative bg-red text-cream overflow-hidden">
+    <TopNav variant="red"/>
 
-      <div class="hairline my-10"></div>
-
-      <p class="eyebrow">Jam buka</p>
-      <ul class="mt-3 divide-y divide-charcoal/10">
-        {hours.map((r) => (
-          <li class="flex justify-between items-center py-3 text-charcoal-soft">
-            <span>{r.d}</span><span class="font-medium text-charcoal tabular">{r.h}</span>
-          </li>
-        ))}
-      </ul>
-
-      <div class="hairline my-10"></div>
-
-      <p class="eyebrow">Cara pesan</p>
-      <ul class="mt-4 grid gap-2">
-        {orderOpts.map((o) => (
-          <li>
-            <a href={o.href} target="_blank" rel="noopener" class="group flex items-center gap-4 rounded-xl px-3 py-3 -mx-3 hover:bg-cream transition-colors">
-              <span class="grid place-items-center w-9 h-9 rounded-full bg-cream border border-charcoal/15 text-charcoal">
-                <Icon name={o.icon} size={16}/>
-              </span>
-              <span class="flex-1 min-w-0">
-                <span class="block font-medium text-charcoal">{o.label}</span>
-                <span class="block text-sm text-charcoal-mute">{o.d}</span>
-              </span>
-              <Icon name="arrow-up-right" size={14} class="opacity-40 group-hover:opacity-100 transition-opacity"/>
-            </a>
-          </li>
-        ))}
-      </ul>
+    <div class="absolute top-32 right-6 md:right-12 z-10 pointer-events-none">
+      <div class="stamp stamp-tilt-r text-sarang text-base md:text-xl">Tiban · BTM</div>
     </div>
 
-    <div class="rounded-3xl bg-gradient-to-br from-cream-deep to-cream-soft border border-charcoal/10 min-h-[480px] relative overflow-hidden">
-      {/* TODO(owner): embed real Google Maps iframe with pin coordinates */}
-      <div class="absolute inset-0 grid place-items-center">
-        <div class="text-center px-6">
-          <Icon name="map-pin" size={44} class="mx-auto text-charcoal-mute"/>
-          <p class="mt-5 font-display text-2xl text-charcoal">Sarang Dimsum</p>
-          <p class="text-charcoal-mute">Jalan Ciptaland, Tiban — Batam</p>
+    <div class="px-5 md:px-10 pt-12 md:pt-20 pb-16 md:pb-20">
+      <div class="flex items-center gap-3 mb-6">
+        <span aria-hidden="true" class="block w-12 h-px bg-cream/60"></span>
+        <span class="text-[0.6875rem] uppercase tracking-[0.32em] text-cream/85 font-semibold">Lokasi & Jam Buka</span>
+      </div>
+
+      <h1 class="font-display-x uppercase text-cream leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(4.5rem, 14vw, 14rem);">
+        Mampir Ke<br/>
+        <span class="text-sarang">Tiban.</span>
+      </h1>
+
+      <p class="mt-8 max-w-xl text-lg text-cream/85 leading-[1.7]">
+        Buka tiap hari, jam 10 pagi sampai tengah malam. Ada tempat duduk buat makan langsung, atau tinggal ambil bawa pulang.
+      </p>
+    </div>
+  </section>
+
+  <div aria-hidden="true" class="tarp-thin h-3"></div>
+
+  {/* MAP + DETAILS — asymmetric, no rounded cards */}
+  <section class="bg-cream">
+    <div class="px-5 md:px-10 py-20 md:py-24 grid md:grid-cols-12 gap-10 md:gap-12">
+
+      {/* MAP — 7 cols */}
+      <div class="md:col-span-7 relative bg-cream-soft border-2 border-charcoal min-h-[400px] md:min-h-[520px]">
+        {/* corner stamps */}
+        <span class="absolute top-3 left-4 text-[0.6875rem] uppercase tracking-[0.28em] text-charcoal-mute font-semibold">Lokasi</span>
+        <span class="absolute top-3 right-4 text-[0.6875rem] uppercase tracking-[0.28em] text-charcoal-mute font-semibold tabular">N° 27</span>
+
+        {/* TODO(owner): embed real Google Maps iframe */}
+        <div class="absolute inset-0 grid place-items-center px-6">
+          <div class="text-center">
+            <div class="w-16 h-16 mx-auto bg-red text-cream grid place-items-center">
+              <Icon name="map-pin" size={28}/>
+            </div>
+            <p class="mt-5 font-display-x text-3xl uppercase">Sarang Dimsum</p>
+            <p class="mt-1 text-charcoal-mute uppercase tracking-[0.2em] text-sm">Jalan Ciptaland · Tiban</p>
+            <a href={links.maps} target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 bg-charcoal text-cream px-5 py-2.5 text-sm uppercase tracking-[0.18em] font-bold hover:bg-red transition-colors">
+              <Icon name="map-pin" size={14}/>
+              Buka di Google Maps
+            </a>
+          </div>
         </div>
       </div>
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(20,17,13,0.08))]"></div>
+
+      {/* DETAILS — 5 cols, ticket-stub style */}
+      <aside class="md:col-span-5 space-y-6">
+        {/* HOURS TICKET */}
+        <div class="bg-cream-soft border-2 border-charcoal relative">
+          <div class="absolute -top-2 left-1/2 -translate-x-1/2 flex gap-1.5">
+            <span class="w-1 h-4 bg-cream"></span><span class="w-1 h-4 bg-cream"></span><span class="w-1 h-4 bg-cream"></span>
+          </div>
+          <div class="px-6 pt-7 pb-5">
+            <div class="flex items-center justify-between text-[0.6875rem] uppercase tracking-[0.28em] text-charcoal-mute font-semibold">
+              <span>Jam Buka</span>
+              <span>Tiap Hari</span>
+            </div>
+            <p class="font-display-x text-5xl md:text-6xl tabular text-red mt-3 leading-none">10:00 — 00:00</p>
+          </div>
+          <div class="border-t-2 border-dotted border-charcoal/40 mx-6"></div>
+          <ul class="px-6 py-5 space-y-2 text-sm">
+            {hours.map((r) => (
+              <div class="receipt-row text-charcoal"><span>{r.d}</span><span class="leader"></span><span class="tabular font-medium">{r.h}</span></div>
+            ))}
+          </ul>
+        </div>
+
+        {/* ADDRESS BLOCK */}
+        <div class="bg-charcoal text-cream p-6 md:p-7 relative">
+          <span class="absolute top-3 right-4 text-[0.6875rem] uppercase tracking-[0.28em] text-cream/70 font-semibold">Alamat</span>
+          <h3 class="font-display-x text-2xl md:text-3xl uppercase mt-6 leading-tight">
+            Jalan Ciptaland<br/>
+            Tiban, Batam<br/>
+            <span class="text-sarang">Kepulauan Riau</span>
+          </h3>
+          <p class="hand text-sarang text-xl mt-4">— landmark: deket warung kopi tiban indah</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <div aria-hidden="true" class="tarp-thin h-3"></div>
+
+  {/* CARA PESAN — receipt-style list */}
+  <section class="bg-red text-cream">
+    <div class="px-5 md:px-10 py-20 md:py-24">
+      <div class="grid md:grid-cols-12 gap-10 md:gap-12 items-start">
+        <div class="md:col-span-5">
+          <div class="flex items-center gap-3 mb-6">
+            <span aria-hidden="true" class="block w-12 h-px bg-cream/60"></span>
+            <span class="text-[0.6875rem] uppercase tracking-[0.32em] text-cream/85 font-semibold">Cara Pesan</span>
+          </div>
+          <h2 class="font-display-x uppercase text-cream leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(3rem, 8vw, 6.5rem);">
+            Lima Cara,<br/>
+            <span class="text-sarang">Pilih Yang Pas.</span>
+          </h2>
+        </div>
+
+        <ul class="md:col-span-7 divide-y divide-cream/20 border-y-2 border-cream/30">
+          {orderOpts.map((o, i) => (
+            <li>
+              <a href={o.href} target="_blank" rel="noopener" class="group flex items-center gap-5 py-5 hover:bg-red-deep px-2 -mx-2 transition-colors">
+                <span class="font-display-x text-sarang text-xl tabular w-12 leading-none shrink-0">{String(i+1).padStart(2,'0')}</span>
+                <span class="flex-1 min-w-0">
+                  <span class="block font-display-x text-2xl md:text-3xl uppercase text-cream leading-none">{o.label}</span>
+                  <span class="block text-cream/75 text-sm mt-1.5">{o.d}</span>
+                </span>
+                <Icon name="arrow-up-right" size={20} class="text-sarang opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all"/>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   </section>
 </Base>

@@ -203,9 +203,234 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
     </div>
   </section>
 
-  {/* ============ EVERYTHING BELOW IS OLD — IGNORE FOR NOW ============ */}
-  {/* placeholder marker so the rest of the page doesn't read as part of the new direction */}
-  <div class="bg-charcoal text-cream/60 text-center py-3 text-xs tracking-[0.28em] uppercase">
-    ↓ Sisa halaman masih versi lama — react dulu ke yang di atas ↓
-  </div>
+  {/* TARP STRIPE divider */}
+  <div aria-hidden="true" class="tarp-thin h-3"></div>
+
+  {/* ============ SEWA STELING — wide red feature ============ */}
+  <section class="relative bg-red text-cream overflow-hidden">
+    <div class="px-5 md:px-10 pt-20 md:pt-28 pb-20 md:pb-28 relative">
+
+      {/* tilted stamp top-right */}
+      <div aria-hidden="true" class="absolute top-10 right-6 md:right-12 z-10">
+        <div class="stamp stamp-tilt-r text-sarang text-base md:text-lg">B2B · Mitra Sarang</div>
+      </div>
+
+      {/* eyebrow row */}
+      <div class="flex items-center gap-3 mb-8">
+        <span aria-hidden="true" class="block w-12 h-px bg-cream/60"></span>
+        <span class="text-[0.6875rem] uppercase tracking-[0.32em] text-cream/85 font-semibold">Untuk Pemilik Usaha</span>
+      </div>
+
+      <h2 class="font-display-x uppercase text-cream leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(3.5rem, 11vw, 11rem);">
+        Sewa<br/>
+        <span class="text-sarang">Stelingnya.</span><br/>
+        Jualan<br/>
+        Dimsumnya.
+      </h2>
+
+      {/* asymmetric body — 7/5 */}
+      <div class="mt-14 grid md:grid-cols-12 gap-10 md:gap-14 items-start">
+        <div class="md:col-span-6 max-w-xl">
+          <p class="text-lg text-cream/85 leading-[1.7]">
+            Skema mitra: kamu sediakan tempat — warung, ruko, food court, kios — kami sediakan steling, supply dimsum, dan pelatihan.
+          </p>
+
+          {/* receipt-style bullets */}
+          <div class="mt-8 space-y-2.5 text-sm max-w-md text-cream">
+            <div class="receipt-row"><span class="uppercase tracking-[0.16em]">Skema sewa</span><span class="leader text-cream/40"></span><span class="hand text-sarang text-xl">fleksibel</span></div>
+            <div class="receipt-row"><span class="uppercase tracking-[0.16em]">Supply rutin</span><span class="leader text-cream/40"></span><span class="hand text-sarang text-xl">harga mitra</span></div>
+            <div class="receipt-row"><span class="uppercase tracking-[0.16em]">Pelatihan</span><span class="leader text-cream/40"></span><span class="hand text-sarang text-xl">satu sesi</span></div>
+            <div class="receipt-row"><span class="uppercase tracking-[0.16em]">Survei lokasi</span><span class="leader text-cream/40"></span><span class="hand text-sarang text-xl">gratis</span></div>
+          </div>
+
+          <div class="mt-10 flex flex-wrap items-center gap-5">
+            <a href="/sewa-steling" class="inline-flex items-center gap-2 bg-sarang text-red-deep px-6 py-3 text-sm uppercase tracking-[0.18em] font-bold hover:bg-cream transition-colors">
+              Lihat Skema Lengkap
+              <Icon name="arrow-right" size={14}/>
+            </a>
+            <a href={links.waReseller} target="_blank" rel="noopener" class="hand text-sarang text-2xl md:text-3xl hover:text-cream transition-colors inline-flex items-center gap-2">
+              <svg width="42" height="22" viewBox="0 0 60 30" fill="none" class="-mb-1">
+                <path d="M3 18 C 14 6, 30 4, 48 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <path d="M40 8 L 48 14 L 42 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+              tanya via WA
+            </a>
+          </div>
+        </div>
+
+        {/* numbered steps in 5 cols */}
+        <div class="md:col-span-6">
+          <ol class="grid sm:grid-cols-2 gap-x-8 gap-y-7">
+            {[
+              ['01', 'Chat WA', 'Cerita lokasi & kapasitas tempat.'],
+              ['02', 'Survei ringan', 'Kami cek kelayakan & estimasi.'],
+              ['03', 'Pasang & latih', 'Steling dipasang, tim dilatih.'],
+              ['04', 'Mulai jualan', 'Supply rutin, kamu fokus jualan.'],
+            ].map(([n, t, d]) => (
+              <li class="border-t border-cream/30 pt-4">
+                <span class="font-display-x text-sarang text-2xl tabular leading-none">{n}</span>
+                <h3 class="font-display-x uppercase text-cream text-2xl leading-tight mt-3">{t}</h3>
+                <p class="mt-2 text-cream/75 text-sm leading-relaxed">{d}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* TARP STRIPE divider */}
+  <div aria-hidden="true" class="tarp-thin h-3"></div>
+
+  {/* ============ LOKASI — cream ticket-stub ============ */}
+  <section class="bg-cream text-charcoal">
+    <div class="px-5 md:px-10 pt-20 md:pt-28 pb-20 md:pb-28">
+
+      <div class="flex items-center gap-3 mb-8">
+        <span aria-hidden="true" class="block w-12 h-px bg-charcoal"></span>
+        <span class="text-[0.6875rem] uppercase tracking-[0.32em] text-charcoal-mute font-semibold">Mampir Langsung</span>
+      </div>
+
+      <div class="grid md:grid-cols-12 gap-10 items-start">
+        {/* TYPE — 7 cols */}
+        <div class="md:col-span-7">
+          <h2 class="font-display-x uppercase leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(3.5rem, 10.5vw, 10rem);">
+            Jalan<br/>
+            Ciptaland,<br/>
+            <span class="text-red">Tiban — Batam.</span>
+          </h2>
+
+          <div class="mt-10 flex items-center gap-5 flex-wrap">
+            <a href={links.maps} target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-charcoal text-cream px-6 py-3 text-sm uppercase tracking-[0.18em] font-bold hover:bg-red-deep transition-colors">
+              <Icon name="map-pin" size={14}/>
+              Buka Maps
+            </a>
+            <a href="/lokasi" class="hand text-red text-2xl md:text-3xl hover:text-charcoal transition-colors inline-flex items-center gap-2">
+              detail lokasi
+              <svg width="42" height="22" viewBox="0 0 60 30" fill="none" class="-mb-1">
+                <path d="M3 18 C 14 6, 30 4, 48 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <path d="M40 8 L 48 14 L 42 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        {/* TICKET-STUB — 5 cols, sharp-edged, like a parking ticket / kasir slip */}
+        <aside class="md:col-span-5 relative">
+          <div class="bg-cream-soft border-2 border-charcoal relative">
+            {/* notch decoration top */}
+            <div class="absolute -top-2 left-1/2 -translate-x-1/2 flex gap-1.5">
+              <span class="w-1 h-4 bg-cream"></span>
+              <span class="w-1 h-4 bg-cream"></span>
+              <span class="w-1 h-4 bg-cream"></span>
+            </div>
+
+            <div class="px-6 md:px-8 pt-8 pb-6">
+              <div class="flex items-center justify-between text-[0.6875rem] uppercase tracking-[0.28em] text-charcoal-mute mb-1">
+                <span>Slip · Jam Buka</span>
+                <span class="tabular">No.27</span>
+              </div>
+              <p class="font-display-x text-3xl uppercase mt-4">Buka Tiap Hari</p>
+              <p class="font-display-x text-5xl md:text-6xl tabular text-red mt-2 leading-none">10:00 — 00:00</p>
+            </div>
+
+            {/* dotted divider */}
+            <div class="border-t-2 border-dotted border-charcoal/40 mx-6 md:mx-8"></div>
+
+            <ul class="px-6 md:px-8 py-5 space-y-2 text-sm">
+              <div class="receipt-row text-charcoal"><span>Senin – Jumat</span><span class="leader"></span><span class="tabular">10–24</span></div>
+              <div class="receipt-row text-charcoal"><span>Sabtu</span><span class="leader"></span><span class="tabular">10–24</span></div>
+              <div class="receipt-row text-charcoal"><span>Minggu</span><span class="leader"></span><span class="tabular">10–24</span></div>
+            </ul>
+
+            <div class="border-t-2 border-dotted border-charcoal/40 mx-6 md:mx-8"></div>
+
+            <div class="px-6 md:px-8 py-5 flex items-center justify-between text-xs uppercase tracking-[0.22em]">
+              <span class="text-charcoal-mute">Halal · Ramah Keluarga</span>
+              <span class="hand text-red text-2xl tracking-normal normal-case">simpan!</span>
+            </div>
+          </div>
+
+          {/* tilted "MAMPIR" stamp on the ticket */}
+          <div aria-hidden="true" class="absolute -top-3 -right-3 z-10 pointer-events-none">
+            <div class="stamp stamp-tilt-l text-red text-sm bg-cream">Mampir</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  {/* TARP STRIPE divider */}
+  <div aria-hidden="true" class="tarp-thin h-3"></div>
+
+  {/* ============ SARANGERS — red, tilted IG tiles ============ */}
+  <section class="bg-red text-cream relative overflow-hidden">
+    <div class="px-5 md:px-10 pt-20 md:pt-28 pb-20 md:pb-28">
+
+      <div class="flex items-end justify-between flex-wrap gap-6 mb-12">
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <span aria-hidden="true" class="block w-12 h-px bg-cream/60"></span>
+            <span class="text-[0.6875rem] uppercase tracking-[0.32em] text-cream/85 font-semibold">Komunitas Pelanggan</span>
+          </div>
+          <h2 class="font-display-x uppercase text-cream leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(3.5rem, 11vw, 11rem);">
+            #<span class="text-sarang">Sarangers</span>
+          </h2>
+          <p class="mt-6 max-w-md text-cream/85 leading-relaxed">
+            Tag <a href={links.ig} target="_blank" rel="noopener" class="underline underline-offset-4 decoration-sarang decoration-2 text-cream font-medium">@dimsum_sarang</a> di IG biar masuk dinding ini. Kami repost tiap minggu.
+          </p>
+        </div>
+
+        <a href={links.ig} target="_blank" rel="noopener" class="border-2 border-sarang text-sarang px-5 py-2.5 text-sm uppercase tracking-[0.18em] font-bold hover:bg-sarang hover:text-red-deep transition-colors inline-flex items-center gap-2">
+          <Icon name="instagram" size={14}/>
+          Follow IG
+        </a>
+      </div>
+
+      {/* polaroid-style tiles, slightly off-axis on hover */}
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+        {Array.from({ length: 6 }).map((_, i) => {
+          const tilts = ['rotate-[-2deg]','rotate-[1.5deg]','rotate-[-1deg]','rotate-[2deg]','rotate-[-1.5deg]','rotate-[1deg]'];
+          return (
+            <a href={links.ig} target="_blank" rel="noopener" class={`group relative aspect-square bg-gradient-to-br from-sarang/25 to-red-deep border-2 border-cream/30 overflow-hidden hover:border-cream hover:${tilts[i]} transition-all duration-300`} aria-label={`Foto Sarangers #${i + 1}`}>
+              <div class="absolute inset-0 grid place-items-center font-display-x text-7xl text-cream/15 uppercase">S</div>
+              <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[0.6875rem] text-cream/85 tracking-[0.18em] uppercase font-medium">
+                <span>@sarangers</span>
+                <Icon name="arrow-up-right" size={12}/>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+      {/* TODO(owner): wire real IG embed/feed */}
+
+      <p class="mt-10 hand text-sarang text-3xl md:text-4xl text-center">tag kami, ya — kami repost setiap minggu ✻</p>
+    </div>
+  </section>
+
+  {/* TARP STRIPE divider */}
+  <div aria-hidden="true" class="tarp-thin h-3"></div>
+
+  {/* ============ YELLOW CTA BAND ============ */}
+  <section class="bg-sarang text-red-deep">
+    <div class="px-5 md:px-10 py-14 md:py-20 grid md:grid-cols-12 gap-8 items-end">
+
+      <h2 class="md:col-span-8 font-display-x uppercase leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(3rem, 9vw, 8rem);">
+        Pesan Sekarang,<br/>
+        <span class="text-charcoal">Atau Mampir Hari Ini.</span>
+      </h2>
+
+      <div class="md:col-span-4 flex flex-col gap-3 items-stretch md:items-end">
+        <a href={links.waOrder} target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 bg-charcoal text-cream px-6 py-3.5 text-sm uppercase tracking-[0.18em] font-bold hover:bg-red-deep transition-colors">
+          <Icon name="message-circle" size={14}/>
+          Pesan via WA
+        </a>
+        <a href="/lokasi" class="inline-flex items-center justify-center gap-2 border-2 border-charcoal text-charcoal px-6 py-3.5 text-sm uppercase tracking-[0.18em] font-bold hover:bg-charcoal hover:text-cream transition-colors">
+          Lihat Lokasi
+          <Icon name="arrow-right" size={14}/>
+        </a>
+        <span class="hand text-red text-xl md:text-2xl text-center md:text-right mt-1">— biasanya dibalas dalam 1 jam!</span>
+      </div>
+    </div>
+  </section>
 </Base>

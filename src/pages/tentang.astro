@@ -11,29 +11,88 @@ const values = [
 ];
 ---
 
-<Base title="Tentang — Sarang Dimsum" description="Cerita di balik Sarang Dimsum dan kenalan sama Arfan, koki maskot kami.">
-  <section class="mx-auto max-w-4xl px-5 md:px-8 py-16 md:py-24">
-    <p class="eyebrow">Tentang Sarang</p>
-    <h1 class="font-display-x text-6xl md:text-8xl mt-4 leading-[0.9]">
-      Dapur kecil<br/>di Tiban,<br/>
-      <span class="italic font-display normal-case tracking-normal text-charcoal-soft">rumah kedua buat dimsum halal.</span>
-    </h1>
+<Base title="Tentang — Sarang Dimsum" description="Cerita di balik Sarang Dimsum dari pendirinya, Arfan Putra — dapur kecil halal di Tiban, Batam.">
+  {/* HERITAGE BAND */}
+  <section class="border-b border-charcoal/10 bg-cream-soft/40">
+    <div class="mx-auto max-w-5xl px-5 md:px-8 py-5 flex flex-wrap items-center justify-between gap-4 text-[0.6875rem] tracking-[0.28em] uppercase text-charcoal-mute">
+      <span class="inline-flex items-center gap-3">
+        <span class="font-display italic normal-case tracking-normal text-charcoal text-base leading-none">Est.</span>
+        <span class="tabular">MMXXIV</span>
+        <span class="text-charcoal/25">—</span>
+        <span>Tiban, Batam</span>
+      </span>
+      <span>Halaman pendiri</span>
+    </div>
+  </section>
 
-    <div class="mt-14 grid md:grid-cols-[1fr_auto] gap-12 items-start">
-      <div class="text-lg text-charcoal-soft space-y-6 leading-[1.7]">
-        <p>
-          Sarang Dimsum lahir dari satu ide sederhana: dimsum enak, halal, dan harganya masuk akal — nggak harus pergi ke mal, nggak harus mahal.
-          Kami mulai dari dapur kecil di Jalan Ciptaland, Tiban, Batam, dengan resep yang sudah dicoba puluhan kali sampai keluarga sendiri ngangguk-ngangguk.
+  {/* TITLE */}
+  <section class="mx-auto max-w-4xl px-5 md:px-8 pt-20 md:pt-28">
+    <p class="eyebrow">Catatan dari pendiri</p>
+    <h1 class="font-display text-5xl md:text-7xl mt-5 leading-[1.02] tracking-[-0.025em]">
+      Dapur kecil di Tiban,
+      <em class="text-charcoal-mute">dibangun pelan-pelan,</em>
+      <br class="hidden md:block"/>
+      buat keluarga dulu —
+      <em class="text-charcoal-mute">baru kotanya.</em>
+    </h1>
+  </section>
+
+  {/* FOUNDER LETTER — editorial two-column */}
+  <section class="mx-auto max-w-5xl px-5 md:px-8 mt-16 md:mt-20 pb-24">
+    <div class="grid md:grid-cols-[1fr_2fr] gap-10 md:gap-16">
+      {/* meta column */}
+      <aside class="md:sticky md:top-24 md:self-start space-y-7 md:pr-2 border-l-2 border-sarang/60 pl-6 md:pl-7">
+        <div>
+          <p class="eyebrow">Pendiri</p>
+          <p class="mt-2 font-display text-2xl">Arfan Putra</p>
+          <p class="text-charcoal-mute text-sm mt-1">Tiban, Batam</p>
+        </div>
+        <div>
+          <p class="eyebrow">Mulai</p>
+          <p class="mt-2 font-display text-2xl tabular">2024</p>
+          <p class="text-charcoal-mute text-sm mt-1">Dari dapur rumah, satu kompor.</p>
+        </div>
+        <div>
+          <p class="eyebrow">Yang dipegang</p>
+          <p class="mt-2 font-display text-xl italic text-charcoal-soft leading-snug">"Halal, hangat, harga dompetan."</p>
+        </div>
+      </aside>
+
+      {/* letter body */}
+      <article class="text-[1.0625rem] md:text-lg text-charcoal-soft leading-[1.75] space-y-6">
+        <p class="first-letter:font-display first-letter:text-7xl first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-[0.85] first-letter:text-charcoal">
+          Sarang Dimsum lahir dari satu ide sederhana: dimsum enak, halal, dan harganya masuk akal — nggak harus pergi ke mal, nggak harus mahal. Saya mulai dari dapur kecil di Jalan Ciptaland, Tiban, dengan resep yang dicoba puluhan kali sampai keluarga sendiri ngangguk-ngangguk.
         </p>
         <p>
-          Buat kami, dimsum bukan cuma makanan. Itu cara kumpul. Cara cerita. Cara nemenin orang yang lagi capek, lagi senang, atau lagi pengen makan enak doang.
-          Itu kenapa kami pilih nama <em>Sarang</em> — biar tempat ini terasa kayak rumah, bukan kayak restoran.
+          Buat saya, dimsum bukan cuma makanan. Itu cara kumpul. Cara cerita. Cara nemenin orang yang lagi capek, lagi senang, atau lagi pengen makan enak doang. Itu kenapa saya pilih nama <em class="text-charcoal">Sarang</em> — biar tempat ini terasa kayak rumah, bukan kayak restoran.
         </p>
         <p>
-          Dan itu juga kenapa ada <strong class="text-charcoal font-medium">Arfan</strong>, koki kecil yang nongkrong di logo kami. Dia yang sambut kamu di pintu, yang ngasih kode <em>"mampir, yuk"</em> kalau kamu lewat depan steling, yang ketiduran di footer kalau warung sudah tutup.
+          Dan itu juga kenapa ada <strong class="text-charcoal font-medium not-italic">Arfan</strong> kecil yang nongkrong di logo kami — koki maskot, namanya saya pinjamkan dari nama saya sendiri. Dia yang sambut kamu di pintu, yang ngasih kode <em>"mampir, yuk"</em> kalau kamu lewat depan steling, yang ketiduran di footer kalau warung sudah tutup.
         </p>
-      </div>
-      <Arfan pose="wave" class="w-44 h-auto justify-self-center md:justify-self-end" />
+        <p>
+          Pelan-pelan, dari satu steling jadi dua. Dari pelanggan tetangga jadi pelanggan satu kota. Tujuannya tetap sama: bikin dimsum halal yang bisa dijangkau siapa aja, di mana aja — dengan rasa yang nggak diturunin.
+        </p>
+        <p class="text-charcoal">Terima kasih sudah mampir.</p>
+
+        {/* signature block */}
+        <div class="pt-8 mt-8 border-t border-charcoal/10 flex items-end gap-6">
+          <svg viewBox="0 0 240 80" class="w-44 md:w-52 h-auto text-charcoal" aria-hidden="true">
+            <path
+              d="M8 52 C 22 28, 38 18, 52 32 C 58 38, 50 56, 36 56 C 24 56, 28 38, 50 36 C 70 34, 86 50, 96 38 C 104 28, 92 22, 86 32 C 80 42, 92 56, 110 50 C 124 45, 128 28, 140 32 C 150 35, 146 50, 134 52 C 124 54, 132 36, 156 36 C 178 36, 188 56, 206 46 C 218 39, 222 24, 232 28"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            />
+            <path d="M44 64 C 80 60, 130 60, 200 62" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" opacity="0.55"/>
+          </svg>
+          <div class="pb-1">
+            <p class="font-display text-lg text-charcoal">Arfan Putra</p>
+            <p class="text-charcoal-mute text-xs tracking-[0.18em] uppercase mt-1">Pendiri · Sarang Dimsum</p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="mt-20 flex justify-center">
+      <Arfan pose="wave" class="w-32 h-auto opacity-90" />
     </div>
   </section>
 

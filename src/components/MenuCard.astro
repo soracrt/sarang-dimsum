@@ -1,0 +1,29 @@
+---
+interface Props {
+  name: string;
+  desc?: string;
+  price: number;
+  badge?: string;
+  emoji?: string;
+}
+const { name, desc, price, badge, emoji = '🥟' } = Astro.props;
+const formatted = new Intl.NumberFormat('id-ID').format(price);
+---
+
+<article class="rounded-2xl bg-cream-soft border border-charcoal/10 p-5 flex gap-4 hover:border-sarang transition-colors">
+  <div class="shrink-0 w-14 h-14 rounded-xl bg-cream flex items-center justify-center text-3xl border border-charcoal/10" aria-hidden="true">
+    {emoji}
+  </div>
+  <div class="flex-1 min-w-0">
+    <div class="flex items-baseline justify-between gap-3">
+      <h3 class="text-lg font-display font-semibold truncate">{name}</h3>
+      <span class="text-sm font-semibold text-charcoal whitespace-nowrap">Rp {formatted}</span>
+    </div>
+    {desc && <p class="text-sm text-charcoal-mute mt-1 leading-snug">{desc}</p>}
+    {badge && (
+      <span class="inline-block mt-2 text-[11px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-sarang/30 text-charcoal">
+        {badge}
+      </span>
+    )}
+  </div>
+</article>

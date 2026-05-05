@@ -1,0 +1,34 @@
+---
+import { links } from '../lib/links';
+interface Props { variant?: 'light' | 'dark'; }
+const { variant = 'light' } = Astro.props;
+const base = variant === 'dark'
+  ? 'bg-charcoal-soft text-cream border-cream/10'
+  : 'bg-cream-soft text-charcoal border-charcoal/10';
+const tile = variant === 'dark'
+  ? 'bg-charcoal/40 hover:bg-charcoal/70'
+  : 'bg-cream hover:bg-cream-deep';
+const apps = [
+  { name: 'GoFood', href: links.gofood, color: '#00AA13' },
+  { name: 'GrabFood', href: links.grabfood, color: '#00B14F' },
+  { name: 'ShopeeFood', href: links.shopeefood, color: '#EE4D2D' },
+];
+---
+
+<div class={`rounded-2xl border ${base} px-4 py-3`}>
+  <p class="text-[11px] uppercase tracking-widest opacity-60 mb-2">Pesan via ojol favoritmu</p>
+  <div class="flex flex-wrap gap-2">
+    {apps.map((a) => (
+      <a
+        href={a.href}
+        target="_blank"
+        rel="noopener"
+        class={`flex items-center gap-2 rounded-xl px-3 py-2 transition-colors ${tile}`}
+        aria-label={`Pesan via ${a.name}`}
+      >
+        <span class="w-2.5 h-2.5 rounded-full" style={`background:${a.color}`}></span>
+        <span class="text-sm font-medium">{a.name}</span>
+      </a>
+    ))}
+  </div>
+</div>

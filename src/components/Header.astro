@@ -1,0 +1,39 @@
+---
+import Wordmark from './Wordmark.astro';
+const nav = [
+  { href: '/menu', label: 'Menu' },
+  { href: '/lokasi', label: 'Lokasi' },
+  { href: '/sarangers', label: 'Sarangers' },
+  { href: '/sewa-steling', label: 'Sewa Steling' },
+  { href: '/tentang', label: 'Tentang' },
+];
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="sticky top-0 z-40 bg-cream/85 backdrop-blur border-b border-charcoal/10">
+  <div class="mx-auto max-w-6xl px-5 md:px-8 h-16 flex items-center justify-between">
+    <a href="/" aria-label="Sarang Dimsum — beranda" class="block">
+      <Wordmark class="h-9 w-auto" />
+    </a>
+    <nav class="hidden md:flex items-center gap-7 text-sm">
+      {nav.map((n) => (
+        <a
+          href={n.href}
+          class={`hover:text-sarang-deep transition-colors ${path === n.href ? 'text-sarang-deep font-medium' : 'text-charcoal-soft'}`}
+        >
+          {n.label}
+        </a>
+      ))}
+    </nav>
+    <details class="md:hidden relative">
+      <summary class="list-none cursor-pointer p-2 -mr-2 select-none" aria-label="Buka menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </summary>
+      <div class="absolute right-0 top-12 w-56 rounded-2xl bg-cream border border-charcoal/10 shadow-lg p-2">
+        {nav.map((n) => (
+          <a href={n.href} class="block px-4 py-3 rounded-xl hover:bg-cream-soft text-charcoal">{n.label}</a>
+        ))}
+      </div>
+    </details>
+  </div>
+</header>

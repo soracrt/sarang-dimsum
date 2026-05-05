@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  /* 60/30/10 — cream dominant, charcoal supporting, Sarang yellow accent */
+  --color-cream: #FAF6EE;
+  --color-cream-soft: #F3ECDD;
+  --color-cream-deep: #E9DFC7;
+  --color-charcoal: #1F1B17;
+  --color-charcoal-soft: #3A322B;
+  --color-charcoal-mute: #6B6258;
+  --color-sarang: #F4C430;
+  --color-sarang-deep: #D9A91E;
+
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* 1.25 type scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.563rem;
+  --text-2xl: 1.953rem;
+  --text-3xl: 2.441rem;
+  --text-4xl: 3.052rem;
+  --text-5xl: 3.815rem;
+}
+
+html {
+  font-family: var(--font-body);
+  color: var(--color-charcoal);
+  background: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-charcoal);
+}
+
+::selection {
+  background: var(--color-sarang);
+  color: var(--color-charcoal);
+}
+
+a { color: inherit; }
+
+/* Arfan first-load wave: hops across the hero, waves, hops back. ~2s, one-shot per session. */
+@keyframes arfan-walk {
+  0%   { transform: translate(-120%, 0) rotate(-4deg); opacity: 0; }
+  15%  { transform: translate(-60%, 0) rotate(-4deg); opacity: 1; }
+  35%  { transform: translate(0, 0) rotate(0deg); }
+  55%  { transform: translate(0, -8%) rotate(0deg); }
+  75%  { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(120%, 0) rotate(4deg); opacity: 0; }
+}
+@keyframes arfan-wave-arm {
+  0%, 40%, 100% { transform: rotate(0deg); }
+  50%, 70%      { transform: rotate(-25deg); }
+  60%, 80%      { transform: rotate(-10deg); }
+}
+
+.arfan-walk { animation: arfan-walk 2.4s cubic-bezier(.4,.1,.3,1) forwards; }
+.arfan-walk .arfan-arm { transform-origin: 50% 30%; animation: arfan-wave-arm 2.4s ease-in-out forwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  .arfan-walk, .arfan-walk .arfan-arm { animation: none; opacity: 0; }
+}

@@ -1,0 +1,25 @@
+---
+// First-load "Arfan hops out and waves" moment.
+// One-shot per session via sessionStorage. Respects prefers-reduced-motion (CSS keyframes are no-op'd in global.css).
+import Arfan from './Arfan.astro';
+---
+
+<div id="arfan-wave" class="pointer-events-none fixed inset-x-0 top-24 z-30 hidden">
+  <div class="mx-auto max-w-6xl px-5">
+    <Arfan pose="wave" class="arfan-walk w-24 h-auto drop-shadow-md" />
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    try {
+      if (sessionStorage.getItem('arfan-waved')) return;
+      var el = document.getElementById('arfan-wave');
+      if (!el) return;
+      el.classList.remove('hidden');
+      sessionStorage.setItem('arfan-waved', '1');
+      // remove after animation finishes to free up paint
+      setTimeout(function () { el.remove(); }, 2800);
+    } catch (e) { /* no-op */ }
+  })();
+</script>

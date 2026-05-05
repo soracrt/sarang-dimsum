@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import MenuCard from '../components/MenuCard.astro';
+import AggregatorStrip from '../components/AggregatorStrip.astro';
+import Arfan from '../components/Arfan.astro';
+import { menu, categoryLabel, type MenuItem } from '../data/menu';
+import { links } from '../lib/links';
+
+const grouped = menu.reduce<Record<MenuItem['category'], MenuItem[]>>((acc, m) => {
+  (acc[m.category] ||= []).push(m);
+  return acc;
+}, {} as any);
+
+const order: MenuItem['category'][] = ['paket', 'kukus', 'goreng', 'mie', 'minuman'];
+---
+
+<Base title="Menu — Sarang Dimsum" description="Daftar lengkap menu dimsum halal di Sarang Dimsum Tiban Batam. Kukus, goreng, mie, paket hemat — harga dompetan.">
+  <section class="bg-cream-soft border-b border-charcoal/10">
+    <div class="mx-auto max-w-6xl px-5 md:px-8 py-12 md:py-16 grid md:grid-cols-[1.4fr_auto] gap-8 items-end">
+      <div>
+        <span class="text-xs uppercase tracking-[0.2em] text-charcoal-mute">Menu lengkap</span>
+        <h1 class="font-display text-4xl md:text-5xl mt-2">Pilih dimsum kesukaanmu.</h1>
+        <p class="mt-4 text-lg text-charcoal-soft max-w-xl">
+          Semua harga sudah termasuk. Mau makan di tempat, take-away, atau lewat ojol — tinggal pilih.
+        </p>
+      </div>
+      <Arfan pose="point" class="hidden md:block w-40 h-auto" />
+    </div>
+  </section>
+
+  {/* sticky category nav */}
+  <nav class="sticky top-16 z-30 bg-cream/90 backdrop-blur border-b border-charcoal/10">
+    <div class="mx-auto max-w-6xl px-5 md:px-8 py-3 flex gap-2 overflow-x-auto text-sm">
+      {order.map((c) => (
+        <a href={`#${c}`} class="rounded-full px-4 py-1.5 bg-cream-soft hover:bg-sarang/40 text-charcoal whitespace-nowrap transition-colors">{categoryLabel[c]}</a>
+      ))}
+    </div>
+  </nav>
+
+  <section class="mx-auto max-w-6xl px-5 md:px-8 py-12 space-y-14">
+    {order.map((c) => (
+      <div id={c}>
+        <h2 class="font-display text-2xl md:text-3xl mb-5">{categoryLabel[c]}</h2>
+        <div class="grid gap-4 md:grid-cols-2">
+          {grouped[c]?.map((m) => <MenuCard {...m} />)}
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <section class="mx-auto max-w-3xl px-5 md:px-8 pb-24">
+    <div class="rounded-3xl bg-cream-soft border border-charcoal/10 p-6 md:p-8 text-center">
+      <h3 class="font-display text-2xl">Siap pesan?</h3>
+      <p class="mt-2 text-charcoal-soft">Pilih cara yang paling pas buat kamu.</p>
+      <div class="mt-5 flex flex-wrap justify-center gap-3">
+        <a href={links.waOrder} target="_blank" rel="noopener" class="rounded-full bg-sarang text-charcoal px-5 py-3 font-medium hover:bg-sarang-deep transition-colors">Pesan via WhatsApp</a>
+      </div>
+      <div class="mt-5 max-w-sm mx-auto">
+        <AggregatorStrip />
+      </div>
+      <p class="mt-4 text-xs text-charcoal-mute">Harga & ketersediaan menu menyesuaikan stok harian.</p>
+    </div>
+  </section>
+</Base>

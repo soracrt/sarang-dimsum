@@ -1,0 +1,25 @@
+---
+// Reconstructed Sarang Dimsum wordmark — yellow on black, with Arfan perched on the "A".
+// Demo asset; original logo from owner replaces this in production.
+interface Props {
+  class?: string;
+  inverse?: boolean; // light-on-dark contexts
+}
+const { class: className = '', inverse = false } = Astro.props;
+const bg = inverse ? '#FAF6EE' : '#1F1B17';
+const fg = inverse ? '#1F1B17' : '#F4C430';
+---
+
+<svg class={className} viewBox="0 0 240 80" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sarang Dimsum">
+  <rect width="240" height="80" rx="10" fill={bg}/>
+  <text x="20" y="42" font-family="Fraunces, serif" font-size="26" font-weight="700" fill={fg} letter-spacing="0.02em">SARANG</text>
+  <text x="20" y="68" font-family="Fraunces, serif" font-size="20" font-weight="500" fill={fg} letter-spacing="0.06em">DIMSUM</text>
+  {/* tiny Arfan perched on the A in SARANG (the A around x=72) */}
+  <g transform="translate(64 8) scale(0.18)">
+    <path d="M30 38c0-12 8-22 22-22s22 9 22 21c8-2 16 4 16 13 0 7-6 12-13 12H27c-7 0-13-5-13-12 0-9 8-15 16-12z" fill={fg} stroke={fg} stroke-width="3"/>
+    <ellipse cx="52" cy="84" rx="22" ry="20" fill={fg}/>
+    <circle cx="44" cy="82" r="3" fill={bg}/>
+    <circle cx="60" cy="82" r="3" fill={bg}/>
+    <path d="M30 110c0-6 10-10 22-10s22 4 22 10v22H30z" fill={fg}/>
+  </g>
+</svg>

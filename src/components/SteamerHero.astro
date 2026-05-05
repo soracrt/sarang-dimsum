@@ -1,0 +1,79 @@
+---
+// Hero product anchor: bamboo steamer stack with dimsum + steam.
+// Charcoal line + Sarang yellow accents on a transparent backdrop. Single SVG, ~5KB.
+interface Props { class?: string; }
+const { class: className = '' } = Astro.props;
+---
+
+<svg class={className} viewBox="0 0 480 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bamboo steamer dengan dimsum hangat">
+  {/* steam wisps */}
+  <g stroke="#F8F2E5" stroke-opacity="0.55" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M150 90c10-22-12-32 0-58"/>
+    <path d="M210 60c10-22-12-32 0-58"/>
+    <path d="M270 90c10-22-12-32 0-58"/>
+    <path d="M330 60c10-22-12-32 0-58"/>
+  </g>
+
+  {/* top steamer (open with dimsum visible) */}
+  {/* outer ring */}
+  <ellipse cx="240" cy="200" rx="190" ry="40" fill="#E5D9BE" stroke="#14110D" stroke-width="3"/>
+  {/* inner well */}
+  <ellipse cx="240" cy="195" rx="172" ry="32" fill="#F1E9D5" stroke="#14110D" stroke-width="2"/>
+
+  {/* shumai dumplings inside top */}
+  <g>
+    <ellipse cx="160" cy="195" rx="34" ry="20" fill="#F0B429" stroke="#14110D" stroke-width="2.5"/>
+    <ellipse cx="160" cy="187" rx="20" ry="10" fill="#C8901C" stroke="#14110D" stroke-width="2"/>
+    <circle cx="160" cy="187" r="3" fill="#14110D"/>
+
+    <ellipse cx="240" cy="200" rx="36" ry="22" fill="#F0B429" stroke="#14110D" stroke-width="2.5"/>
+    <ellipse cx="240" cy="190" rx="22" ry="11" fill="#C8901C" stroke="#14110D" stroke-width="2"/>
+    <circle cx="240" cy="190" r="3.5" fill="#14110D"/>
+
+    <ellipse cx="320" cy="195" rx="34" ry="20" fill="#F0B429" stroke="#14110D" stroke-width="2.5"/>
+    <ellipse cx="320" cy="187" rx="20" ry="10" fill="#C8901C" stroke="#14110D" stroke-width="2"/>
+    <circle cx="320" cy="187" r="3" fill="#14110D"/>
+  </g>
+
+  {/* top steamer body (vertical slats) */}
+  <path d="M50 200v50c0 22 85 40 190 40s190-18 190-40v-50" fill="#E5D9BE" stroke="#14110D" stroke-width="3"/>
+  <g stroke="#14110D" stroke-width="1.5" opacity="0.4">
+    <line x1="80" y1="218" x2="80" y2="270"/>
+    <line x1="120" y1="220" x2="120" y2="278"/>
+    <line x1="160" y1="222" x2="160" y2="282"/>
+    <line x1="200" y1="223" x2="200" y2="284"/>
+    <line x1="240" y1="223" x2="240" y2="285"/>
+    <line x1="280" y1="223" x2="280" y2="284"/>
+    <line x1="320" y1="222" x2="320" y2="282"/>
+    <line x1="360" y1="220" x2="360" y2="278"/>
+    <line x1="400" y1="218" x2="400" y2="270"/>
+  </g>
+
+  {/* shadow gap between layers */}
+  <ellipse cx="240" cy="290" rx="190" ry="15" fill="#14110D" opacity="0.18"/>
+
+  {/* middle steamer body */}
+  <path d="M55 295v55c0 22 83 40 185 40s185-18 185-40v-55" fill="#E5D9BE" stroke="#14110D" stroke-width="3"/>
+  <ellipse cx="240" cy="295" rx="185" ry="15" fill="#F1E9D5" stroke="#14110D" stroke-width="2"/>
+  <g stroke="#14110D" stroke-width="1.5" opacity="0.4">
+    <line x1="85" y1="313" x2="85" y2="370"/>
+    <line x1="125" y1="315" x2="125" y2="378"/>
+    <line x1="165" y1="317" x2="165" y2="382"/>
+    <line x1="205" y1="318" x2="205" y2="384"/>
+    <line x1="245" y1="318" x2="245" y2="385"/>
+    <line x1="285" y1="318" x2="285" y2="384"/>
+    <line x1="325" y1="317" x2="325" y2="382"/>
+    <line x1="365" y1="315" x2="365" y2="378"/>
+    <line x1="405" y1="313" x2="405" y2="370"/>
+  </g>
+
+  {/* base shadow */}
+  <ellipse cx="240" cy="395" rx="180" ry="14" fill="#14110D" opacity="0.18"/>
+
+  {/* bottom steamer (slightly smaller / base) */}
+  <path d="M75 400v40c0 18 75 32 165 32s165-14 165-32v-40" fill="#C8901C" stroke="#14110D" stroke-width="3"/>
+  <ellipse cx="240" cy="400" rx="165" ry="13" fill="#F0B429" stroke="#14110D" stroke-width="2"/>
+
+  {/* table shadow */}
+  <ellipse cx="240" cy="478" rx="200" ry="16" fill="#14110D" opacity="0.12"/>
+</svg>

@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Arfan from '../components/Arfan.astro';
+import SteamerHero from '../components/SteamerHero.astro';
 import Icon from '../components/Icon.astro';
 import AggregatorStrip from '../components/AggregatorStrip.astro';
 import MenuCard from '../components/MenuCard.astro';
@@ -14,49 +15,59 @@ const heroItems = menu.filter((m) => m.hero).slice(0, 6);
 <Base>
   <ArfanWave />
 
-  {/* HERO */}
-  <section class="relative">
-    <div class="mx-auto max-w-6xl px-5 md:px-8 pt-14 md:pt-24 pb-20 md:pb-28">
-      <div class="grid md:grid-cols-[1.2fr_1fr] gap-12 md:gap-16 items-end">
+  {/* HERO — charcoal, brand-forward, massive display */}
+  <section class="relative bg-charcoal text-cream overflow-hidden">
+    {/* subtle yellow ambient */}
+    <div class="absolute -top-40 -right-32 w-[40rem] h-[40rem] rounded-full bg-sarang/10 blur-3xl pointer-events-none"></div>
+
+    <div class="relative mx-auto max-w-6xl px-5 md:px-8 pt-12 md:pt-16 pb-20 md:pb-24">
+      {/* top stamp */}
+      <div class="flex flex-wrap justify-between items-center gap-4 text-cream/60 text-xs">
+        <span class="inline-flex items-center gap-2 tracking-[0.22em] uppercase">
+          <Icon name="shield-check" size={14} class="text-sarang"/> Halal · 100% halal kitchen
+        </span>
+        <span class="tabular tracking-[0.22em] uppercase">Tiban — Batam · ID</span>
+      </div>
+
+      <div class="mt-12 md:mt-16 grid md:grid-cols-[1.05fr_0.95fr] gap-10 md:gap-12 items-center">
+        {/* left: massive display + CTAs */}
         <div>
-          <p class="eyebrow rise rise-1">
-            <span class="inline-flex items-center gap-2">
-              <Icon name="shield-check" size={14}/> Halal · Tiban, Batam · Sejak 2024
-            </span>
-          </p>
-          <h1 class="rise rise-2 font-display text-[2.6rem] md:text-[4.2rem] leading-[0.98] mt-6 text-charcoal">
-            Dimsum hangat,<br/>
-            harga dompetan —<br/>
-            <em class="text-charcoal">buat seisi rumah.</em>
+          <h1 class="rise rise-1 font-display-x text-[5.5rem] md:text-[8.5rem] leading-[0.88] text-cream">
+            Dimsum<br/>
+            hangat,<br/>
+            <span class="text-sarang">harga<br/>dompetan.</span>
           </h1>
-          <p class="rise rise-3 mt-7 text-lg md:text-xl text-charcoal-soft max-w-xl leading-relaxed">
-            Halal, banyak varian, ramah keluarga. Dari dapur kecil di Tiban — langsung ke meja kamu, atau lewat ojol favoritmu.
+          <p class="rise rise-2 mt-8 text-lg md:text-xl text-cream/75 max-w-xl leading-relaxed">
+            <span class="font-display italic text-cream">Buat seisi rumah.</span> Halal, banyak varian, ramah keluarga.
+            Dari dapur kecil di Tiban — langsung ke meja kamu, atau lewat ojol favoritmu.
           </p>
 
-          <div class="rise rise-4 mt-9 flex flex-wrap gap-3 items-center">
-            <a href="/menu" class="group inline-flex items-center gap-2 rounded-full bg-charcoal text-cream px-7 py-3.5 font-medium hover:bg-charcoal-soft transition-colors">
+          <div class="rise rise-3 mt-9 flex flex-wrap gap-3 items-center">
+            <a href="/menu" class="group inline-flex items-center gap-2 rounded-full bg-sarang text-charcoal px-7 py-3.5 font-medium hover:bg-sarang-deep transition-colors">
               Lihat Menu
               <Icon name="arrow-right" size={16} class="group-hover:translate-x-0.5 transition-transform"/>
             </a>
-            <a href={links.waOrder} target="_blank" rel="noopener" class="group inline-flex items-center gap-2 rounded-full border border-charcoal/20 px-7 py-3.5 font-medium hover:border-charcoal transition-colors">
+            <a href={links.waOrder} target="_blank" rel="noopener" class="group inline-flex items-center gap-2 rounded-full border border-cream/25 px-7 py-3.5 font-medium hover:bg-cream/5 transition-colors">
               <Icon name="message-circle" size={16}/>
               Pesan via WhatsApp
             </a>
           </div>
         </div>
 
-        <div class="relative hidden md:block">
-          <div class="absolute -top-16 -right-6 w-[24rem] h-[24rem] rounded-full bg-sarang-soft blur-3xl pointer-events-none"></div>
-          <div class="relative">
-            <Arfan pose="wave" class="w-72 h-auto mx-auto" />
+        {/* right: steamer hero anchor */}
+        <div class="relative rise rise-4">
+          <SteamerHero class="w-full max-w-[520px] mx-auto h-auto" />
+          {/* Arfan peeks from corner */}
+          <div class="absolute -bottom-6 -left-2 md:bottom-2 md:left-0">
+            <Arfan pose="wave" class="w-32 md:w-40 h-auto" />
           </div>
         </div>
       </div>
 
-      {/* trust strip + scroll cue */}
-      <div class="mt-16 md:mt-20 flex flex-wrap items-end justify-between gap-6 border-t border-charcoal/10 pt-7">
-        <AggregatorStrip compact={true}/>
-        <div class="hidden md:flex items-center gap-2 text-charcoal-mute text-sm">
+      {/* bottom strip — aggregators + scroll cue */}
+      <div class="mt-14 md:mt-20 flex flex-wrap items-end justify-between gap-6 border-t border-cream/15 pt-7">
+        <AggregatorStrip variant="dark" compact={true}/>
+        <div class="hidden md:flex items-center gap-2 text-cream/50 text-sm">
           <span>scroll buat lihat menunya</span>
           <Icon name="arrow-right" size={14} class="rotate-90"/>
         </div>
@@ -64,13 +75,26 @@ const heroItems = menu.filter((m) => m.hero).slice(0, 6);
     </div>
   </section>
 
+  {/* MARQUEE-STYLE TAGLINE */}
+  <section class="bg-cream border-y border-charcoal/8 py-6 md:py-8 overflow-hidden">
+    <div class="font-display-x text-3xl md:text-5xl text-charcoal whitespace-nowrap flex gap-12 items-center">
+      <span>banyak varian</span><span class="text-sarang">·</span>
+      <span class="italic font-display normal-case tracking-normal">halal</span><span class="text-sarang">·</span>
+      <span>harga dompetan</span><span class="text-sarang">·</span>
+      <span class="italic font-display normal-case tracking-normal">ramah keluarga</span><span class="text-sarang">·</span>
+      <span>banyak varian</span><span class="text-sarang">·</span>
+      <span class="italic font-display normal-case tracking-normal">halal</span><span class="text-sarang">·</span>
+      <span>harga dompetan</span><span class="text-sarang">·</span>
+    </div>
+  </section>
+
   {/* TIGA JANJI */}
-  <section class="bg-cream-soft border-y border-charcoal/8">
-    <div class="mx-auto max-w-6xl px-5 md:px-8 py-20 md:py-24">
+  <section class="bg-cream">
+    <div class="mx-auto max-w-6xl px-5 md:px-8 py-24 md:py-28">
       <div class="grid md:grid-cols-[auto_1fr] gap-10 md:gap-16 items-start">
         <div class="md:max-w-xs">
           <p class="eyebrow">Tiga janji</p>
-          <h2 class="font-display text-3xl md:text-4xl mt-3">Yang kami pegang, tiap harinya.</h2>
+          <h2 class="font-display-x text-4xl md:text-5xl mt-3 text-charcoal">Yang kami pegang, tiap harinya.</h2>
         </div>
         <div class="grid gap-10 md:grid-cols-3 md:pt-3">
           {[
@@ -78,11 +102,11 @@ const heroItems = menu.filter((m) => m.hero).slice(0, 6);
             { icon: 'wallet' as const,       t: 'Harga dompetan',  d: 'Mulai dari Rp 14rb. Banyak varian, gak bikin mikir dua kali.' },
             { icon: 'users-round' as const,  t: 'Ramah keluarga',  d: 'Porsi pas berdua, paket hemat buat seisi rumah.' },
           ].map((j) => (
-            <div class="relative">
-              <div class="w-11 h-11 rounded-full bg-cream border border-charcoal/15 grid place-items-center text-charcoal">
+            <div>
+              <div class="w-12 h-12 rounded-full bg-charcoal text-cream grid place-items-center">
                 <Icon name={j.icon} size={20}/>
               </div>
-              <h3 class="font-display text-xl mt-5">{j.t}</h3>
+              <h3 class="font-display text-2xl mt-5">{j.t}</h3>
               <p class="text-charcoal-mute mt-2 leading-relaxed">{j.d}</p>
             </div>
           ))}
@@ -91,57 +115,64 @@ const heroItems = menu.filter((m) => m.hero).slice(0, 6);
     </div>
   </section>
 
-  {/* MENU TEASER */}
-  <section class="mx-auto max-w-6xl px-5 md:px-8 py-24 md:py-28">
-    <div class="flex items-end justify-between gap-6 mb-12 flex-wrap">
-      <div>
-        <p class="eyebrow">Yang paling dicari</p>
-        <h2 class="font-display text-4xl md:text-5xl mt-3">Andalan dari <em>dapur Sarang.</em></h2>
+  {/* MENU TEASER — charcoal bg, cream cards floating */}
+  <section class="relative bg-charcoal text-cream overflow-hidden">
+    <div class="absolute -top-32 -left-32 w-[34rem] h-[34rem] rounded-full bg-sarang/10 blur-3xl pointer-events-none"></div>
+    <div class="relative mx-auto max-w-6xl px-5 md:px-8 py-24 md:py-28">
+      <div class="flex items-end justify-between gap-6 mb-10 flex-wrap">
+        <div>
+          <p class="eyebrow text-sarang">Yang paling dicari</p>
+          <h2 class="font-display-x text-5xl md:text-7xl mt-3 text-cream leading-[0.9]">
+            Andalan dari<br/>
+            <span class="text-sarang">dapur Sarang.</span>
+          </h2>
+        </div>
+        <a href="/menu" class="group inline-flex items-center gap-2 text-cream hover:text-sarang font-medium border-b border-cream/30 hover:border-sarang pb-1 transition-colors">
+          Lihat semua menu
+          <Icon name="arrow-right" size={14} class="group-hover:translate-x-0.5 transition-transform"/>
+        </a>
       </div>
-      <a href="/menu" class="group inline-flex items-center gap-2 text-charcoal hover:text-charcoal-soft font-medium border-b border-charcoal/30 hover:border-charcoal pb-1 transition-colors">
-        Lihat semua menu
-        <Icon name="arrow-right" size={14} class="group-hover:translate-x-0.5 transition-transform"/>
-      </a>
-    </div>
-    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {heroItems.map((m) => <MenuCard {...m} />)}
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {heroItems.map((m) => <MenuCard {...m} />)}
+      </div>
+      <div class="mt-10 flex justify-between items-end text-cream/60 text-sm">
+        <span class="font-display-x text-2xl tracking-tight text-cream">Look Menu</span>
+        <span class="font-display-x text-2xl tracking-tight text-cream tabular">{menu.length}</span>
+      </div>
     </div>
   </section>
 
-  {/* SEWA STELING */}
-  <section class="relative bg-charcoal text-cream overflow-hidden">
-    <div class="absolute inset-0 opacity-[0.06] pointer-events-none">
-      <div class="absolute -top-32 -left-32 w-[40rem] h-[40rem] rounded-full bg-sarang blur-3xl"></div>
-      <div class="absolute -bottom-32 -right-32 w-[40rem] h-[40rem] rounded-full bg-sarang blur-3xl"></div>
-    </div>
+  {/* SEWA STELING — yellow flip */}
+  <section class="bg-sarang text-charcoal relative overflow-hidden">
     <div class="relative mx-auto max-w-6xl px-5 md:px-8 py-24 md:py-32 grid md:grid-cols-[1.4fr_auto] gap-12 items-center">
       <div class="max-w-2xl">
-        <p class="eyebrow text-sarang">Untuk pemilik usaha</p>
-        <h2 class="font-display text-4xl md:text-5xl text-cream leading-[1.02] mt-4">
+        <p class="eyebrow">Untuk pemilik usaha</p>
+        <h2 class="font-display-x text-5xl md:text-7xl text-charcoal leading-[0.9] mt-4">
           Punya warung?<br/>
-          <em class="text-sarang">Sewa stelingnya, jualan dimsumnya.</em>
+          Sewa stelingnya.<br/>
+          <span class="italic font-display normal-case tracking-normal text-charcoal-soft">Jualan dimsumnya.</span>
         </h2>
-        <p class="mt-6 text-cream/75 text-lg leading-relaxed">
+        <p class="mt-7 text-lg text-charcoal-soft max-w-xl leading-relaxed">
           Kami sediakan steling, dimsumnya, dan pelatihan singkat. Kamu fokus jualan. Cocok buat warung kopi, ruko, food court, atau toko ramai yang mau nambah lini halal cepat saji.
         </p>
-        <ul class="mt-8 space-y-3 text-cream/80">
+        <ul class="mt-7 space-y-3 text-charcoal">
           {[
             'Skema sewa fleksibel — mulai dari per bulan.',
             'Supply dimsum rutin, harga mitra.',
             'Pelatihan + standar kebersihan.',
           ].map((t) => (
             <li class="flex gap-3 items-start">
-              <span class="grid place-items-center w-5 h-5 rounded-full bg-sarang text-charcoal mt-0.5"><Icon name="check" size={12} strokeWidth={2.5}/></span>
+              <span class="grid place-items-center w-5 h-5 rounded-full bg-charcoal text-sarang mt-0.5"><Icon name="check" size={12} strokeWidth={2.5}/></span>
               {t}
             </li>
           ))}
         </ul>
         <div class="mt-9 flex flex-wrap gap-3">
-          <a href="/sewa-steling" class="inline-flex items-center gap-2 rounded-full bg-sarang text-charcoal px-7 py-3.5 font-medium hover:bg-sarang-deep transition-colors">
+          <a href="/sewa-steling" class="inline-flex items-center gap-2 rounded-full bg-charcoal text-cream px-7 py-3.5 font-medium hover:bg-charcoal-soft transition-colors">
             Lihat skema lengkap
             <Icon name="arrow-right" size={16}/>
           </a>
-          <a href={links.waReseller} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-cream/25 px-7 py-3.5 font-medium hover:bg-cream/5 transition-colors">
+          <a href={links.waReseller} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-charcoal/30 px-7 py-3.5 font-medium hover:border-charcoal hover:bg-cream/40 transition-colors">
             <Icon name="message-circle" size={16}/>
             Tanya via WhatsApp
           </a>
@@ -152,75 +183,96 @@ const heroItems = menu.filter((m) => m.hero).slice(0, 6);
   </section>
 
   {/* SARANGERS */}
-  <section class="mx-auto max-w-6xl px-5 md:px-8 py-24 md:py-28">
-    <div class="text-center max-w-2xl mx-auto">
-      <p class="eyebrow">Komunitas pelanggan</p>
-      <h2 class="font-display text-4xl md:text-5xl mt-3">#<em>Sarangers</em></h2>
-      <p class="mt-5 text-charcoal-soft text-lg">
-        Tag <a href={links.ig} class="text-charcoal underline underline-offset-4 decoration-sarang decoration-2">@dimsum_sarang</a> di IG kamu — biar masuk dinding ini.
-      </p>
+  <section class="bg-cream">
+    <div class="mx-auto max-w-6xl px-5 md:px-8 py-24 md:py-28">
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="eyebrow">Komunitas pelanggan</p>
+        <h2 class="font-display-x text-5xl md:text-7xl mt-3">#<span class="text-sarang-deep">Sarangers</span></h2>
+        <p class="mt-5 text-charcoal-soft text-lg">
+          Tag <a href={links.ig} target="_blank" rel="noopener" class="text-charcoal underline underline-offset-4 decoration-sarang decoration-2">@dimsum_sarang</a> di IG kamu — biar masuk dinding ini.
+        </p>
+      </div>
+      <div class="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+        {Array.from({ length: 6 }).map((_, i) => {
+          const tones = [
+            'from-cream-deep to-cream-soft',
+            'from-sarang/30 to-cream-deep',
+            'from-charcoal/85 to-charcoal',
+            'from-cream-soft to-cream-deep',
+            'from-sarang/20 to-cream-soft',
+            'from-cream-deep to-sarang/25',
+          ];
+          const dark = i === 2;
+          return (
+            <a href={links.ig} target="_blank" rel="noopener" class={`group relative aspect-square rounded-2xl bg-gradient-to-br ${tones[i]} overflow-hidden border border-charcoal/8 hover:border-charcoal/25 transition-colors`} aria-label={`Foto Sarangers #${i + 1}`}>
+              <div class={`absolute inset-0 grid place-items-center font-display-x text-7xl ${dark ? 'text-cream/30' : 'text-charcoal/15'}`}>S</div>
+              <div class={`absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs ${dark ? 'text-cream/85' : 'text-charcoal/70'}`}>
+                <span>@sarangers</span>
+                <Icon name="arrow-up-right" size={14}/>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+      {/* TODO(owner): wire up real IG embed or scrape feed */}
     </div>
-    <div class="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-      {Array.from({ length: 6 }).map((_, i) => {
-        const tones = [
-          'from-cream-deep to-cream-soft',
-          'from-sarang/30 to-cream-deep',
-          'from-charcoal/85 to-charcoal',
-          'from-cream-soft to-cream-deep',
-          'from-sarang/20 to-cream-soft',
-          'from-cream-deep to-sarang/25',
-        ];
-        const dark = i === 2;
-        return (
-          <a href={links.ig} target="_blank" rel="noopener" class={`group relative aspect-square rounded-2xl bg-gradient-to-br ${tones[i]} overflow-hidden border border-charcoal/8 hover:border-charcoal/25 transition-colors`} aria-label={`Foto Sarangers #${i + 1}`}>
-            <div class={`absolute inset-0 grid place-items-center font-display text-5xl ${dark ? 'text-cream/30' : 'text-charcoal/15'}`}>S</div>
-            <div class={`absolute bottom-3 left-3 right-3 flex items-center justify-between ${dark ? 'text-cream/85' : 'text-charcoal/70'}`}>
-              <span class="text-xs">@sarangers</span>
-              <Icon name="arrow-up-right" size={14}/>
-            </div>
-          </a>
-        );
-      })}
-    </div>
-    {/* TODO(owner): wire up real IG embed or scrape feed */}
   </section>
 
-  {/* LOKASI & JAM */}
-  <section class="bg-cream-soft border-y border-charcoal/8">
-    <div class="mx-auto max-w-6xl px-5 md:px-8 py-20 md:py-24 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+  {/* LOKASI — charcoal */}
+  <section class="bg-charcoal text-cream">
+    <div class="mx-auto max-w-6xl px-5 md:px-8 py-24 md:py-28 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
       <div>
-        <p class="eyebrow">Mampir langsung</p>
-        <h2 class="font-display text-4xl md:text-5xl mt-3 leading-[1.02]">
+        <p class="eyebrow text-sarang">Mampir langsung</p>
+        <h2 class="font-display-x text-5xl md:text-7xl mt-3 text-cream leading-[0.9]">
           Jalan Ciptaland,<br/>
-          <em>Tiban — Batam.</em>
+          <span class="text-sarang">Tiban — Batam.</span>
         </h2>
-        <div class="mt-8 inline-flex items-center gap-3 rounded-full bg-cream border border-charcoal/15 px-5 py-2.5">
-          <Icon name="clock" size={16} class="text-charcoal-mute"/>
+        <div class="mt-8 inline-flex items-center gap-3 rounded-full bg-cream/10 border border-cream/15 px-5 py-2.5">
+          <Icon name="clock" size={16} class="text-sarang"/>
           <span class="font-medium">Buka tiap hari</span>
-          <span class="text-charcoal-mute">·</span>
-          <span class="tabular text-charcoal-mute">10:00 — 00:00</span>
+          <span class="text-cream/50">·</span>
+          <span class="tabular text-cream/80">10:00 — 00:00</span>
         </div>
         <div class="mt-7 flex flex-wrap gap-3">
-          <a href={links.maps} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-charcoal text-cream px-6 py-3 font-medium hover:bg-charcoal-soft transition-colors">
+          <a href={links.maps} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-sarang text-charcoal px-6 py-3 font-medium hover:bg-sarang-deep transition-colors">
             <Icon name="map-pin" size={16}/>
             Buka di Google Maps
           </a>
-          <a href="/lokasi" class="inline-flex items-center gap-2 rounded-full border border-charcoal/20 px-6 py-3 font-medium hover:border-charcoal transition-colors">
+          <a href="/lokasi" class="inline-flex items-center gap-2 rounded-full border border-cream/25 px-6 py-3 font-medium hover:bg-cream/5 transition-colors">
             Detail lokasi
             <Icon name="arrow-right" size={14}/>
           </a>
         </div>
       </div>
-      <div class="aspect-[5/4] rounded-3xl bg-gradient-to-br from-cream-deep to-cream-soft border border-charcoal/10 relative overflow-hidden">
+      <div class="aspect-[5/4] rounded-3xl bg-gradient-to-br from-cream/10 to-cream/[0.02] border border-cream/15 relative overflow-hidden">
         {/* TODO(owner): embed real Google Maps iframe with exact pin */}
         <div class="absolute inset-0 grid place-items-center">
           <div class="text-center px-6">
-            <Icon name="map-pin" size={36} class="mx-auto text-charcoal-mute"/>
-            <p class="mt-4 font-display text-2xl text-charcoal">Sarang Dimsum</p>
-            <p class="text-charcoal-mute mt-1">Jalan Ciptaland, Tiban</p>
+            <Icon name="map-pin" size={40} class="mx-auto text-sarang"/>
+            <p class="mt-4 font-display text-2xl text-cream">Sarang Dimsum</p>
+            <p class="text-cream/60 mt-1">Jalan Ciptaland, Tiban</p>
           </div>
         </div>
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(20,17,13,0.08))]"></div>
+      </div>
+    </div>
+  </section>
+
+  {/* BIG YELLOW CTA BAND */}
+  <section class="bg-sarang text-charcoal">
+    <div class="mx-auto max-w-6xl px-5 md:px-8 py-20 md:py-24 text-center">
+      <h2 class="font-display-x text-5xl md:text-8xl leading-[0.9]">
+        Mampir hari ini —<br/>
+        <span class="italic font-display normal-case tracking-normal text-charcoal-soft">atau pesan dari rumah.</span>
+      </h2>
+      <div class="mt-10 flex flex-wrap justify-center gap-3">
+        <a href={links.waOrder} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-charcoal text-cream px-8 py-4 font-medium hover:bg-charcoal-soft transition-colors">
+          <Icon name="message-circle" size={16}/>
+          Mulai pesan
+          <Icon name="arrow-right" size={16}/>
+        </a>
+        <a href="/menu" class="inline-flex items-center gap-2 rounded-full border-2 border-charcoal px-8 py-4 font-medium hover:bg-charcoal hover:text-cream transition-colors">
+          Lihat menu
+        </a>
       </div>
     </div>
   </section>

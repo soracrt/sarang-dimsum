@@ -13,6 +13,7 @@
   --color-sarang-soft: rgba(240, 180, 41, 0.14);
 
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-display-x: "Anton", "Arial Narrow", "Impact", sans-serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   /* 1.25 type scale */
@@ -61,6 +62,15 @@ h3 { letter-spacing: -0.02em; line-height: 1.15; }
 p { line-height: 1.65; }
 
 .italic, em, i { font-family: var(--font-display); font-style: italic; font-weight: 400; }
+
+/* Massive condensed grotesk for hero / section impact — used sparingly. */
+.font-display-x {
+  font-family: var(--font-display-x);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
 
 /* tabular numerals for prices, hours, anything tabular */
 .tabular { font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }

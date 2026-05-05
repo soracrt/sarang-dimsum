@@ -7,10 +7,12 @@ import WhatsAppFAB from '../components/WhatsAppFAB.astro';
 interface Props {
   title?: string;
   description?: string;
+  hideHeader?: boolean;
 }
 const {
   title = 'Sarang Dimsum — Dimsum hangat, harga dompetan, halal',
   description = 'Dimsum halal di Tiban, Batam. Banyak varian, harga dompetan, ramah keluarga. Pesan via WhatsApp atau ojol favoritmu.',
+  hideHeader = false,
 } = Astro.props;
 ---
 
@@ -30,12 +32,12 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
   <body class="bg-cream text-charcoal min-h-dvh flex flex-col">
-    <Header />
+    {!hideHeader && <Header />}
     <main class="flex-1">
       <slot />
     </main>

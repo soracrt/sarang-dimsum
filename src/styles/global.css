@@ -19,6 +19,7 @@
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;
   --font-display-x: "Anton", "Arial Narrow", "Impact", sans-serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-hand: "Caveat", "Comic Sans MS", cursive;
 
   /* 1.25 type scale */
   --text-xs: 0.75rem;
@@ -78,6 +79,59 @@ p { line-height: 1.65; }
 
 /* tabular numerals for prices, hours, anything tabular */
 .tabular { font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }
+
+/* handwriting — for off-axis labels, "paling laris" style annotations */
+.hand { font-family: var(--font-hand); font-weight: 700; line-height: 1; }
+
+/* warung tarp stripes — diagonal red/cream like roadside terpal */
+.tarp {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-red) 0,
+    var(--color-red) 14px,
+    var(--color-cream) 14px,
+    var(--color-cream) 28px
+  );
+}
+.tarp-thin {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-red) 0,
+    var(--color-red) 8px,
+    var(--color-cream) 8px,
+    var(--color-cream) 16px
+  );
+}
+
+/* sticker / stamp — tilted stamp boxes that AI defaults won't tilt on purpose */
+.stamp {
+  display: inline-block;
+  border: 3px solid currentColor;
+  padding: 0.4em 0.7em 0.35em;
+  text-transform: uppercase;
+  font-family: var(--font-display-x);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+.stamp-tilt-l { transform: rotate(-6deg); }
+.stamp-tilt-r { transform: rotate(5deg); }
+.tilt-l { transform: rotate(-3deg); }
+.tilt-r { transform: rotate(2.5deg); }
+
+/* receipt / kasir-style price row — dotted leader between name and price */
+.receipt-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  font-feature-settings: "tnum" 1;
+}
+.receipt-row > .leader {
+  flex: 1;
+  border-bottom: 2px dotted currentColor;
+  margin-bottom: 0.25em;
+  opacity: 0.45;
+}
 
 /* the eyebrow / overline pattern, used everywhere */
 .eyebrow {

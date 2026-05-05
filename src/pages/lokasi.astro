@@ -1,58 +1,86 @@
 ---
 import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
 import { links } from '../lib/links';
 
 const hours = [
   { d: 'Senin – Jumat', h: '10:00 — 00:00' },
-  { d: 'Sabtu', h: '10:00 — 00:00' },
-  { d: 'Minggu', h: '10:00 — 00:00' },
+  { d: 'Sabtu',          h: '10:00 — 00:00' },
+  { d: 'Minggu',         h: '10:00 — 00:00' },
+];
+
+const orderOpts = [
+  { icon: 'message-circle' as const, label: 'WhatsApp',  d: 'Paling cepat, langsung ke dapur.', href: links.waOrder },
+  { icon: 'bike'           as const, label: 'GoFood',    d: 'Diantar via Gojek.',               href: links.gofood },
+  { icon: 'bike'           as const, label: 'GrabFood',  d: 'Diantar via Grab.',                href: links.grabfood },
+  { icon: 'bike'           as const, label: 'ShopeeFood',d: 'Diantar via Shopee.',              href: links.shopeefood },
+  { icon: 'home'           as const, label: 'Mampir',    d: 'Datang langsung — selalu welcome.',href: links.maps },
 ];
 ---
 
 <Base title="Lokasi & Jam — Sarang Dimsum" description="Alamat, jam buka, dan cara ke Sarang Dimsum di Jalan Ciptaland, Tiban, Batam.">
-  <section class="mx-auto max-w-6xl px-5 md:px-8 py-12 md:py-16">
-    <span class="text-xs uppercase tracking-[0.2em] text-charcoal-mute">Lokasi & Jam</span>
-    <h1 class="font-display text-4xl md:text-5xl mt-2">Mampir ke Tiban.</h1>
-    <p class="mt-4 text-lg text-charcoal-soft max-w-2xl">
+  <section class="mx-auto max-w-6xl px-5 md:px-8 py-16 md:py-24">
+    <p class="eyebrow">Lokasi & Jam</p>
+    <h1 class="font-display text-5xl md:text-6xl mt-4 leading-[0.98]">Mampir ke <em>Tiban.</em></h1>
+    <p class="mt-6 text-lg text-charcoal-soft max-w-2xl leading-relaxed">
       Buka tiap hari, jam 10 pagi sampai tengah malam. Ada tempat duduk buat makan langsung, atau tinggal ambil bawa pulang.
     </p>
   </section>
 
-  <section class="mx-auto max-w-6xl px-5 md:px-8 pb-20 grid md:grid-cols-2 gap-8">
-    <div class="rounded-3xl border border-charcoal/10 bg-cream-soft p-6 md:p-8">
-      <h2 class="font-display text-2xl">Alamat</h2>
-      <p class="mt-3 text-charcoal-soft text-lg">
+  <section class="mx-auto max-w-6xl px-5 md:px-8 pb-20 md:pb-24 grid md:grid-cols-2 gap-8">
+    <div class="rounded-3xl border border-charcoal/10 bg-cream-soft p-7 md:p-9">
+      <p class="eyebrow">Alamat</p>
+      <h2 class="font-display text-2xl md:text-3xl mt-3 leading-tight">
         Jalan Ciptaland, Tiban<br/>
-        Batam, Kepulauan Riau, Indonesia
-      </p>
-      <a href={links.maps} target="_blank" rel="noopener" class="mt-5 inline-flex items-center gap-2 rounded-full bg-charcoal text-cream px-5 py-3 font-medium hover:bg-charcoal-soft transition-colors">
+        <span class="text-charcoal-soft">Batam, Kepulauan Riau</span>
+      </h2>
+      <a href={links.maps} target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 rounded-full bg-charcoal text-cream px-6 py-3 font-medium hover:bg-charcoal-soft transition-colors">
+        <Icon name="map-pin" size={16}/>
         Buka di Google Maps
       </a>
 
-      <h2 class="font-display text-2xl mt-10">Jam buka</h2>
+      <div class="hairline my-10"></div>
+
+      <p class="eyebrow">Jam buka</p>
       <ul class="mt-3 divide-y divide-charcoal/10">
         {hours.map((r) => (
-          <li class="flex justify-between py-2 text-charcoal-soft">
-            <span>{r.d}</span><span class="font-medium text-charcoal">{r.h}</span>
+          <li class="flex justify-between items-center py-3 text-charcoal-soft">
+            <span>{r.d}</span><span class="font-medium text-charcoal tabular">{r.h}</span>
           </li>
         ))}
       </ul>
 
-      <h2 class="font-display text-2xl mt-10">Cara pesan</h2>
-      <ul class="mt-3 space-y-2 text-charcoal-soft">
-        <li>📞 <a href={links.waOrder} class="text-sarang-deep hover:underline">WhatsApp</a> — paling cepat, langsung ke dapur.</li>
-        <li>🛵 <a href={links.gofood} class="text-sarang-deep hover:underline">GoFood</a> · <a href={links.grabfood} class="text-sarang-deep hover:underline">GrabFood</a> · <a href={links.shopeefood} class="text-sarang-deep hover:underline">ShopeeFood</a></li>
-        <li>🏠 Mampir langsung — selalu welcome.</li>
+      <div class="hairline my-10"></div>
+
+      <p class="eyebrow">Cara pesan</p>
+      <ul class="mt-4 grid gap-2">
+        {orderOpts.map((o) => (
+          <li>
+            <a href={o.href} target="_blank" rel="noopener" class="group flex items-center gap-4 rounded-xl px-3 py-3 -mx-3 hover:bg-cream transition-colors">
+              <span class="grid place-items-center w-9 h-9 rounded-full bg-cream border border-charcoal/15 text-charcoal">
+                <Icon name={o.icon} size={16}/>
+              </span>
+              <span class="flex-1 min-w-0">
+                <span class="block font-medium text-charcoal">{o.label}</span>
+                <span class="block text-sm text-charcoal-mute">{o.d}</span>
+              </span>
+              <Icon name="arrow-up-right" size={14} class="opacity-40 group-hover:opacity-100 transition-opacity"/>
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
 
-    <div class="rounded-3xl bg-cream-deep border border-charcoal/10 min-h-[420px] flex items-center justify-center">
+    <div class="rounded-3xl bg-gradient-to-br from-cream-deep to-cream-soft border border-charcoal/10 min-h-[480px] relative overflow-hidden">
       {/* TODO(owner): embed real Google Maps iframe with pin coordinates */}
-      <div class="text-center px-6">
-        <div class="text-6xl">📍</div>
-        <p class="mt-4 font-display text-2xl text-charcoal">Sarang Dimsum</p>
-        <p class="text-charcoal-mute">Jalan Ciptaland, Tiban — Batam</p>
+      <div class="absolute inset-0 grid place-items-center">
+        <div class="text-center px-6">
+          <Icon name="map-pin" size={44} class="mx-auto text-charcoal-mute"/>
+          <p class="mt-5 font-display text-2xl text-charcoal">Sarang Dimsum</p>
+          <p class="text-charcoal-mute">Jalan Ciptaland, Tiban — Batam</p>
+        </div>
       </div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(20,17,13,0.08))]"></div>
     </div>
   </section>
 </Base>

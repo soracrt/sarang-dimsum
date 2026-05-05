@@ -1,46 +1,57 @@
 ---
 import Arfan from './Arfan.astro';
+import Icon from './Icon.astro';
 import { links } from '../lib/links';
 ---
 
-<footer class="bg-charcoal text-cream mt-24">
-  <div class="mx-auto max-w-6xl px-5 md:px-8 py-16 grid gap-10 md:grid-cols-[1.4fr_1fr_1fr] items-start">
+<footer class="bg-charcoal text-cream mt-32">
+  <div class="mx-auto max-w-6xl px-5 md:px-8 pt-20 pb-12 grid gap-12 md:grid-cols-[1.6fr_1fr_1fr] items-start">
     <div>
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-4">
         <Arfan pose="sleep" class="w-20 h-auto" />
-        <p class="font-display text-2xl">Mampir, yuk.</p>
+        <p class="font-display italic text-3xl text-cream/95">Mampir, yuk.</p>
       </div>
-      <p class="mt-4 text-cream/70 text-sm max-w-sm">
+      <p class="mt-6 text-cream/65 max-w-sm leading-relaxed">
         Dimsum hangat, harga dompetan, halal — buat seisi rumah. Dari dapur kecil di Tiban, Batam.
       </p>
+      <p class="eyebrow text-cream/40 mt-6">Buka tiap hari · 10:00 — 00:00</p>
     </div>
 
     <div>
-      <p class="text-xs uppercase tracking-widest text-cream/50 mb-3">Jelajahi</p>
-      <ul class="space-y-2 text-sm">
-        <li><a href="/menu" class="hover:text-sarang">Menu</a></li>
-        <li><a href="/lokasi" class="hover:text-sarang">Lokasi & Jam</a></li>
-        <li><a href="/sarangers" class="hover:text-sarang">Sarangers</a></li>
-        <li><a href="/sewa-steling" class="hover:text-sarang">Sewa Steling</a></li>
-        <li><a href="/tentang" class="hover:text-sarang">Tentang</a></li>
+      <p class="eyebrow text-cream/40 mb-4">Jelajahi</p>
+      <ul class="space-y-2.5">
+        <li><a href="/menu" class="hover:text-sarang transition-colors">Menu</a></li>
+        <li><a href="/lokasi" class="hover:text-sarang transition-colors">Lokasi & Jam</a></li>
+        <li><a href="/sarangers" class="hover:text-sarang transition-colors">Sarangers</a></li>
+        <li><a href="/sewa-steling" class="hover:text-sarang transition-colors">Sewa Steling</a></li>
+        <li><a href="/tentang" class="hover:text-sarang transition-colors">Tentang</a></li>
       </ul>
     </div>
 
     <div>
-      <p class="text-xs uppercase tracking-widest text-cream/50 mb-3">Pesan & ikuti</p>
-      <ul class="space-y-2 text-sm">
-        <li><a href={links.waOrder} class="hover:text-sarang">WhatsApp</a></li>
-        <li><a href={links.ig} class="hover:text-sarang">Instagram @dimsum_sarang</a></li>
-        <li><a href={links.gofood} class="hover:text-sarang">GoFood</a></li>
-        <li><a href={links.grabfood} class="hover:text-sarang">GrabFood</a></li>
-        <li><a href={links.shopeefood} class="hover:text-sarang">ShopeeFood</a></li>
+      <p class="eyebrow text-cream/40 mb-4">Pesan & ikuti</p>
+      <ul class="space-y-2.5">
+        <li>
+          <a href={links.waOrder} target="_blank" rel="noopener" class="inline-flex items-center gap-2 hover:text-sarang transition-colors">
+            <Icon name="message-circle" size={16}/> WhatsApp
+          </a>
+        </li>
+        <li>
+          <a href={links.ig} target="_blank" rel="noopener" class="inline-flex items-center gap-2 hover:text-sarang transition-colors">
+            <Icon name="instagram" size={16}/> @dimsum_sarang
+          </a>
+        </li>
+        <li><a href={links.gofood} target="_blank" rel="noopener" class="hover:text-sarang transition-colors">GoFood</a></li>
+        <li><a href={links.grabfood} target="_blank" rel="noopener" class="hover:text-sarang transition-colors">GrabFood</a></li>
+        <li><a href={links.shopeefood} target="_blank" rel="noopener" class="hover:text-sarang transition-colors">ShopeeFood</a></li>
       </ul>
     </div>
   </div>
+
   <div class="border-t border-cream/10">
-    <div class="mx-auto max-w-6xl px-5 md:px-8 py-5 text-xs text-cream/50 flex flex-wrap justify-between gap-2">
+    <div class="mx-auto max-w-6xl px-5 md:px-8 py-6 text-xs text-cream/50 flex flex-wrap justify-between gap-3">
       <span>© {new Date().getFullYear()} Sarang Dimsum. Halal, ramah keluarga, harga dompetan.</span>
-      <span>Jalan Ciptaland, Tiban — Batam</span>
+      <span class="inline-flex items-center gap-1.5"><Icon name="map-pin" size={12}/> Jalan Ciptaland, Tiban — Batam</span>
     </div>
   </div>
 </footer>

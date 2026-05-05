@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import MenuCard from '../components/MenuCard.astro';
 import AggregatorStrip from '../components/AggregatorStrip.astro';
 import Arfan from '../components/Arfan.astro';
+import Icon from '../components/Icon.astro';
 import { menu, categoryLabel, type MenuItem } from '../data/menu';
 import { links } from '../lib/links';
 
@@ -15,50 +16,56 @@ const order: MenuItem['category'][] = ['paket', 'kukus', 'goreng', 'mie', 'minum
 ---
 
 <Base title="Menu — Sarang Dimsum" description="Daftar lengkap menu dimsum halal di Sarang Dimsum Tiban Batam. Kukus, goreng, mie, paket hemat — harga dompetan.">
-  <section class="bg-cream-soft border-b border-charcoal/10">
-    <div class="mx-auto max-w-6xl px-5 md:px-8 py-12 md:py-16 grid md:grid-cols-[1.4fr_auto] gap-8 items-end">
+  <section class="border-b border-charcoal/8">
+    <div class="mx-auto max-w-6xl px-5 md:px-8 py-16 md:py-24 grid md:grid-cols-[1.5fr_auto] gap-10 items-end">
       <div>
-        <span class="text-xs uppercase tracking-[0.2em] text-charcoal-mute">Menu lengkap</span>
-        <h1 class="font-display text-4xl md:text-5xl mt-2">Pilih dimsum kesukaanmu.</h1>
-        <p class="mt-4 text-lg text-charcoal-soft max-w-xl">
+        <p class="eyebrow">Menu lengkap</p>
+        <h1 class="font-display text-5xl md:text-6xl mt-4 leading-[0.98]">Pilih dimsum <em>kesukaanmu.</em></h1>
+        <p class="mt-6 text-lg text-charcoal-soft max-w-xl leading-relaxed">
           Semua harga sudah termasuk. Mau makan di tempat, take-away, atau lewat ojol — tinggal pilih.
         </p>
       </div>
-      <Arfan pose="point" class="hidden md:block w-40 h-auto" />
+      <Arfan pose="point" class="hidden md:block w-44 h-auto" />
     </div>
   </section>
 
   {/* sticky category nav */}
-  <nav class="sticky top-16 z-30 bg-cream/90 backdrop-blur border-b border-charcoal/10">
+  <nav class="sticky top-16 z-30 bg-cream/85 backdrop-blur-md border-b border-charcoal/8">
     <div class="mx-auto max-w-6xl px-5 md:px-8 py-3 flex gap-2 overflow-x-auto text-sm">
       {order.map((c) => (
-        <a href={`#${c}`} class="rounded-full px-4 py-1.5 bg-cream-soft hover:bg-sarang/40 text-charcoal whitespace-nowrap transition-colors">{categoryLabel[c]}</a>
+        <a href={`#${c}`} class="rounded-full border border-charcoal/15 px-4 py-1.5 hover:border-charcoal hover:bg-cream-soft text-charcoal whitespace-nowrap transition-colors">{categoryLabel[c]}</a>
       ))}
     </div>
   </nav>
 
-  <section class="mx-auto max-w-6xl px-5 md:px-8 py-12 space-y-14">
+  <section class="mx-auto max-w-6xl px-5 md:px-8 py-12 md:py-16 space-y-16">
     {order.map((c) => (
       <div id={c}>
-        <h2 class="font-display text-2xl md:text-3xl mb-5">{categoryLabel[c]}</h2>
+        <div class="flex items-baseline justify-between gap-4 mb-7">
+          <h2 class="font-display text-3xl md:text-4xl">{categoryLabel[c]}</h2>
+          <span class="eyebrow tabular">{String(grouped[c]?.length || 0).padStart(2,'0')}</span>
+        </div>
         <div class="grid gap-4 md:grid-cols-2">
-          {grouped[c]?.map((m) => <MenuCard {...m} />)}
+          {grouped[c]?.map((m) => <MenuCard {...m} category={c} />)}
         </div>
       </div>
     ))}
   </section>
 
-  <section class="mx-auto max-w-3xl px-5 md:px-8 pb-24">
-    <div class="rounded-3xl bg-cream-soft border border-charcoal/10 p-6 md:p-8 text-center">
-      <h3 class="font-display text-2xl">Siap pesan?</h3>
-      <p class="mt-2 text-charcoal-soft">Pilih cara yang paling pas buat kamu.</p>
-      <div class="mt-5 flex flex-wrap justify-center gap-3">
-        <a href={links.waOrder} target="_blank" rel="noopener" class="rounded-full bg-sarang text-charcoal px-5 py-3 font-medium hover:bg-sarang-deep transition-colors">Pesan via WhatsApp</a>
+  <section class="mx-auto max-w-3xl px-5 md:px-8 pb-28">
+    <div class="rounded-3xl bg-charcoal text-cream p-8 md:p-10 text-center">
+      <p class="eyebrow text-sarang">Siap pesan?</p>
+      <h3 class="font-display text-3xl md:text-4xl mt-3">Pilih cara yang <em class="text-sarang">paling pas.</em></h3>
+      <div class="mt-7 flex flex-wrap justify-center gap-3">
+        <a href={links.waOrder} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-sarang text-charcoal px-7 py-3.5 font-medium hover:bg-sarang-deep transition-colors">
+          <Icon name="message-circle" size={16}/>
+          Pesan via WhatsApp
+        </a>
       </div>
-      <div class="mt-5 max-w-sm mx-auto">
-        <AggregatorStrip />
+      <div class="mt-7 max-w-md mx-auto">
+        <AggregatorStrip variant="dark"/>
       </div>
-      <p class="mt-4 text-xs text-charcoal-mute">Harga & ketersediaan menu menyesuaikan stok harian.</p>
+      <p class="mt-6 text-xs text-cream/50">Harga & ketersediaan menyesuaikan stok harian.</p>
     </div>
   </section>
 </Base>

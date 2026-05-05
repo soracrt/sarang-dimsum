@@ -12,7 +12,7 @@ export const links = {
   gofood: 'https://gofood.co.id/batam/restaurant/sarang-dimsum',
   grabfood: 'https://food.grab.com/id/id/restaurant/sarang-dimsum',
   shopeefood: 'https://shopee.co.id/sarangdimsum',
-  waOrder: wa('Halo Sarang, mau pesan dimsum buat hari ini 🥟'),
+  waOrder: wa('Halo Sarang, mau pesan dimsum buat hari ini.'),
   waReseller: wa('Halo Sarang, saya tertarik soal Sewa Steling. Boleh info lebih lanjut?'),
   waGeneral: wa('Halo Sarang, mau tanya-tanya dulu, boleh ya?'),
 };

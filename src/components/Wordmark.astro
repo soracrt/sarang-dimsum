@@ -1,25 +1,23 @@
 ---
-// Reconstructed Sarang Dimsum wordmark — yellow on black, with Arfan perched on the "A".
+// Reconstructed Sarang Dimsum wordmark — typographic, with Arfan perched on the "A".
 // Demo asset; original logo from owner replaces this in production.
 interface Props {
   class?: string;
-  inverse?: boolean; // light-on-dark contexts
+  inverse?: boolean;
 }
 const { class: className = '', inverse = false } = Astro.props;
-const bg = inverse ? '#FAF6EE' : '#1F1B17';
-const fg = inverse ? '#1F1B17' : '#F4C430';
+const fg = inverse ? '#F8F2E5' : '#14110D';
+const accent = '#F0B429';
 ---
 
-<svg class={className} viewBox="0 0 240 80" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sarang Dimsum">
-  <rect width="240" height="80" rx="10" fill={bg}/>
-  <text x="20" y="42" font-family="Fraunces, serif" font-size="26" font-weight="700" fill={fg} letter-spacing="0.02em">SARANG</text>
-  <text x="20" y="68" font-family="Fraunces, serif" font-size="20" font-weight="500" fill={fg} letter-spacing="0.06em">DIMSUM</text>
-  {/* tiny Arfan perched on the A in SARANG (the A around x=72) */}
-  <g transform="translate(64 8) scale(0.18)">
-    <path d="M30 38c0-12 8-22 22-22s22 9 22 21c8-2 16 4 16 13 0 7-6 12-13 12H27c-7 0-13-5-13-12 0-9 8-15 16-12z" fill={fg} stroke={fg} stroke-width="3"/>
-    <ellipse cx="52" cy="84" rx="22" ry="20" fill={fg}/>
-    <circle cx="44" cy="82" r="3" fill={bg}/>
-    <circle cx="60" cy="82" r="3" fill={bg}/>
-    <path d="M30 110c0-6 10-10 22-10s22 4 22 10v22H30z" fill={fg}/>
+<svg class={className} viewBox="0 0 200 56" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sarang Dimsum">
+  {/* tiny chef perched above the 'A' */}
+  <g transform="translate(53 0)">
+    <path d="M2 12c0-6 4-11 11-11s11 5 11 10c4-1 8 2 8 6 0 3-3 5-6 5H1c-3 0-5-2-5-5 0-4 4-7 7-6z" fill={accent} stroke={fg} stroke-width="1.2"/>
+    <circle cx="9" cy="14" r="1" fill={fg}/>
+    <circle cx="17" cy="14" r="1" fill={fg}/>
   </g>
+
+  <text x="0" y="36" font-family="Fraunces, serif" font-size="28" font-weight="600" fill={fg} letter-spacing="-0.02em">Sarang</text>
+  <text x="0" y="52" font-family="Inter, sans-serif" font-size="10" font-weight="500" fill={fg} letter-spacing="0.32em" opacity="0.7">DIMSUM</text>
 </svg>

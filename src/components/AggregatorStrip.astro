@@ -1,33 +1,37 @@
 ---
+import Icon from './Icon.astro';
 import { links } from '../lib/links';
-interface Props { variant?: 'light' | 'dark'; }
-const { variant = 'light' } = Astro.props;
-const base = variant === 'dark'
-  ? 'bg-charcoal-soft text-cream border-cream/10'
-  : 'bg-cream-soft text-charcoal border-charcoal/10';
+
+interface Props { variant?: 'light' | 'dark'; compact?: boolean; }
+const { variant = 'light', compact = false } = Astro.props;
+
+const wrap = variant === 'dark'
+  ? 'border-cream/15 text-cream'
+  : 'border-charcoal/10 text-charcoal';
 const tile = variant === 'dark'
-  ? 'bg-charcoal/40 hover:bg-charcoal/70'
-  : 'bg-cream hover:bg-cream-deep';
+  ? 'border-cream/15 hover:border-sarang hover:bg-cream/5'
+  : 'border-charcoal/10 hover:border-charcoal hover:bg-cream-soft';
+
 const apps = [
-  { name: 'GoFood', href: links.gofood, color: '#00AA13' },
-  { name: 'GrabFood', href: links.grabfood, color: '#00B14F' },
-  { name: 'ShopeeFood', href: links.shopeefood, color: '#EE4D2D' },
+  { name: 'GoFood',    href: links.gofood },
+  { name: 'GrabFood',  href: links.grabfood },
+  { name: 'ShopeeFood',href: links.shopeefood },
 ];
 ---
 
-<div class={`rounded-2xl border ${base} px-4 py-3`}>
-  <p class="text-[11px] uppercase tracking-widest opacity-60 mb-2">Pesan via ojol favoritmu</p>
+<div class={`${wrap} ${compact ? '' : 'border rounded-2xl p-4'}`}>
+  {!compact && <p class="eyebrow mb-3">Atau via ojol</p>}
   <div class="flex flex-wrap gap-2">
     {apps.map((a) => (
       <a
         href={a.href}
         target="_blank"
         rel="noopener"
-        class={`flex items-center gap-2 rounded-xl px-3 py-2 transition-colors ${tile}`}
+        class={`group inline-flex items-center gap-2 rounded-full border ${tile} px-4 py-2 transition-colors`}
         aria-label={`Pesan via ${a.name}`}
       >
-        <span class="w-2.5 h-2.5 rounded-full" style={`background:${a.color}`}></span>
-        <span class="text-sm font-medium">{a.name}</span>
+        <span class="font-display text-sm tracking-tight">{a.name}</span>
+        <Icon name="arrow-up-right" size={14} class="opacity-50 group-hover:opacity-100 transition-opacity" />
       </a>
     ))}
   </div>

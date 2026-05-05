@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Arfan from '../components/Arfan.astro';
+import Icon from '../components/Icon.astro';
 import AggregatorStrip from '../components/AggregatorStrip.astro';
 import MenuCard from '../components/MenuCard.astro';
 import ArfanWave from '../components/ArfanWave.astro';
@@ -14,70 +15,92 @@ const heroItems = menu.filter((m) => m.hero).slice(0, 6);
   <ArfanWave />
 
   {/* HERO */}
-  <section class="relative overflow-hidden">
-    <div class="mx-auto max-w-6xl px-5 md:px-8 pt-12 md:pt-20 pb-16 grid md:grid-cols-[1.3fr_1fr] gap-10 items-center">
-      <div>
-        <span class="inline-block text-xs uppercase tracking-[0.2em] text-charcoal-mute mb-5">Halal · Tiban, Batam</span>
-        <h1 class="font-display text-4xl md:text-5xl leading-[1.05] text-charcoal">
-          Dimsum hangat, harga dompetan —
-          <span class="italic text-sarang-deep">buat seisi rumah.</span>
-        </h1>
-        <p class="mt-5 text-lg text-charcoal-soft max-w-xl">
-          Halal, banyak varian, ramah keluarga. Dari dapur kecil di Tiban, langsung ke meja kamu — atau lewat ojol favoritmu.
-        </p>
+  <section class="relative">
+    <div class="mx-auto max-w-6xl px-5 md:px-8 pt-14 md:pt-24 pb-20 md:pb-28">
+      <div class="grid md:grid-cols-[1.2fr_1fr] gap-12 md:gap-16 items-end">
+        <div>
+          <p class="eyebrow rise rise-1">
+            <span class="inline-flex items-center gap-2">
+              <Icon name="shield-check" size={14}/> Halal · Tiban, Batam · Sejak 2024
+            </span>
+          </p>
+          <h1 class="rise rise-2 font-display text-[2.6rem] md:text-[4.2rem] leading-[0.98] mt-6 text-charcoal">
+            Dimsum hangat,<br/>
+            harga dompetan —<br/>
+            <em class="text-charcoal">buat seisi rumah.</em>
+          </h1>
+          <p class="rise rise-3 mt-7 text-lg md:text-xl text-charcoal-soft max-w-xl leading-relaxed">
+            Halal, banyak varian, ramah keluarga. Dari dapur kecil di Tiban — langsung ke meja kamu, atau lewat ojol favoritmu.
+          </p>
 
-        <div class="mt-7 flex flex-wrap gap-3">
-          <a href="/menu" class="inline-flex items-center gap-2 rounded-full bg-charcoal text-cream px-6 py-3 font-medium hover:bg-charcoal-soft transition-colors">
-            Lihat Menu
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
-          <a href={links.waOrder} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-sarang text-charcoal px-6 py-3 font-medium hover:bg-sarang-deep transition-colors">
-            Pesan via WhatsApp
-          </a>
+          <div class="rise rise-4 mt-9 flex flex-wrap gap-3 items-center">
+            <a href="/menu" class="group inline-flex items-center gap-2 rounded-full bg-charcoal text-cream px-7 py-3.5 font-medium hover:bg-charcoal-soft transition-colors">
+              Lihat Menu
+              <Icon name="arrow-right" size={16} class="group-hover:translate-x-0.5 transition-transform"/>
+            </a>
+            <a href={links.waOrder} target="_blank" rel="noopener" class="group inline-flex items-center gap-2 rounded-full border border-charcoal/20 px-7 py-3.5 font-medium hover:border-charcoal transition-colors">
+              <Icon name="message-circle" size={16}/>
+              Pesan via WhatsApp
+            </a>
+          </div>
         </div>
 
-        <div class="mt-8 max-w-md">
-          <AggregatorStrip />
+        <div class="relative hidden md:block">
+          <div class="absolute -top-16 -right-6 w-[24rem] h-[24rem] rounded-full bg-sarang-soft blur-3xl pointer-events-none"></div>
+          <div class="relative">
+            <Arfan pose="wave" class="w-72 h-auto mx-auto" />
+          </div>
         </div>
-
-        <p class="mt-5 text-sm text-charcoal-mute">atau scroll buat lihat menunya 👇</p>
       </div>
 
-      <div class="hidden md:flex justify-end">
-        <Arfan pose="wave" class="w-72 h-auto" />
+      {/* trust strip + scroll cue */}
+      <div class="mt-16 md:mt-20 flex flex-wrap items-end justify-between gap-6 border-t border-charcoal/10 pt-7">
+        <AggregatorStrip compact={true}/>
+        <div class="hidden md:flex items-center gap-2 text-charcoal-mute text-sm">
+          <span>scroll buat lihat menunya</span>
+          <Icon name="arrow-right" size={14} class="rotate-90"/>
+        </div>
       </div>
     </div>
   </section>
 
   {/* TIGA JANJI */}
-  <section class="bg-cream-soft border-y border-charcoal/10">
-    <div class="mx-auto max-w-6xl px-5 md:px-8 py-16 grid gap-8 md:grid-cols-3">
-      {[
-        { icon: '🕌', t: 'Halal & higienis', d: 'Bahan dipilih, dapur terjaga. Aman buat keluarga.' },
-        { icon: '🥟', t: 'Banyak varian, harga dompetan', d: 'Mulai dari Rp 14rb. Ada yang kukus, goreng, sampai mie.' },
-        { icon: '👨‍👩‍👧', t: 'Ramah keluarga', d: 'Porsi enak buat berdua, paket hemat buat seisi rumah.' },
-      ].map((j) => (
-        <div class="flex gap-4">
-          <div class="shrink-0 w-12 h-12 rounded-xl bg-sarang/40 flex items-center justify-center text-2xl">{j.icon}</div>
-          <div>
-            <h3 class="font-display text-xl">{j.t}</h3>
-            <p class="text-charcoal-mute mt-1">{j.d}</p>
-          </div>
+  <section class="bg-cream-soft border-y border-charcoal/8">
+    <div class="mx-auto max-w-6xl px-5 md:px-8 py-20 md:py-24">
+      <div class="grid md:grid-cols-[auto_1fr] gap-10 md:gap-16 items-start">
+        <div class="md:max-w-xs">
+          <p class="eyebrow">Tiga janji</p>
+          <h2 class="font-display text-3xl md:text-4xl mt-3">Yang kami pegang, tiap harinya.</h2>
         </div>
-      ))}
+        <div class="grid gap-10 md:grid-cols-3 md:pt-3">
+          {[
+            { icon: 'shield-check' as const, t: 'Halal & higienis', d: 'Bahan dipilih, dapur terjaga. Aman buat keluarga.' },
+            { icon: 'wallet' as const,       t: 'Harga dompetan',  d: 'Mulai dari Rp 14rb. Banyak varian, gak bikin mikir dua kali.' },
+            { icon: 'users-round' as const,  t: 'Ramah keluarga',  d: 'Porsi pas berdua, paket hemat buat seisi rumah.' },
+          ].map((j) => (
+            <div class="relative">
+              <div class="w-11 h-11 rounded-full bg-cream border border-charcoal/15 grid place-items-center text-charcoal">
+                <Icon name={j.icon} size={20}/>
+              </div>
+              <h3 class="font-display text-xl mt-5">{j.t}</h3>
+              <p class="text-charcoal-mute mt-2 leading-relaxed">{j.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 
   {/* MENU TEASER */}
-  <section class="mx-auto max-w-6xl px-5 md:px-8 py-20">
-    <div class="flex items-end justify-between gap-6 mb-8 flex-wrap">
+  <section class="mx-auto max-w-6xl px-5 md:px-8 py-24 md:py-28">
+    <div class="flex items-end justify-between gap-6 mb-12 flex-wrap">
       <div>
-        <span class="text-xs uppercase tracking-[0.2em] text-charcoal-mute">Yang paling dicari</span>
-        <h2 class="font-display text-3xl md:text-4xl mt-2">Andalan dari dapur Sarang</h2>
+        <p class="eyebrow">Yang paling dicari</p>
+        <h2 class="font-display text-4xl md:text-5xl mt-3">Andalan dari <em>dapur Sarang.</em></h2>
       </div>
-      <a href="/menu" class="inline-flex items-center gap-2 text-charcoal-soft hover:text-sarang-deep font-medium">
+      <a href="/menu" class="group inline-flex items-center gap-2 text-charcoal hover:text-charcoal-soft font-medium border-b border-charcoal/30 hover:border-charcoal pb-1 transition-colors">
         Lihat semua menu
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        <Icon name="arrow-right" size={14} class="group-hover:translate-x-0.5 transition-transform"/>
       </a>
     </div>
     <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -86,26 +109,40 @@ const heroItems = menu.filter((m) => m.hero).slice(0, 6);
   </section>
 
   {/* SEWA STELING */}
-  <section class="bg-charcoal text-cream relative overflow-hidden">
-    <div class="mx-auto max-w-6xl px-5 md:px-8 py-20 grid md:grid-cols-[1fr_auto] gap-10 items-center">
+  <section class="relative bg-charcoal text-cream overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.06] pointer-events-none">
+      <div class="absolute -top-32 -left-32 w-[40rem] h-[40rem] rounded-full bg-sarang blur-3xl"></div>
+      <div class="absolute -bottom-32 -right-32 w-[40rem] h-[40rem] rounded-full bg-sarang blur-3xl"></div>
+    </div>
+    <div class="relative mx-auto max-w-6xl px-5 md:px-8 py-24 md:py-32 grid md:grid-cols-[1.4fr_auto] gap-12 items-center">
       <div class="max-w-2xl">
-        <span class="inline-block text-xs uppercase tracking-[0.2em] text-sarang mb-4">Untuk pemilik warung</span>
-        <h2 class="font-display text-3xl md:text-4xl text-cream leading-tight">
-          Punya warung? <span class="italic text-sarang">Sewa stelingnya, jualan dimsumnya.</span>
+        <p class="eyebrow text-sarang">Untuk pemilik usaha</p>
+        <h2 class="font-display text-4xl md:text-5xl text-cream leading-[1.02] mt-4">
+          Punya warung?<br/>
+          <em class="text-sarang">Sewa stelingnya, jualan dimsumnya.</em>
         </h2>
-        <p class="mt-5 text-cream/80 text-lg">
+        <p class="mt-6 text-cream/75 text-lg leading-relaxed">
           Kami sediakan steling, dimsumnya, dan pelatihan singkat. Kamu fokus jualan. Cocok buat warung kopi, ruko, food court, atau toko ramai yang mau nambah lini halal cepat saji.
         </p>
-        <ul class="mt-6 space-y-2 text-cream/80">
-          <li class="flex gap-3"><span class="text-sarang">✓</span> Skema sewa fleksibel — mulai dari per bulan.</li>
-          <li class="flex gap-3"><span class="text-sarang">✓</span> Supply dimsum rutin, harga mitra.</li>
-          <li class="flex gap-3"><span class="text-sarang">✓</span> Pelatihan + standar kebersihan.</li>
+        <ul class="mt-8 space-y-3 text-cream/80">
+          {[
+            'Skema sewa fleksibel — mulai dari per bulan.',
+            'Supply dimsum rutin, harga mitra.',
+            'Pelatihan + standar kebersihan.',
+          ].map((t) => (
+            <li class="flex gap-3 items-start">
+              <span class="grid place-items-center w-5 h-5 rounded-full bg-sarang text-charcoal mt-0.5"><Icon name="check" size={12} strokeWidth={2.5}/></span>
+              {t}
+            </li>
+          ))}
         </ul>
-        <div class="mt-7 flex flex-wrap gap-3">
-          <a href="/sewa-steling" class="inline-flex items-center gap-2 rounded-full bg-sarang text-charcoal px-6 py-3 font-medium hover:bg-sarang-deep transition-colors">
+        <div class="mt-9 flex flex-wrap gap-3">
+          <a href="/sewa-steling" class="inline-flex items-center gap-2 rounded-full bg-sarang text-charcoal px-7 py-3.5 font-medium hover:bg-sarang-deep transition-colors">
             Lihat skema lengkap
+            <Icon name="arrow-right" size={16}/>
           </a>
-          <a href={links.waReseller} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-cream/30 px-6 py-3 font-medium hover:bg-cream/10 transition-colors">
+          <a href={links.waReseller} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-cream/25 px-7 py-3.5 font-medium hover:bg-cream/5 transition-colors">
+            <Icon name="message-circle" size={16}/>
             Tanya via WhatsApp
           </a>
         </div>
@@ -115,49 +152,75 @@ const heroItems = menu.filter((m) => m.hero).slice(0, 6);
   </section>
 
   {/* SARANGERS */}
-  <section class="mx-auto max-w-6xl px-5 md:px-8 py-20">
+  <section class="mx-auto max-w-6xl px-5 md:px-8 py-24 md:py-28">
     <div class="text-center max-w-2xl mx-auto">
-      <span class="text-xs uppercase tracking-[0.2em] text-charcoal-mute">Komunitas pelanggan</span>
-      <h2 class="font-display text-3xl md:text-4xl mt-2">#Sarangers</h2>
-      <p class="mt-3 text-charcoal-soft">
-        Tag <a href={links.ig} class="text-sarang-deep underline underline-offset-4">@dimsum_sarang</a> di IG kamu — biar masuk dinding ini.
+      <p class="eyebrow">Komunitas pelanggan</p>
+      <h2 class="font-display text-4xl md:text-5xl mt-3">#<em>Sarangers</em></h2>
+      <p class="mt-5 text-charcoal-soft text-lg">
+        Tag <a href={links.ig} class="text-charcoal underline underline-offset-4 decoration-sarang decoration-2">@dimsum_sarang</a> di IG kamu — biar masuk dinding ini.
       </p>
     </div>
-    <div class="mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-      {Array.from({ length: 6 }).map((_, i) => (
-        <a href={links.ig} class="aspect-square rounded-2xl bg-cream-soft border border-charcoal/10 hover:border-sarang flex items-center justify-center text-3xl transition-colors" aria-label={`Foto Sarangers #${i + 1}`}>
-          {['🥟','🦐','🍜','🥯','🍗','🌯'][i]}
-        </a>
-      ))}
+    <div class="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+      {Array.from({ length: 6 }).map((_, i) => {
+        const tones = [
+          'from-cream-deep to-cream-soft',
+          'from-sarang/30 to-cream-deep',
+          'from-charcoal/85 to-charcoal',
+          'from-cream-soft to-cream-deep',
+          'from-sarang/20 to-cream-soft',
+          'from-cream-deep to-sarang/25',
+        ];
+        const dark = i === 2;
+        return (
+          <a href={links.ig} target="_blank" rel="noopener" class={`group relative aspect-square rounded-2xl bg-gradient-to-br ${tones[i]} overflow-hidden border border-charcoal/8 hover:border-charcoal/25 transition-colors`} aria-label={`Foto Sarangers #${i + 1}`}>
+            <div class={`absolute inset-0 grid place-items-center font-display text-5xl ${dark ? 'text-cream/30' : 'text-charcoal/15'}`}>S</div>
+            <div class={`absolute bottom-3 left-3 right-3 flex items-center justify-between ${dark ? 'text-cream/85' : 'text-charcoal/70'}`}>
+              <span class="text-xs">@sarangers</span>
+              <Icon name="arrow-up-right" size={14}/>
+            </div>
+          </a>
+        );
+      })}
     </div>
     {/* TODO(owner): wire up real IG embed or scrape feed */}
   </section>
 
   {/* LOKASI & JAM */}
-  <section class="bg-cream-soft border-y border-charcoal/10">
-    <div class="mx-auto max-w-6xl px-5 md:px-8 py-16 grid md:grid-cols-2 gap-10 items-center">
+  <section class="bg-cream-soft border-y border-charcoal/8">
+    <div class="mx-auto max-w-6xl px-5 md:px-8 py-20 md:py-24 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
       <div>
-        <span class="text-xs uppercase tracking-[0.2em] text-charcoal-mute">Mampir langsung</span>
-        <h2 class="font-display text-3xl md:text-4xl mt-2">Jalan Ciptaland, Tiban — Batam</h2>
-        <p class="mt-4 text-charcoal-soft text-lg">
-          Buka tiap hari, <strong>jam 10:00 sampai tengah malam</strong>. Pas buat sarapan siang sampai begadang malam.
-        </p>
-        <div class="mt-6 flex flex-wrap gap-3">
+        <p class="eyebrow">Mampir langsung</p>
+        <h2 class="font-display text-4xl md:text-5xl mt-3 leading-[1.02]">
+          Jalan Ciptaland,<br/>
+          <em>Tiban — Batam.</em>
+        </h2>
+        <div class="mt-8 inline-flex items-center gap-3 rounded-full bg-cream border border-charcoal/15 px-5 py-2.5">
+          <Icon name="clock" size={16} class="text-charcoal-mute"/>
+          <span class="font-medium">Buka tiap hari</span>
+          <span class="text-charcoal-mute">·</span>
+          <span class="tabular text-charcoal-mute">10:00 — 00:00</span>
+        </div>
+        <div class="mt-7 flex flex-wrap gap-3">
           <a href={links.maps} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-charcoal text-cream px-6 py-3 font-medium hover:bg-charcoal-soft transition-colors">
+            <Icon name="map-pin" size={16}/>
             Buka di Google Maps
           </a>
-          <a href="/lokasi" class="inline-flex items-center gap-2 rounded-full border border-charcoal/20 px-6 py-3 font-medium hover:bg-cream transition-colors">
+          <a href="/lokasi" class="inline-flex items-center gap-2 rounded-full border border-charcoal/20 px-6 py-3 font-medium hover:border-charcoal transition-colors">
             Detail lokasi
+            <Icon name="arrow-right" size={14}/>
           </a>
         </div>
       </div>
-      <div class="aspect-[4/3] rounded-3xl bg-cream-deep border border-charcoal/10 flex items-center justify-center text-charcoal-mute">
+      <div class="aspect-[5/4] rounded-3xl bg-gradient-to-br from-cream-deep to-cream-soft border border-charcoal/10 relative overflow-hidden">
         {/* TODO(owner): embed real Google Maps iframe with exact pin */}
-        <div class="text-center px-6">
-          <div class="text-5xl">📍</div>
-          <p class="mt-3 font-medium text-charcoal">Jalan Ciptaland, Tiban</p>
-          <p class="text-sm">Batam, Kepulauan Riau</p>
+        <div class="absolute inset-0 grid place-items-center">
+          <div class="text-center px-6">
+            <Icon name="map-pin" size={36} class="mx-auto text-charcoal-mute"/>
+            <p class="mt-4 font-display text-2xl text-charcoal">Sarang Dimsum</p>
+            <p class="text-charcoal-mute mt-1">Jalan Ciptaland, Tiban</p>
+          </div>
         </div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(20,17,13,0.08))]"></div>
       </div>
     </div>
   </section>

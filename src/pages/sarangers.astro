@@ -1,32 +1,54 @@
 ---
 import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
 import { links } from '../lib/links';
 
-const tiles = ['🥟','🦐','🍜','🥯','🍗','🌯','🍱','👨‍👩‍👧','🍵','🍫','🥢','☕'];
+const tones = [
+  'from-cream-deep to-cream-soft',
+  'from-sarang/30 to-cream-deep',
+  'from-charcoal/85 to-charcoal',
+  'from-cream-soft to-cream-deep',
+  'from-sarang/20 to-cream-soft',
+  'from-cream-deep to-sarang/25',
+  'from-cream-soft to-cream',
+  'from-sarang/15 to-cream-deep',
+  'from-charcoal/85 to-charcoal',
+  'from-cream-deep to-cream-soft',
+  'from-sarang/25 to-cream-soft',
+  'from-cream to-cream-deep',
+];
 ---
 
 <Base title="Sarangers — Komunitas Sarang Dimsum" description="Galeri foto pelanggan Sarang Dimsum di IG. Tag @dimsum_sarang biar masuk dinding ini.">
-  <section class="mx-auto max-w-6xl px-5 md:px-8 py-12 md:py-16 text-center">
-    <span class="text-xs uppercase tracking-[0.2em] text-charcoal-mute">Komunitas</span>
-    <h1 class="font-display text-4xl md:text-5xl mt-2">Halo, <span class="italic text-sarang-deep">Sarangers</span>.</h1>
-    <p class="mt-4 text-lg text-charcoal-soft max-w-2xl mx-auto">
+  <section class="mx-auto max-w-4xl px-5 md:px-8 py-16 md:py-24 text-center">
+    <p class="eyebrow">Komunitas</p>
+    <h1 class="font-display text-5xl md:text-6xl mt-4 leading-[0.98]">Halo, <em>Sarangers.</em></h1>
+    <p class="mt-6 text-lg text-charcoal-soft max-w-2xl mx-auto leading-relaxed">
       Foto-foto kamu makan dimsum sama keluarga, sama temen, atau sendirian sambil nonton drakor — semua masuk sini.
-      Tag <a href={links.ig} class="text-sarang-deep underline underline-offset-4">@dimsum_sarang</a> di IG, biar kami repost.
+      Tag <a href={links.ig} target="_blank" rel="noopener" class="text-charcoal underline underline-offset-4 decoration-sarang decoration-2">@dimsum_sarang</a> di IG, biar kami repost.
     </p>
-    <a href={links.ig} target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 rounded-full bg-charcoal text-cream px-6 py-3 font-medium hover:bg-charcoal-soft transition-colors">
+    <a href={links.ig} target="_blank" rel="noopener" class="mt-8 inline-flex items-center gap-2 rounded-full bg-charcoal text-cream px-6 py-3 font-medium hover:bg-charcoal-soft transition-colors">
+      <Icon name="instagram" size={16}/>
       Ikuti di Instagram
     </a>
   </section>
 
-  <section class="mx-auto max-w-6xl px-5 md:px-8 pb-24">
+  <section class="mx-auto max-w-6xl px-5 md:px-8 pb-28">
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-      {tiles.map((t, i) => (
-        <a href={links.ig} class="aspect-square rounded-2xl bg-cream-soft border border-charcoal/10 hover:border-sarang flex items-center justify-center text-4xl transition-colors" aria-label={`Foto Sarangers #${i + 1}`}>
-          {t}
-        </a>
-      ))}
+      {tones.map((t, i) => {
+        const dark = t.includes('charcoal');
+        return (
+          <a href={links.ig} target="_blank" rel="noopener" class={`group relative aspect-square rounded-2xl bg-gradient-to-br ${t} overflow-hidden border border-charcoal/8 hover:border-charcoal/25 transition-colors`} aria-label={`Foto Sarangers #${i + 1}`}>
+            <div class={`absolute inset-0 grid place-items-center font-display text-6xl ${dark ? 'text-cream/30' : 'text-charcoal/15'}`}>S</div>
+            <div class={`absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs ${dark ? 'text-cream/85' : 'text-charcoal/70'}`}>
+              <span>@sarangers</span>
+              <Icon name="arrow-up-right" size={14}/>
+            </div>
+          </a>
+        );
+      })}
     </div>
     {/* TODO(owner): replace tile grid with real IG feed (instafeed/embedSocial/Behold) */}
-    <p class="mt-8 text-center text-sm text-charcoal-mute">Setiap minggu, kami pilih foto favorit untuk dipajang di sini.</p>
+    <p class="mt-10 text-center text-sm text-charcoal-mute">Setiap minggu, kami pilih foto favorit untuk dipajang di sini.</p>
   </section>
 </Base>

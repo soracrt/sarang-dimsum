@@ -11,6 +11,10 @@
   --color-sarang: #F0B429;
   --color-sarang-deep: #C8901C;
   --color-sarang-soft: rgba(240, 180, 41, 0.14);
+  /* deep auspicious red — Lille-burger-energy bg, also reads "Chinese halal dimsum" */
+  --color-red: #7A1A1A;
+  --color-red-deep: #5A1010;
+  --color-red-soft: #921F1F;
 
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;
   --font-display-x: "Anton", "Arial Narrow", "Impact", sans-serif;

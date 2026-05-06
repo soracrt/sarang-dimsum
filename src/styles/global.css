@@ -177,7 +177,7 @@ body::-webkit-scrollbar { width: 0; height: 0; display: none; }
   right: 6px;
   width: 4px;
   height: 100vh;
-  z-index: 100;
+  z-index: 40;
   pointer-events: none;
 }
 #custom-scrollbar .thumb {

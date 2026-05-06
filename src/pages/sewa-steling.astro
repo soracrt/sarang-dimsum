@@ -21,11 +21,12 @@ const steps = [
 <Base hideHeader title="Sewa Steling — Sarang Dimsum" description="Skema sewa steling dimsum Sarang. Cocok buat warung kopi, ruko, atau pemilik usaha yang mau nambah lini halal cepat saji.">
   <div aria-hidden="true" class="tarp-thin h-3"></div>
 
+  <TopNav variant="red"/>
+
   {/* RED HERO */}
   <section class="relative bg-red text-cream overflow-hidden">
-    <TopNav variant="red"/>
 
-    <div class="absolute top-32 right-6 md:right-12 z-10 pointer-events-none">
+    <div class="absolute top-10 right-6 md:right-12 z-10 pointer-events-none">
       <div class="stamp stamp-tilt-l text-sarang text-base md:text-xl">B2B · Mitra Sarang</div>
     </div>
 
@@ -45,17 +46,14 @@ const steps = [
         Cocok buat usaha yang mau nambah lini halal cepat saji tanpa pusing soal resep dan supplier.
       </p>
 
-      <div class="mt-9 flex items-center gap-5 flex-wrap">
-        <a href={links.waReseller} target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-sarang text-red-deep px-6 py-3 text-sm uppercase tracking-[0.2em] font-bold hover:bg-cream transition-colors">
+      <div class="mt-9 flex items-center gap-3 flex-wrap">
+        <a href={links.waReseller} target="_blank" rel="noopener" class="btn btn-sarang btn-lg">
           <Icon name="message-circle" size={14}/>
           Tanya Skema via WA
         </a>
-        <a href="#form" class="hand text-sarang text-2xl md:text-3xl hover:text-cream transition-colors inline-flex items-center gap-2">
-          atau isi form di bawah
-          <svg width="42" height="22" viewBox="0 0 60 30" fill="none" class="-mb-1">
-            <path d="M3 18 C 14 6, 30 4, 48 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
-            <path d="M40 8 L 48 14 L 42 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          </svg>
+        <a href="#form" class="btn btn-cream btn-lg">
+          Isi Form di Bawah
+          <Icon name="arrow-right" size={14}/>
         </a>
       </div>
     </div>
@@ -136,16 +134,19 @@ const steps = [
       </div>
 
       <form
+        id="seling-form"
+        novalidate
         class="md:col-span-7 grid gap-5 bg-cream-soft border-2 border-charcoal p-6 md:p-8"
-        onsubmit="event.preventDefault(); const f=event.target; const msg=`Halo Sarang, saya tertarik Sewa Steling.%0A%0ANama: ${f.nama.value}%0ALokasi tempat: ${f.lokasi.value}%0AJenis usaha: ${f.usaha.value}%0ACatatan: ${f.catatan.value}`; window.open('https://wa.me/6281234567890?text=' + msg, '_blank');"
       >
         <label class="grid gap-1.5">
           <span class="text-[0.6875rem] uppercase tracking-[0.22em] text-charcoal-mute font-semibold">Nama</span>
-          <input name="nama" required class="border-2 border-charcoal/20 bg-cream px-4 py-3.5 focus:border-charcoal focus:outline-none transition-colors text-charcoal" placeholder="Nama kamu" />
+          <input name="nama" data-required data-error="Nama wajib diisi." class="border-2 border-charcoal/20 bg-cream px-4 py-3.5 focus:border-charcoal focus:outline-none transition-colors text-charcoal" placeholder="Nama kamu" />
+          <span class="form-error" data-error-for="nama">Nama wajib diisi.</span>
         </label>
         <label class="grid gap-1.5">
           <span class="text-[0.6875rem] uppercase tracking-[0.22em] text-charcoal-mute font-semibold">Lokasi tempat usaha</span>
-          <input name="lokasi" required class="border-2 border-charcoal/20 bg-cream px-4 py-3.5 focus:border-charcoal focus:outline-none transition-colors text-charcoal" placeholder="Misal: Batam Center, Nagoya, Tiban" />
+          <input name="lokasi" data-required data-error="Lokasi wajib diisi." class="border-2 border-charcoal/20 bg-cream px-4 py-3.5 focus:border-charcoal focus:outline-none transition-colors text-charcoal" placeholder="Misal: Batam Center, Nagoya, Tiban" />
+          <span class="form-error" data-error-for="lokasi">Lokasi wajib diisi.</span>
         </label>
         <label class="grid gap-1.5">
           <span class="text-[0.6875rem] uppercase tracking-[0.22em] text-charcoal-mute font-semibold">Jenis usaha</span>
@@ -155,12 +156,47 @@ const steps = [
           <span class="text-[0.6875rem] uppercase tracking-[0.22em] text-charcoal-mute font-semibold">Catatan (opsional)</span>
           <textarea name="catatan" rows="3" class="border-2 border-charcoal/20 bg-cream px-4 py-3.5 focus:border-charcoal focus:outline-none transition-colors resize-none text-charcoal" placeholder="Apa pun yang ingin kamu sampaikan dulu."></textarea>
         </label>
-        <button type="submit" class="mt-2 inline-flex items-center justify-center gap-2 bg-red text-cream px-6 py-4 text-sm uppercase tracking-[0.2em] font-bold hover:bg-red-deep transition-colors">
+        <button type="submit" class="btn btn-red btn-lg mt-2">
           <Icon name="message-circle" size={14}/>
           Kirim via WhatsApp
         </button>
         <p class="text-xs text-charcoal-mute text-center">Form ini akan membuka WhatsApp dengan pesan terisi otomatis.</p>
       </form>
+
+      <script is:inline>
+        (() => {
+          const form = document.getElementById('seling-form');
+          if (!form) return;
+          const showError = (name, show) => {
+            const msg = form.querySelector(`[data-error-for="${name}"]`);
+            const input = form.querySelector(`[name="${name}"]`);
+            if (msg) msg.classList.toggle('is-visible', show);
+            if (input) input.classList.toggle('is-invalid', show);
+          };
+          form.addEventListener('input', (e) => {
+            const t = e.target;
+            if (t.dataset.required) showError(t.name, !t.value.trim());
+          });
+          form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let firstInvalid = null;
+            form.querySelectorAll('[data-required]').forEach((el) => {
+              const empty = !el.value.trim();
+              showError(el.name, empty);
+              if (empty && !firstInvalid) firstInvalid = el;
+            });
+            if (firstInvalid) { firstInvalid.focus(); return; }
+            const f = form;
+            const msg =
+              `Halo Sarang, saya tertarik Sewa Steling.%0A%0A` +
+              `Nama: ${encodeURIComponent(f.nama.value)}%0A` +
+              `Lokasi tempat: ${encodeURIComponent(f.lokasi.value)}%0A` +
+              `Jenis usaha: ${encodeURIComponent(f.usaha.value)}%0A` +
+              `Catatan: ${encodeURIComponent(f.catatan.value)}`;
+            window.open('https://wa.me/6281234567890?text=' + msg, '_blank');
+          });
+        })();
+      </script>
     </div>
   </section>
 </Base>

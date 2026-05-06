@@ -68,13 +68,15 @@ p { line-height: 1.65; }
 
 .italic, em, i { font-family: var(--font-display); font-style: italic; font-weight: 400; }
 
-/* Massive condensed grotesk for hero / section impact — used sparingly. */
+/* Massive condensed grotesk for hero / section impact — used sparingly.
+   Anton has tight metrics; padding-block prevents ascender/descender clipping. */
 .font-display-x {
   font-family: var(--font-display-x);
   font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 0.92;
   text-transform: uppercase;
+  padding-block: 0.06em;
 }
 
 /* tabular numerals for prices, hours, anything tabular */
@@ -161,6 +163,112 @@ p { line-height: 1.65; }
   background: var(--color-sarang);
   color: var(--color-charcoal);
 }
+
+/* ============================================================
+   CUSTOM SCROLLBAR — matches the warm palette, never the default
+   ============================================================ */
+html { scrollbar-color: var(--color-red) var(--color-cream); scrollbar-width: thin; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-cream); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-red);
+  border: 2px solid var(--color-cream);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-red-deep); }
+
+/* ============================================================
+   BUTTONS — single shared system, no ghost variants
+   Every CTA gets a fill. Sizes are uniform: lg / md.
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  border: 0;
+  cursor: pointer;
+  transition: transform 0.18s cubic-bezier(.2,.6,.2,1), background-color 0.18s, color 0.18s;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+/* sizes */
+.btn-lg { padding: 1rem 1.75rem; font-size: 0.875rem; }
+
+/* fills — explicit colors; no transparent / no border-only */
+.btn-charcoal  { background: var(--color-charcoal);  color: var(--color-cream); }
+.btn-charcoal:hover  { background: var(--color-charcoal-soft); color: var(--color-cream); }
+.btn-sarang    { background: var(--color-sarang);    color: var(--color-charcoal); }
+.btn-sarang:hover    { background: #FFD45F; color: var(--color-charcoal); }
+.btn-red       { background: var(--color-red);       color: var(--color-cream); }
+.btn-red:hover       { background: var(--color-red-deep); color: var(--color-cream); }
+.btn-cream     { background: var(--color-cream);     color: var(--color-charcoal); }
+.btn-cream:hover     { background: #fff; color: var(--color-charcoal); }
+
+/* ============================================================
+   AUTO MARQUEE — no native scroll, no scrollbar
+   ============================================================ */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+.marquee-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding-block: 1rem;
+  animation: marquee-scroll 38s linear infinite;
+  white-space: nowrap;
+  will-change: transform;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* ============================================================
+   STICKY NAV — used by TopNav and index inline nav
+   ============================================================ */
+.nav-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  /* very subtle shadow once it scrolls — handled by border below */
+  border-bottom: 1px solid rgba(248, 242, 229, 0.08);
+}
+
+/* ============================================================
+   FORM — custom invalid styling (kills native bubble UX feeling)
+   ============================================================ */
+input.is-invalid, textarea.is-invalid {
+  border-color: var(--color-red) !important;
+  background: rgba(122, 26, 26, 0.05);
+}
+.form-error {
+  display: none;
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--color-red);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.form-error.is-visible { display: block; }
 
 a { color: inherit; }
 

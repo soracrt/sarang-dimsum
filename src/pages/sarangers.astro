@@ -25,11 +25,12 @@ const captions = [
 <Base hideHeader title="Sarangers — Komunitas Sarang Dimsum" description="Galeri foto pelanggan Sarang Dimsum di IG. Tag @dimsum_sarang biar masuk dinding ini.">
   <div aria-hidden="true" class="tarp-thin h-3"></div>
 
+  <TopNav variant="red"/>
+
   {/* RED HERO */}
   <section class="relative bg-red text-cream overflow-hidden">
-    <TopNav variant="red"/>
 
-    <div class="absolute top-32 right-6 md:right-12 z-10 pointer-events-none">
+    <div class="absolute top-10 right-6 md:right-12 z-10 pointer-events-none">
       <div class="stamp stamp-tilt-l text-sarang text-base md:text-xl">Tag @dimsum_sarang</div>
     </div>
 
@@ -50,7 +51,7 @@ const captions = [
       </p>
 
       <div class="mt-9 flex items-center gap-5 flex-wrap">
-        <a href={links.ig} target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-sarang text-red-deep px-6 py-3 text-sm uppercase tracking-[0.2em] font-bold hover:bg-cream transition-colors">
+        <a href={links.ig} target="_blank" rel="noopener" class="btn btn-sarang btn-lg">
           <Icon name="instagram" size={14}/>
           Follow di IG
         </a>

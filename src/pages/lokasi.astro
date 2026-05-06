@@ -22,11 +22,12 @@ const orderOpts = [
 <Base hideHeader title="Lokasi & Jam — Sarang Dimsum" description="Alamat, jam buka, dan cara ke Sarang Dimsum di Jalan Ciptaland, Tiban, Batam.">
   <div aria-hidden="true" class="tarp-thin h-3"></div>
 
+  <TopNav variant="red"/>
+
   {/* RED HERO */}
   <section class="relative bg-red text-cream overflow-hidden">
-    <TopNav variant="red"/>
 
-    <div class="absolute top-32 right-6 md:right-12 z-10 pointer-events-none">
+    <div class="absolute top-10 right-6 md:right-12 z-10 pointer-events-none">
       <div class="stamp stamp-tilt-r text-sarang text-base md:text-xl">Tiban · BTM</div>
     </div>
 
@@ -67,7 +68,7 @@ const orderOpts = [
             </div>
             <p class="mt-5 font-display-x text-3xl uppercase">Sarang Dimsum</p>
             <p class="mt-1 text-charcoal-mute uppercase tracking-[0.2em] text-sm">Jalan Ciptaland · Tiban</p>
-            <a href={links.maps} target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 bg-charcoal text-cream px-5 py-2.5 text-sm uppercase tracking-[0.18em] font-bold hover:bg-red transition-colors">
+            <a href={links.maps} target="_blank" rel="noopener" class="btn btn-charcoal mt-6">
               <Icon name="map-pin" size={14}/>
               Buka di Google Maps
             </a>

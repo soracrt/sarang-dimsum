@@ -14,11 +14,12 @@ const values = [
 <Base hideHeader title="Tentang — Sarang Dimsum" description="Cerita di balik Sarang Dimsum — dapur kecil halal di Tiban, Batam, didirikan oleh Arfan Putra.">
   <div aria-hidden="true" class="tarp-thin h-3"></div>
 
+  <TopNav variant="red"/>
+
   {/* RED HERO */}
   <section class="relative bg-red text-cream overflow-hidden">
-    <TopNav variant="red"/>
 
-    <div class="absolute top-32 right-6 md:right-12 z-10 pointer-events-none">
+    <div class="absolute top-10 right-6 md:right-12 z-10 pointer-events-none">
       <div class="stamp stamp-tilt-r text-sarang text-base md:text-xl">Mulai 2024</div>
     </div>
 
@@ -104,11 +105,11 @@ const values = [
         <span class="text-charcoal">Atau Pesan Dari Rumah.</span>
       </h2>
       <div class="md:col-span-4 flex flex-col gap-3 items-stretch md:items-end">
-        <a href="/lokasi" class="inline-flex items-center justify-center gap-2 bg-charcoal text-cream px-6 py-3.5 text-sm uppercase tracking-[0.18em] font-bold hover:bg-red-deep transition-colors">
+        <a href="/lokasi" class="btn btn-charcoal btn-lg w-full md:w-auto">
           <Icon name="map-pin" size={14}/>
           Lihat Lokasi
         </a>
-        <a href={links.waOrder} target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 border-2 border-charcoal text-charcoal px-6 py-3.5 text-sm uppercase tracking-[0.18em] font-bold hover:bg-charcoal hover:text-cream transition-colors">
+        <a href={links.waOrder} target="_blank" rel="noopener" class="btn btn-red btn-lg w-full md:w-auto">
           <Icon name="message-circle" size={14}/>
           Pesan via WA
         </a>

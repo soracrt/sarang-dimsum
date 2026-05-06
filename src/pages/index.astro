@@ -1,10 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
+import TopNav from '../components/TopNav.astro';
 import Icon from '../components/Icon.astro';
 import { menu } from '../data/menu';
 import { links } from '../lib/links';
 
-// receipt-style price strip in hero — pull a few real menu items
+// auto-marquee price strip — pull a few real menu items
 const ribbon = menu.filter((m) => m.hero).slice(0, 5);
 ---
 
@@ -12,24 +13,10 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
   {/* TARP STRIPE — top edge, roadside warung energy */}
   <div aria-hidden="true" class="tarp-thin h-3"></div>
 
-  {/* ============ HERO ============ */}
-  <section class="relative bg-red text-cream overflow-hidden">
+  <TopNav variant="red"/>
 
-    {/* INTEGRATED NAV — no rounded pills, just underline-on-hover */}
-    <div class="relative z-20 shell px-5 md:px-10 py-5 flex items-center justify-between">
-      <a href="/" class="font-display-x text-2xl md:text-3xl uppercase tracking-tight leading-none flex items-baseline gap-1">
-        Sarang<span class="text-sarang text-3xl md:text-4xl leading-none translate-y-1">*</span>
-      </a>
-      <nav class="hidden md:flex gap-9 text-sm uppercase tracking-[0.2em] font-semibold text-cream">
-        <a href="/menu" class="hover:text-sarang transition-colors">Menu</a>
-        <a href="/lokasi" class="hover:text-sarang transition-colors">Lokasi</a>
-        <a href="/sewa-steling" class="hover:text-sarang transition-colors">Sewa Steling</a>
-        <a href="/tentang" class="hover:text-sarang transition-colors">Tentang</a>
-      </nav>
-      <a href={links.waOrder} target="_blank" rel="noopener" class="border-2 border-sarang text-sarang px-5 py-2.5 text-sm uppercase tracking-[0.18em] font-bold hover:bg-sarang hover:text-red-deep transition-colors">
-        Pesan WA
-      </a>
-    </div>
+  {/* ============ HERO ============ */}
+  <section class="relative bg-red text-cream">
 
     {/* VERTICAL LABEL — running up the left margin */}
     <div aria-hidden="true" class="hidden lg:block absolute left-3 top-[60%] -translate-y-1/2 -rotate-90 origin-left text-cream/55 text-[0.625rem] tracking-[0.36em] uppercase whitespace-nowrap">
@@ -41,9 +28,9 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
       <div class="stamp stamp-tilt-l text-sarang text-xl md:text-2xl">Mampir, yuk!</div>
     </div>
 
-    {/* MASSIVE TYPE — cropped at right edge, scale jump */}
-    <div class="shell relative px-5 md:px-10 pt-12 md:pt-20">
-      <h1 class="font-display-x uppercase text-cream leading-[0.82] tracking-[-0.025em]" style="font-size: clamp(4rem, 9vw, 9rem);">
+    {/* MASSIVE TYPE */}
+    <div class="shell relative px-5 md:px-10 pt-16 md:pt-24 pb-2">
+      <h1 class="font-display-x uppercase text-cream leading-[0.95] tracking-[-0.025em] py-1" style="font-size: clamp(4rem, 9vw, 9rem);">
         <span class="block">Dimsum</span>
         <span class="block">Hangat,</span>
         <span class="block">Harga<span class="text-sarang">.</span></span>
@@ -58,17 +45,14 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
           Halal, banyak varian, ramah keluarga. Dari dapur kecil di Tiban — langsung ke meja kamu, atau lewat ojol favoritmu.
         </p>
 
-        <div class="mt-6 flex items-center gap-5">
-          <a href="/menu" class="inline-flex items-center gap-2 bg-sarang text-red-deep px-6 py-3 text-sm uppercase tracking-[0.18em] font-semibold hover:bg-cream transition-colors">
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <a href="/menu" class="btn btn-sarang btn-lg">
             Lihat Menu
             <Icon name="arrow-right" size={14}/>
           </a>
-          <a href={links.waOrder} target="_blank" rel="noopener" class="hand text-sarang text-2xl md:text-3xl hover:text-cream transition-colors inline-flex items-center gap-2">
-            <svg width="42" height="22" viewBox="0 0 60 30" fill="none" class="-mb-1">
-              <path d="M3 18 C 14 6, 30 4, 48 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
-              <path d="M40 8 L 48 14 L 42 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            </svg>
-            atau pesan via WA
+          <a href={links.waOrder} target="_blank" rel="noopener" class="btn btn-cream btn-lg">
+            <Icon name="message-circle" size={14}/>
+            Pesan via WA
           </a>
         </div>
       </div>
@@ -97,18 +81,23 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
       </svg>
     </div>
 
-    {/* RECEIPT PRICE STRIP — runs across bottom of hero */}
-    <div class="relative bg-red-deep border-t border-cream/15">
-      <div class="shell px-5 md:px-10 py-4 md:py-5 flex items-center gap-6 md:gap-10 overflow-x-auto whitespace-nowrap">
-        <span class="font-display-x text-cream/55 text-sm uppercase tracking-[0.24em] shrink-0">Harga ↓</span>
-        {ribbon.map((m) => (
-          <span class="inline-flex items-baseline gap-2 text-cream shrink-0">
-            <span class="uppercase tracking-[0.16em] text-xs md:text-sm">{m.name}</span>
-            <span class="text-sarang/70 text-xs">·····</span>
-            <span class="font-display-x text-base md:text-lg tabular leading-none">{(m.price/1000).toFixed(0)}rb</span>
-          </span>
+    {/* AUTO MARQUEE — price ribbon, runs forever, no native scrollbar */}
+    <div class="relative bg-red-deep border-t border-cream/15 marquee">
+      <div class="marquee-track">
+        {[0, 1].map(() => (
+          <>
+            <span class="font-display-x text-sarang text-sm uppercase tracking-[0.24em]">Harga ↓</span>
+            {ribbon.map((m) => (
+              <span class="inline-flex items-baseline gap-2 text-cream">
+                <span class="uppercase tracking-[0.16em] text-xs md:text-sm">{m.name}</span>
+                <span class="text-sarang/60 text-xs">·····</span>
+                <span class="font-display-x text-base md:text-lg tabular leading-none">{(m.price/1000).toFixed(0)}rb</span>
+              </span>
+            ))}
+            <span class="font-display-x text-sarang text-sm uppercase tracking-[0.24em]">+22 menu lain</span>
+            <span class="text-cream/30 text-base">✻</span>
+          </>
         ))}
-        <span class="font-display-x text-sarang text-sm uppercase tracking-[0.24em] shrink-0">+22 menu lain</span>
       </div>
     </div>
   </section>
@@ -243,17 +232,14 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
             <div class="receipt-row"><span class="uppercase tracking-[0.16em]">Survei lokasi</span><span class="leader text-cream/40"></span><span class="hand text-sarang text-xl">gratis</span></div>
           </div>
 
-          <div class="mt-10 flex flex-wrap items-center gap-5">
-            <a href="/sewa-steling" class="inline-flex items-center gap-2 bg-sarang text-red-deep px-6 py-3 text-sm uppercase tracking-[0.18em] font-bold hover:bg-cream transition-colors">
+          <div class="mt-10 flex flex-wrap items-center gap-3">
+            <a href="/sewa-steling" class="btn btn-sarang">
               Lihat Skema Lengkap
               <Icon name="arrow-right" size={14}/>
             </a>
-            <a href={links.waReseller} target="_blank" rel="noopener" class="hand text-sarang text-2xl md:text-3xl hover:text-cream transition-colors inline-flex items-center gap-2">
-              <svg width="42" height="22" viewBox="0 0 60 30" fill="none" class="-mb-1">
-                <path d="M3 18 C 14 6, 30 4, 48 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
-                <path d="M40 8 L 48 14 L 42 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              </svg>
-              tanya via WA
+            <a href={links.waReseller} target="_blank" rel="noopener" class="btn btn-cream">
+              <Icon name="message-circle" size={14}/>
+              Tanya via WA
             </a>
           </div>
         </div>
@@ -300,17 +286,14 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
             <span class="text-red">Tiban — Batam.</span>
           </h2>
 
-          <div class="mt-10 flex items-center gap-5 flex-wrap">
-            <a href={links.maps} target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-charcoal text-cream px-6 py-3 text-sm uppercase tracking-[0.18em] font-bold hover:bg-red-deep transition-colors">
+          <div class="mt-10 flex items-center gap-3 flex-wrap">
+            <a href={links.maps} target="_blank" rel="noopener" class="btn btn-charcoal">
               <Icon name="map-pin" size={14}/>
               Buka Maps
             </a>
-            <a href="/lokasi" class="hand text-red text-2xl md:text-3xl hover:text-charcoal transition-colors inline-flex items-center gap-2">
-              detail lokasi
-              <svg width="42" height="22" viewBox="0 0 60 30" fill="none" class="-mb-1">
-                <path d="M3 18 C 14 6, 30 4, 48 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
-                <path d="M40 8 L 48 14 L 42 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              </svg>
+            <a href="/lokasi" class="btn btn-red">
+              Detail Lokasi
+              <Icon name="arrow-right" size={14}/>
             </a>
           </div>
         </div>
@@ -381,7 +364,7 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
           </p>
         </div>
 
-        <a href={links.ig} target="_blank" rel="noopener" class="border-2 border-sarang text-sarang px-5 py-2.5 text-sm uppercase tracking-[0.18em] font-bold hover:bg-sarang hover:text-red-deep transition-colors inline-flex items-center gap-2">
+        <a href={links.ig} target="_blank" rel="noopener" class="btn btn-sarang">
           <Icon name="instagram" size={14}/>
           Follow IG
         </a>
@@ -421,15 +404,15 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
       </h2>
 
       <div class="md:col-span-4 flex flex-col gap-3 items-stretch md:items-end">
-        <a href={links.waOrder} target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 bg-charcoal text-cream px-6 py-3.5 text-sm uppercase tracking-[0.18em] font-bold hover:bg-red-deep transition-colors">
+        <a href={links.waOrder} target="_blank" rel="noopener" class="btn btn-charcoal btn-lg w-full md:w-auto">
           <Icon name="message-circle" size={14}/>
           Pesan via WA
         </a>
-        <a href="/lokasi" class="inline-flex items-center justify-center gap-2 border-2 border-charcoal text-charcoal px-6 py-3.5 text-sm uppercase tracking-[0.18em] font-bold hover:bg-charcoal hover:text-cream transition-colors">
+        <a href="/lokasi" class="btn btn-red btn-lg w-full md:w-auto">
           Lihat Lokasi
           <Icon name="arrow-right" size={14}/>
         </a>
-        <span class="hand text-red text-xl md:text-2xl text-center md:text-right mt-1">— biasanya dibalas dalam 1 jam!</span>
+        <span class="hand text-red-deep text-xl md:text-2xl text-center md:text-right mt-1">— biasanya dibalas dalam 1 jam!</span>
       </div>
     </div>
   </section>

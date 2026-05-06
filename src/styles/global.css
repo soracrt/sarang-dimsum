@@ -165,17 +165,16 @@ p { line-height: 1.65; }
 }
 
 /* ============================================================
-   CUSTOM SCROLLBAR — matches the warm palette, never the default
+   SCROLLBAR — minimal: thin, charcoal-tinted, transparent track
    ============================================================ */
-html { scrollbar-color: var(--color-red) var(--color-cream); scrollbar-width: thin; }
-::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: var(--color-cream); }
+html { scrollbar-color: rgba(20, 17, 13, 0.35) transparent; scrollbar-width: thin; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-red);
-  border: 2px solid var(--color-cream);
+  background: rgba(20, 17, 13, 0.28);
   border-radius: 999px;
 }
-::-webkit-scrollbar-thumb:hover { background: var(--color-red-deep); }
+::-webkit-scrollbar-thumb:hover { background: rgba(20, 17, 13, 0.5); }
 
 /* ============================================================
    BUTTONS — single shared system, no ghost variants

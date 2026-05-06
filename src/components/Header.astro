@@ -13,7 +13,7 @@ const nav = [
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
-<header id="site-header" class="sticky top-0 z-40 bg-cream/80 backdrop-blur-md border-b border-charcoal/8 transition-transform duration-300 will-change-transform">
+<header id="site-header" class="sticky top-0 z-40 bg-cream/80 backdrop-blur-md border-b border-charcoal/8" style="transition: transform 300ms ease; will-change: transform;">
   <div class="mx-auto max-w-6xl px-5 md:px-8 h-16 flex items-center justify-between gap-6">
     <a href="/" aria-label="Sarang Dimsum — beranda" class="block shrink-0">
       <Wordmark class="h-9 w-auto" />
@@ -52,30 +52,38 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
   </div>
 </header>
 
-<script>
-  const header = document.getElementById('site-header');
-  if (header) {
-    let lastY = window.scrollY;
-    let ticking = false;
-    const THRESHOLD = 8;
-    const update = () => {
-      const y = window.scrollY;
-      const delta = y - lastY;
-      if (Math.abs(delta) > THRESHOLD) {
-        if (delta > 0 && y > 80) {
-          header.style.transform = 'translateY(-100%)';
-        } else {
-          header.style.transform = 'translateY(0)';
+<script is:inline>
+  (function () {
+    const init = () => {
+      const header = document.getElementById('site-header');
+      if (!header) return;
+      let lastY = window.scrollY;
+      let ticking = false;
+      const THRESHOLD = 6;
+      const update = () => {
+        const y = Math.max(0, window.scrollY);
+        const delta = y - lastY;
+        if (Math.abs(delta) > THRESHOLD) {
+          if (delta > 0 && y > 80) {
+            header.style.transform = 'translateY(-100%)';
+          } else {
+            header.style.transform = 'translateY(0)';
+          }
+          lastY = y;
         }
-        lastY = y;
-      }
-      ticking = false;
+        ticking = false;
+      };
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(update);
+          ticking = true;
+        }
+      }, { passive: true });
     };
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(update);
-        ticking = true;
-      }
-    }, { passive: true });
-  }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
 </script>

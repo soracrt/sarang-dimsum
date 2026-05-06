@@ -43,5 +43,32 @@ const {
     </main>
     <Footer />
     <WhatsAppFAB />
+    <script is:inline>
+      (function () {
+        const init = () => {
+          const navs = document.querySelectorAll('.nav-sticky');
+          if (!navs.length) return;
+          let lastY = window.scrollY;
+          let ticking = false;
+          const THRESHOLD = 6;
+          const update = () => {
+            const y = Math.max(0, window.scrollY);
+            const delta = y - lastY;
+            if (Math.abs(delta) > THRESHOLD) {
+              const hide = delta > 0 && y > 80;
+              navs.forEach((n) => n.classList.toggle('is-hidden', hide));
+              lastY = y;
+            }
+            ticking = false;
+          };
+          window.addEventListener('scroll', () => {
+            if (!ticking) { requestAnimationFrame(update); ticking = true; }
+          }, { passive: true });
+        };
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', init);
+        } else { init(); }
+      })();
+    </script>
   </body>
 </html>

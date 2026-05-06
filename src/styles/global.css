@@ -193,8 +193,6 @@ body::-webkit-scrollbar { width: 0; height: 0; display: none; }
   opacity: 0;
 }
 #custom-scrollbar.is-visible .thumb { opacity: 1; }
-#custom-scrollbar .thumb.is-light { background: var(--color-cream); }
-#custom-scrollbar .thumb.is-dark  { background: var(--color-red); }
 #custom-scrollbar .thumb:active { cursor: grabbing; }
 
 /* ============================================================

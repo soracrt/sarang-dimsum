@@ -165,16 +165,37 @@ p { line-height: 1.65; }
 }
 
 /* ============================================================
-   SCROLLBAR — minimal: thin, charcoal-tinted, transparent track
+   SCROLLBAR — native hidden, custom thumb mounted via JS
    ============================================================ */
-html { scrollbar-color: rgba(20, 17, 13, 0.35) transparent; scrollbar-width: thin; }
-::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb {
-  background: rgba(20, 17, 13, 0.28);
-  border-radius: 999px;
+html { scrollbar-width: none; }
+html::-webkit-scrollbar { width: 0; height: 0; display: none; }
+body::-webkit-scrollbar { width: 0; height: 0; display: none; }
+
+#custom-scrollbar {
+  position: fixed;
+  top: 0;
+  right: 6px;
+  width: 4px;
+  height: 100vh;
+  z-index: 100;
+  pointer-events: none;
 }
-::-webkit-scrollbar-thumb:hover { background: rgba(20, 17, 13, 0.5); }
+#custom-scrollbar .thumb {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  min-height: 32px;
+  border-radius: 999px;
+  background: var(--color-red);
+  transition: background 220ms ease, opacity 220ms ease;
+  pointer-events: auto;
+  cursor: grab;
+  opacity: 0;
+}
+#custom-scrollbar.is-visible .thumb { opacity: 1; }
+#custom-scrollbar .thumb.is-light { background: var(--color-cream); }
+#custom-scrollbar .thumb.is-dark  { background: var(--color-red); }
+#custom-scrollbar .thumb:active { cursor: grabbing; }
 
 /* ============================================================
    BUTTONS — single shared system, no ghost variants

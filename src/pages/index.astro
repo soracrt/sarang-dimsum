@@ -16,7 +16,7 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
   <section class="relative bg-red text-cream overflow-hidden">
 
     {/* INTEGRATED NAV — no rounded pills, just underline-on-hover */}
-    <div class="relative z-20 px-5 md:px-10 py-5 flex items-center justify-between">
+    <div class="relative z-20 shell px-5 md:px-10 py-5 flex items-center justify-between">
       <a href="/" class="font-display-x text-2xl md:text-3xl uppercase tracking-tight leading-none flex items-baseline gap-1">
         Sarang<span class="text-sarang text-3xl md:text-4xl leading-none translate-y-1">*</span>
       </a>
@@ -42,8 +42,8 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
     </div>
 
     {/* MASSIVE TYPE — cropped at right edge, scale jump */}
-    <div class="relative pl-5 md:pl-16 pr-0 pt-12 md:pt-20">
-      <h1 class="font-display-x uppercase text-cream leading-[0.82] tracking-[-0.025em]" style="font-size: clamp(5.5rem, 17.5vw, 19rem);">
+    <div class="shell relative px-5 md:px-10 pt-12 md:pt-20">
+      <h1 class="font-display-x uppercase text-cream leading-[0.82] tracking-[-0.025em]" style="font-size: clamp(4rem, 9vw, 9rem);">
         <span class="block">Dimsum</span>
         <span class="block">Hangat,</span>
         <span class="block">Harga<span class="text-sarang">.</span></span>
@@ -52,7 +52,7 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
     </div>
 
     {/* SUPPORTING ROW — small body text + steamer SVG sitting on the floor */}
-    <div class="relative mt-10 md:mt-14 px-5 md:px-10 pb-8 md:pb-10 grid md:grid-cols-[1fr_auto] gap-8 md:gap-10 items-end">
+    <div class="relative mt-10 md:mt-14 shell px-5 md:px-10 pb-8 md:pb-10 grid md:grid-cols-[1fr_auto] gap-8 md:gap-10 items-end">
       <div class="max-w-md">
         <p class="text-cream/80 text-base md:text-lg leading-[1.65]">
           Halal, banyak varian, ramah keluarga. Dari dapur kecil di Tiban — langsung ke meja kamu, atau lewat ojol favoritmu.
@@ -99,7 +99,7 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
 
     {/* RECEIPT PRICE STRIP — runs across bottom of hero */}
     <div class="relative bg-red-deep border-t border-cream/15">
-      <div class="px-5 md:px-10 py-4 md:py-5 flex items-center gap-6 md:gap-10 overflow-x-auto whitespace-nowrap">
+      <div class="shell px-5 md:px-10 py-4 md:py-5 flex items-center gap-6 md:gap-10 overflow-x-auto whitespace-nowrap">
         <span class="font-display-x text-cream/55 text-sm uppercase tracking-[0.24em] shrink-0">Harga ↓</span>
         {ribbon.map((m) => (
           <span class="inline-flex items-baseline gap-2 text-cream shrink-0">
@@ -118,7 +118,7 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
 
   {/* ============ FEATURED ITEM — asymmetric, price-led ============ */}
   <section class="relative bg-cream text-charcoal overflow-hidden">
-    <div class="px-5 md:px-10 pt-20 md:pt-28 pb-20 md:pb-28">
+    <div class="shell px-5 md:px-10 pt-20 md:pt-28 pb-20 md:pb-28">
 
       {/* tiny eyebrow row */}
       <div class="flex items-center gap-3 mb-10">
@@ -170,13 +170,13 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
         {/* item info — 7 cols, price-led layout */}
         <div class="md:col-span-7">
           <p class="text-[0.6875rem] uppercase tracking-[0.32em] text-charcoal-mute">No.01 · Kukus</p>
-          <h2 class="font-display-x uppercase leading-[0.86] tracking-[-0.02em] mt-3 text-charcoal" style="font-size: clamp(3.5rem, 9vw, 7.5rem);">
+          <h2 class="font-display-x uppercase leading-[0.86] tracking-[-0.02em] mt-3 text-charcoal" style="font-size: clamp(2.5rem, 5.5vw, 5.5rem);">
             Hakau<br/>Udang.
           </h2>
 
           {/* price set as graphic, with tiny "isi 4" annotation */}
           <div class="mt-8 flex items-end gap-4">
-            <div class="font-display-x leading-[0.85] text-red" style="font-size: clamp(4.5rem, 13vw, 10rem);">
+            <div class="font-display-x leading-[0.85] text-red" style="font-size: clamp(3.5rem, 7.5vw, 7rem);">
               <span class="text-2xl md:text-3xl tracking-[0.18em] align-top mr-1">RP</span>18<span class="text-charcoal-mute">.</span>000
             </div>
             <span class="hand text-charcoal-mute text-2xl md:text-3xl pb-2 -rotate-[4deg]">isi 4 ✻</span>
@@ -208,7 +208,7 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
 
   {/* ============ SEWA STELING — wide red feature ============ */}
   <section class="relative bg-red text-cream overflow-hidden">
-    <div class="px-5 md:px-10 pt-20 md:pt-28 pb-20 md:pb-28 relative">
+    <div class="shell px-5 md:px-10 pt-20 md:pt-28 pb-20 md:pb-28 relative">
 
       {/* tilted stamp top-right */}
       <div aria-hidden="true" class="absolute top-10 right-6 md:right-12 z-10">
@@ -221,7 +221,7 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
         <span class="text-[0.6875rem] uppercase tracking-[0.32em] text-cream/85 font-semibold">Untuk Pemilik Usaha</span>
       </div>
 
-      <h2 class="font-display-x uppercase text-cream leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(3.5rem, 11vw, 11rem);">
+      <h2 class="font-display-x uppercase text-cream leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(3rem, 6.5vw, 6.5rem);">
         Sewa<br/>
         <span class="text-sarang">Stelingnya.</span><br/>
         Jualan<br/>
@@ -284,7 +284,7 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
 
   {/* ============ LOKASI — cream ticket-stub ============ */}
   <section class="bg-cream text-charcoal">
-    <div class="px-5 md:px-10 pt-20 md:pt-28 pb-20 md:pb-28">
+    <div class="shell px-5 md:px-10 pt-20 md:pt-28 pb-20 md:pb-28">
 
       <div class="flex items-center gap-3 mb-8">
         <span aria-hidden="true" class="block w-12 h-px bg-charcoal"></span>
@@ -294,7 +294,7 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
       <div class="grid md:grid-cols-12 gap-10 items-start">
         {/* TYPE — 7 cols */}
         <div class="md:col-span-7">
-          <h2 class="font-display-x uppercase leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(3.5rem, 10.5vw, 10rem);">
+          <h2 class="font-display-x uppercase leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(2.75rem, 6vw, 6rem);">
             Jalan<br/>
             Ciptaland,<br/>
             <span class="text-red">Tiban — Batam.</span>
@@ -365,7 +365,7 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
 
   {/* ============ SARANGERS — red, tilted IG tiles ============ */}
   <section class="bg-red text-cream relative overflow-hidden">
-    <div class="px-5 md:px-10 pt-20 md:pt-28 pb-20 md:pb-28">
+    <div class="shell px-5 md:px-10 pt-20 md:pt-28 pb-20 md:pb-28">
 
       <div class="flex items-end justify-between flex-wrap gap-6 mb-12">
         <div>
@@ -373,7 +373,7 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
             <span aria-hidden="true" class="block w-12 h-px bg-cream/60"></span>
             <span class="text-[0.6875rem] uppercase tracking-[0.32em] text-cream/85 font-semibold">Komunitas Pelanggan</span>
           </div>
-          <h2 class="font-display-x uppercase text-cream leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(3.5rem, 11vw, 11rem);">
+          <h2 class="font-display-x uppercase text-cream leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(3rem, 6.5vw, 6.5rem);">
             #<span class="text-sarang">Sarangers</span>
           </h2>
           <p class="mt-6 max-w-md text-cream/85 leading-relaxed">
@@ -413,9 +413,9 @@ const ribbon = menu.filter((m) => m.hero).slice(0, 5);
 
   {/* ============ YELLOW CTA BAND ============ */}
   <section class="bg-sarang text-red-deep">
-    <div class="px-5 md:px-10 py-14 md:py-20 grid md:grid-cols-12 gap-8 items-end">
+    <div class="shell px-5 md:px-10 py-14 md:py-20 grid md:grid-cols-12 gap-8 items-end">
 
-      <h2 class="md:col-span-8 font-display-x uppercase leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(3rem, 9vw, 8rem);">
+      <h2 class="md:col-span-8 font-display-x uppercase leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(2.5rem, 5.5vw, 5.5rem);">
         Pesan Sekarang,<br/>
         <span class="text-charcoal">Atau Mampir Hari Ini.</span>
       </h2>

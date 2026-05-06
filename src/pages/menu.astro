@@ -26,13 +26,13 @@ const order: MenuItem['category'][] = ['paket', 'kukus', 'goreng', 'mie', 'minum
       <div class="stamp stamp-tilt-l text-sarang text-base md:text-xl">{menu.length} Menu · Halal</div>
     </div>
 
-    <div class="px-5 md:px-10 pt-12 md:pt-20 pb-16 md:pb-20">
+    <div class="shell px-5 md:px-10 pt-12 md:pt-20 pb-16 md:pb-20">
       <div class="flex items-center gap-3 mb-6">
         <span aria-hidden="true" class="block w-12 h-px bg-cream/60"></span>
         <span class="text-[0.6875rem] uppercase tracking-[0.32em] text-cream/85 font-semibold">Daftar Menu Lengkap</span>
       </div>
 
-      <h1 class="font-display-x uppercase text-cream leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(4.5rem, 14vw, 14rem);">
+      <h1 class="font-display-x uppercase text-cream leading-[0.86] tracking-[-0.025em]" style="font-size: clamp(3.5rem, 8vw, 8rem);">
         Pilih Dimsum<br/>
         <span class="text-sarang">Kesukaanmu.</span>
       </h1>
@@ -47,7 +47,7 @@ const order: MenuItem['category'][] = ['paket', 'kukus', 'goreng', 'mie', 'minum
 
   {/* STICKY CATEGORY NAV — sharp-edged, no rounded pills */}
   <nav class="sticky top-0 z-30 bg-cream border-b-2 border-charcoal">
-    <div class="px-5 md:px-10 py-3 flex gap-0 overflow-x-auto text-sm font-semibold">
+    <div class="shell px-5 md:px-10 py-3 flex gap-0 overflow-x-auto text-sm font-semibold">
       {order.map((c, i) => (
         <a href={`#${c}`} class={`px-5 py-2 uppercase tracking-[0.18em] text-charcoal hover:bg-red hover:text-cream whitespace-nowrap transition-colors ${i > 0 ? 'border-l border-charcoal/15' : ''}`}>
           {categoryLabel[c]}
@@ -59,7 +59,7 @@ const order: MenuItem['category'][] = ['paket', 'kukus', 'goreng', 'mie', 'minum
 
   {/* MENU SECTIONS */}
   <section class="bg-cream">
-    <div class="px-5 md:px-10 py-12 md:py-16 space-y-20">
+    <div class="shell px-5 md:px-10 py-12 md:py-16 space-y-20">
       {order.map((c, ci) => (
         <div id={c}>
           {/* category header — large + numbered */}
@@ -83,13 +83,13 @@ const order: MenuItem['category'][] = ['paket', 'kukus', 'goreng', 'mie', 'minum
 
   {/* CTA — order options */}
   <section class="bg-charcoal text-cream">
-    <div class="px-5 md:px-10 py-20 md:py-24 grid md:grid-cols-12 gap-10 items-end">
+    <div class="shell px-5 md:px-10 py-20 md:py-24 grid md:grid-cols-12 gap-10 items-end">
       <div class="md:col-span-7">
         <div class="flex items-center gap-3 mb-6">
           <span aria-hidden="true" class="block w-12 h-px bg-cream/60"></span>
           <span class="text-[0.6875rem] uppercase tracking-[0.32em] text-cream/85 font-semibold">Siap Pesan?</span>
         </div>
-        <h2 class="font-display-x uppercase leading-[0.88] tracking-[-0.02em]" style="font-size: clamp(3rem, 8vw, 6.5rem);">
+        <h2 class="font-display-x uppercase leading-[0.88] tracking-[-0.02em]" style="font-size: clamp(2.25rem, 5vw, 5rem);">
           Pilih Cara Yang<br/>
           <span class="text-sarang">Paling Pas.</span>
         </h2>

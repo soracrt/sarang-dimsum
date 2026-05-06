@@ -133,6 +133,14 @@ p { line-height: 1.65; }
   opacity: 0.45;
 }
 
+/* bounded content shell — sections stay full-bleed, content sits in a contained measure
+   so the eye doesn't have to track from edge to edge on wide screens */
+.shell {
+  max-width: 80rem; /* 1280px */
+  margin-inline: auto;
+  width: 100%;
+}
+
 /* the eyebrow / overline pattern, used everywhere */
 .eyebrow {
   font-family: var(--font-body);
